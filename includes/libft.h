@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/05 13:51:23 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/09 15:31:16 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 char				*ft_strjoinf(char *s1, char *s2, int state);
 void				*ft_memrealloc(void *ptr, size_t old_s, size_t new_s);
+int					ft_int_len(long num);
 
 #endif

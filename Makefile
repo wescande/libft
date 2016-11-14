@@ -78,7 +78,8 @@ SRC_BASE = convert/ft_atoi.c\
 		   str/ft_strsub.c\
 		   str/ft_strtrim.c\
 		   str/ft_tolower.c\
-		   str/ft_toupper.c
+		   str/ft_toupper.c\
+		   int/ft_int_len.c
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS = $(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
