@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 11:21:02 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/15 16:02:42 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/15 16:23:43 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ typedef struct		s_buf
 	int				read_ret;
 	int				newline;
 }					t_buf;
-
 
 #endif
