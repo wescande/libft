@@ -6,23 +6,17 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/31 23:15:22 by wescande          #+#    #+#             */
-/*   Updated: 2016/08/31 23:25:13 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/15 16:10:16 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/libft.h"
 
 char	*ft_strcpy(char *dest, const char *src)
 {
-	char	*ret;
+	size_t	len;
 
-	ret = dest;
-	while (*src)
-	{
-		*ret = *src;
-		++ret;
-		++src;
-	}
-	*ret = '\0';
+	len = ft_strlen(src);
+	dest = ft_memcpy((void *)dest, (const void *)src, len + 1);
 	return (dest);
 }
