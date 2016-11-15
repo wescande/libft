@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_litoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/18 23:01:37 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/14 18:18:48 by wescande         ###   ########.fr       */
+/*   Created: 2016/11/14 18:18:24 by wescande          #+#    #+#             */
+/*   Updated: 2016/11/14 18:18:31 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+char	*ft_litoa(long int n)
 {
 	int			len;
-	int			nb_tmp;
+	long int	nb_tmp;
 	char		*str;
 
 	len = ((n <= 0) ? 1 : 0);

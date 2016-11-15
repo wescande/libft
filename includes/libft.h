@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/09 15:31:16 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/15 16:02:56 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef enum		e_bool
+{
+	false,
+	true
+}					t_bool;
 
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
@@ -82,12 +88,16 @@ void				ft_putnbr_fd(int n, int fd);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstadd(t_list **alst, t_list *new);
+void				ft_lstadd(t_list **alst, t_list *lnew);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+
+int					get_next_line(const int fd, char **line);
 
 char				*ft_strjoinf(char *s1, char *s2, int state);
 void				*ft_memrealloc(void *ptr, size_t old_s, size_t new_s);
 int					ft_int_len(long num);
+size_t				ft_wcslen(const wchar_t *wstr);
+char				*ft_litoa(long int n);
 
 #endif
