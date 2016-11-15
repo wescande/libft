@@ -80,6 +80,7 @@ SRC_BASE = get_next_line.c\
 		   str/ft_strsplit.c\
 		   str/ft_strstr.c\
 		   str/ft_strsub.c\
+		   str/ft_strsubf.c\
 		   str/ft_strtrim.c\
 		   str/ft_tolower.c\
 		   str/ft_toupper.c\
