@@ -23,10 +23,10 @@ INC_DIR = includes/
 OBJ_DIR = objs/
 
 SRC_BASE = \
-convert/ft_atoi.c\
-convert/ft_itoa.c\
-convert/ft_litoa.c\
-int/ft_int_len.c\
+int/ft_atoi.c\
+int/ft_itoa.c\
+int/ft_litoa.c\
+int/ft_num_len_base.c\
 lst/ft_lstadd.c\
 lst/ft_lstdel.c\
 lst/ft_lstdelone.c\

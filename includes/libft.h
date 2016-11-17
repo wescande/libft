@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/17 15:38:39 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/17 19:55:46 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 typedef struct	s_list
 {
@@ -45,7 +46,6 @@ char			*ft_strnstr(const char *big, const char *little,
 							size_t len);
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
-int				ft_atoi(const char *nptr);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_isalnum(int c);
@@ -69,7 +69,6 @@ char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
-char			*ft_itoa(int n);
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
 void			ft_putendl(char const *s);
@@ -92,12 +91,17 @@ char			*ft_strjoinf(char *s1, char *s2, int state);
 char			*ft_strnewc(size_t size, int c);
 char			*ft_strsubf(char *s, unsigned int top, size_t l, short int mod);
 void			*ft_memrealloc(void *ptr, size_t old_s, size_t new_s);
-int				ft_int_len(long num);
-char			*ft_litoa(long int n);
 
 size_t			ft_strwlen(const wchar_t *wstr);
 short int		ft_charwlen(const wchar_t cw);
 char			*ft_charwtochar(char *str, const wchar_t cw);
 char			*ft_strwtostr(const wchar_t *strw);
+
+short int		ft_num_len_base(long int num, short int len_base);
+int				ft_atoi(const char *nptr);
+char			*ft_itoa(int n);
+char			*ft_litoa(long int n);
+char			*ft_litoa_base_maj(long int n, short int len_base);
+char			*ft_litoa_base_min(long int n, short int len_base);
 
 #endif
