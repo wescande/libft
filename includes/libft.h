@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/15 18:04:26 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/17 13:42:40 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,11 @@ char			*ft_strjoinf(char *s1, char *s2, int state);
 char			*ft_strsubf(char *s, unsigned int top, size_t l, short int mod);
 void			*ft_memrealloc(void *ptr, size_t old_s, size_t new_s);
 int				ft_int_len(long num);
-size_t			ft_wcslen(const wchar_t *wstr);
 char			*ft_litoa(long int n);
+
+size_t			ft_strwlen(const wchar_t *wstr);
+short int		ft_charwlen(const wchar_t cw);
+char			*ft_charwtochar(char *str, const wchar_t cw);
+char			*ft_strwtostr(const wchar_t *strw);
 
 #endif

@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wcslen.c                                        :+:      :+:    :+:   */
+/*   ft_strwtostr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/14 17:45:59 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/14 17:47:34 by wescande         ###   ########.fr       */
+/*   Created: 2016/11/17 12:44:26 by wescande          #+#    #+#             */
+/*   Updated: 2016/11/17 13:19:36 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_wcslen(const wchar_t *wstr)
+char	*ft_strwtostr(const wchar_t *strw)
 {
-	size_t	wlen;
+	char	*str;
+	char	*ret;
 
-	wlen = 0;
-	while (*(wstr++))
-		++wlen;
-	return (wlen);
+	if (!(str = ft_strnew(ft_strwlen(strw))))
+		return (NULL);
+	ret = str;
+	while (strw && *strw)
+	{
+		str = ft_charwtochar(str, *strw) + ft_charwlen(*strw);
+		++strw;
+	}
+	*str = '\0';
+	return (ret);
 }

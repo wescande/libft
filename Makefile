@@ -85,7 +85,10 @@ SRC_BASE = get_next_line.c\
 		   str/ft_tolower.c\
 		   str/ft_toupper.c\
 		   int/ft_int_len.c\
-		   wchar/ft_wcslen.c\
+		   wchar/ft_charwlen.c\
+		   wchar/ft_charwtochar.c\
+		   wchar/ft_strwlen.c\
+		   wchar/ft_strwtostr.c\
 		   convert/ft_litoa.c
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC_BASE))
@@ -102,7 +105,7 @@ $(NAME) : $(OBJ_DIR) $(OBJS)
 $(OBJ_DIR) :
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(dir $(OBJS))
-	@echo "Directory created"
+	@echo "*.o directory created"
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(CC) $(FLAGS) -MMD -c $< -o $@\
