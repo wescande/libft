@@ -89,7 +89,9 @@ str/ft_tolower.c\
 str/ft_toupper.c\
 wchar/ft_charwlen.c\
 wchar/ft_charwtochar.c\
+wchar/ft_charwtonewchar.c\
 wchar/ft_strwlen.c\
+wchar/ft_strwtonewstr.c\
 wchar/ft_strwtostr.c
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC_BASE))

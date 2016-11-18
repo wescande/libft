@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 18:18:24 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/18 11:19:46 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/18 11:28:22 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*ft_litoa_base_maj(long int value, short int len_base)
 	if (len_base == 10)
 		return (ft_litoa(value));
 	if (!value)
-		return (ft_strnew(1));
+		return (ft_strnewc(1, '0'));
 	is_neg = (value < 0) ? -1 : 1;
 	len = ft_num_len_base(value, len_base);
 	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
@@ -78,7 +78,7 @@ char	*ft_litoa_base_min(long int value, short int len_base)
 	if (len_base == 10)
 		return (ft_litoa(value));
 	if (!value)
-		return (ft_strnew(1));
+		return (ft_strnewc(1, '0'));
 	is_neg = (value < 0) ? -1 : 1;
 	len = ft_num_len_base(value, len_base);
 	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))

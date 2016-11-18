@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/17 19:55:46 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/18 13:25:25 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,9 @@ void			*ft_memrealloc(void *ptr, size_t old_s, size_t new_s);
 size_t			ft_strwlen(const wchar_t *wstr);
 short int		ft_charwlen(const wchar_t cw);
 char			*ft_charwtochar(char *str, const wchar_t cw);
-char			*ft_strwtostr(const wchar_t *strw);
+char			*ft_charwtonewchar(const wchar_t cw);
+char			*ft_strwtostr(char *dest, const wchar_t *strw);
+char			*ft_strwtonewstr(const wchar_t *strw);
 
 short int		ft_num_len_base(long int num, short int len_base);
 int				ft_atoi(const char *nptr);

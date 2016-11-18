@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strwtostr.c                                     :+:      :+:    :+:   */
+/*   ft_charwtonewchar.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/17 12:44:26 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/18 13:25:41 by wescande         ###   ########.fr       */
+/*   Created: 2016/11/18 13:27:23 by wescande          #+#    #+#             */
+/*   Updated: 2016/11/18 13:28:29 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strwtostr(char *dest, const wchar_t *strw)
+char	*ft_charwtonewchar(const wchar_t cw)
 {
-	char	*ret;
+	char	*c;
 
-	ret = dest;
-	while (strw && *strw)
-	{
-		dest = ft_charwtochar(dest, *strw) + ft_charwlen(*strw);
-		++strw;
-	}
-	*dest = '\0';
-	return (ret);
+	if (!(c = (char*)malloc(sizeof(char) * (ft_charwlen(cw)))))
+		return (NULL);
+	return (ft_charwtochar(c, cw));
 }
