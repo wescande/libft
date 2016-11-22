@@ -23,6 +23,8 @@ INC_DIR = includes/
 OBJ_DIR = objs/
 
 SRC_BASE = \
+get_next_line.c\
+int/ft_abs.c\
 int/ft_atoi.c\
 int/ft_itoa.c\
 int/ft_litoa.c\
@@ -84,6 +86,7 @@ str/ft_strsplit.c\
 str/ft_strstr.c\
 str/ft_strsub.c\
 str/ft_strsubf.c\
+str/ft_strtoupper.c\
 str/ft_strtrim.c\
 str/ft_tolower.c\
 str/ft_toupper.c\

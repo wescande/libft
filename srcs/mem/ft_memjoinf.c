@@ -1,43 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_num_len_base.c                                  :+:      :+:    :+:   */
+/*   ft_memjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/17 19:12:42 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/22 11:22:15 by wescande         ###   ########.fr       */
+/*   Created: 2016/11/22 12:14:39 by wescande          #+#    #+#             */
+/*   Updated: 2016/11/22 12:22:20 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-short int	ft_num_len_base(long int num, short int len_base)
+void	*ft_memjoinf(void *mem1, void *mem2, size_t len1, size_t len2)
 {
-	short int	len;
+	void	*ret;
 
-	len = 0;
-	if (num == 0)
-		return (1);
-	while (num != 0)
-	{
-		num /= len_base;
-		++len;
-	}
-	return (len);
-}
-
-short int	ft_unum_len_base(unsigned long int num, short int len_base)
-{
-	short int	len;
-
-	len = 0;
-	if (num == 0)
-		return (1);
-	while (num != 0)
-	{
-		num /= len_base;
-		++len;
-	}
-	return (len);
+	ret = ft_memjoin(mem1, mem2, len1, len2);
+	ft_memdel(&mem1);
+	ft_memdel(&mem2);
+	return (ret);
 }

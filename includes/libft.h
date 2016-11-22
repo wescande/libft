@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/18 13:25:25 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/22 12:51:18 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,6 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-void			*ft_memset(void *s, int c, size_t n);
-void			ft_bzero(void *s, size_t n);
-void			*ft_memcpy(void *dest, const void *src, size_t n);
-void			*ft_memccpy(void *dest, const void *src, int c, size_t n);
-void			*ft_memmove(void *dest, const void *src, size_t n);
-void			*ft_memchr(const void *s, int c, size_t n);
-int				ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t			ft_strlen(const char *s);
 char			*ft_strdup(const char *s);
 char			*ft_strcpy(char *dest, const char *src);
@@ -52,11 +45,11 @@ int				ft_isalnum(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
 int				ft_toupper(int c);
+char			*ft_strtoupper(char *str);
 int				ft_tolower(int c);
 
-void			*ft_memalloc(size_t size);
-void			ft_memdel(void **ap);
 char			*ft_strnew(size_t size);
+char			*ft_strnewc(size_t size, int c);
 void			ft_strdel(char **as);
 void			ft_strclr(char *s);
 void			ft_striter(char *s, void (*f)(char *));
@@ -88,7 +81,6 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int				get_next_line(const int fd, char **line);
 
 char			*ft_strjoinf(char *s1, char *s2, int state);
-char			*ft_strnewc(size_t size, int c);
 char			*ft_strsubf(char *s, unsigned int top, size_t l, short int mod);
 void			*ft_memrealloc(void *ptr, size_t old_s, size_t new_s);
 
@@ -98,12 +90,33 @@ char			*ft_charwtochar(char *str, const wchar_t cw);
 char			*ft_charwtonewchar(const wchar_t cw);
 char			*ft_strwtostr(char *dest, const wchar_t *strw);
 char			*ft_strwtonewstr(const wchar_t *strw);
-
+/*
+** MEM :
+*/
+void			*ft_memset(void *s, int c, size_t n);
+void			ft_bzero(void *s, size_t n);
+void			*ft_memalloc(size_t size);
+void			ft_memdel(void **ap);
+void			*ft_memcpy(void *dest, const void *src, size_t n);
+void			*ft_memccpy(void *dest, const void *src, int c, size_t n);
+void			*ft_memmove(void *dest, const void *src, size_t n);
+void			*ft_memchr(const void *s, int c, size_t n);
+int				ft_memcmp(const void *s1, const void *s2, size_t n);
+void			*ft_memjoin(const void *mem1, const void *mem2,
+							size_t len1, size_t len2);
+void			*ft_memjoinf(void *mem1, void *mem2, size_t len1, size_t len2);
+/*
+** INT :
+*/
 short int		ft_num_len_base(long int num, short int len_base);
+short int		ft_unum_len_base(unsigned long int num, short int len_base);
+long int		ft_abs(long int num);
 int				ft_atoi(const char *nptr);
 char			*ft_itoa(int n);
 char			*ft_litoa(long int n);
-char			*ft_litoa_base_maj(long int n, short int len_base);
-char			*ft_litoa_base_min(long int n, short int len_base);
+char			*ft_litoa_base(long int n, short int len_base, bool is_maj);
+char			*ft_ulitoa(unsigned long int n);
+char			*ft_ulitoa_base(unsigned long int n, short int len_base,
+								bool is_maj);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/30 19:17:34 by wescande          #+#    #+#             */
-/*   Updated: 2016/08/30 19:20:04 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/22 18:10:09 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	len;
+	const char	*start;
+	char		c;
 
-	len = 0;
-	while (*(s++))
-		++len;
-	return (len);
+	if (!s)
+		return (0);
+	start = s;
+	c = *s;
+	while (c != '\0')
+	{
+		c = *s;
+		++s;
+	}
+	return (s - start);
 }

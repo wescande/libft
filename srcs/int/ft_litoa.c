@@ -6,11 +6,12 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 18:18:24 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/18 11:28:22 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/22 11:18:36 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_litoa(long int n)
 {
@@ -18,6 +19,8 @@ char	*ft_litoa(long int n)
 	long int	nb_tmp;
 	char		*str;
 
+	if (!n)
+		return (ft_strdup("0"));
 	len = ((n <= 0) ? 1 : 0);
 	nb_tmp = n;
 	while (++len && nb_tmp)
@@ -37,48 +40,43 @@ char	*ft_litoa(long int n)
 	return (str);
 }
 
-char	*ft_litoa_base_maj(long int value, short int len_base)
+char	*ft_ulitoa(unsigned long int n)
 {
-	char *base_str = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	char *str;
-	int len;
-	long int nb_tmp;
-	short int is_neg;
+	int					len;
+	unsigned long int	nb_tmp;
+	char				*str;
 
-	if (len_base < 2 || len_base > 36)
+	if (!n)
+		return (ft_strdup("0"));
+	len = 0;
+	nb_tmp = n;
+	while (++len && nb_tmp)
+		nb_tmp /= 10;
+	if (!(str = (char*)malloc(sizeof(char) * (len))))
 		return (NULL);
-	if (len_base == 10)
-		return (ft_litoa(value));
-	if (!value)
-		return (ft_strnewc(1, '0'));
-	is_neg = (value < 0) ? -1 : 1;
-	len = ft_num_len_base(value, len_base);
-	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	str[len] = '\0';
-	nb_tmp = value;
+	str[--len] = '\0';
+	*str = '0';
+	nb_tmp = n;
 	while (nb_tmp != 0)
 	{
-		str[--len] = base_str[is_neg * (nb_tmp % len_base)];
-		nb_tmp /= len_base;
+		str[--len] = '0' + (nb_tmp % 10);
+		nb_tmp /= 10;
 	}
 	return (str);
 }
 
-char	*ft_litoa_base_min(long int value, short int len_base)
+char	*ft_litoa_base(long int value, short int len_base, bool is_up)
 {
-	char *base_str = "0123456789abcdefghijklmnopqrstuvwxyz";
-	char *str;
-	int len;
-	long int nb_tmp;
-	short int is_neg;
+	static char	*base_str = "0123456789abcdefghijklmnopqrstuvwxyz";
+	char		*str;
+	int			len;
+	long int	nb_tmp;
+	short int	is_neg;
 
 	if (len_base < 2 || len_base > 36)
 		return (NULL);
-	if (len_base == 10)
+	if (len_base == 10 || !value)
 		return (ft_litoa(value));
-	if (!value)
-		return (ft_strnewc(1, '0'));
 	is_neg = (value < 0) ? -1 : 1;
 	len = ft_num_len_base(value, len_base);
 	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
@@ -90,5 +88,34 @@ char	*ft_litoa_base_min(long int value, short int len_base)
 		str[--len] = base_str[is_neg * (nb_tmp % len_base)];
 		nb_tmp /= len_base;
 	}
+	if (is_up)
+		str = ft_strtoupper(str);
+	return (str);
+}
+
+char	*ft_ulitoa_base(unsigned long int value, short int len_base, bool is_up)
+{
+	static char			*base_str = "0123456789abcdefghijklmnopqrstuvwxyz";
+	char				*str;
+	int					len;
+	unsigned long int	nb_tmp;
+
+	if (len_base < 2 || len_base > 36)
+		return (NULL);
+	if (len_base == 10 || !value)
+		return (ft_ulitoa(value));
+	len = ft_num_len_base(value, len_base);
+	printf("LEN %d\n", len);
+	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	str[len] = '\0';
+	nb_tmp = value;
+	while (nb_tmp != 0)
+	{
+		str[--len] = base_str[nb_tmp % len_base];
+		nb_tmp /= len_base;
+	}
+	if (is_up)
+		str = ft_strtoupper(str);
 	return (str);
 }

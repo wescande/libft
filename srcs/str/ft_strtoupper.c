@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_num_len_base.c                                  :+:      :+:    :+:   */
+/*   ft_strtoupper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/17 19:12:42 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/22 11:22:15 by wescande         ###   ########.fr       */
+/*   Created: 2016/11/18 20:57:44 by wescande          #+#    #+#             */
+/*   Updated: 2016/11/18 21:01:05 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-short int	ft_num_len_base(long int num, short int len_base)
+char	*ft_strtoupper(char *str)
 {
-	short int	len;
+	char	*s;
 
-	len = 0;
-	if (num == 0)
-		return (1);
-	while (num != 0)
+	if (!str)
+		return (NULL);
+	s = str;
+	while (*str)
 	{
-		num /= len_base;
-		++len;
+		*str = ft_toupper(*str);
+		++str;
 	}
-	return (len);
-}
-
-short int	ft_unum_len_base(unsigned long int num, short int len_base)
-{
-	short int	len;
-
-	len = 0;
-	if (num == 0)
-		return (1);
-	while (num != 0)
-	{
-		num /= len_base;
-		++len;
-	}
-	return (len);
+	return (s);
 }
