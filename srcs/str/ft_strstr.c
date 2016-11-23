@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/08 10:36:04 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/23 11:14:51 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/23 13:12:08 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {
-	int		len;
-	int		len_dest;
+	size_t		len;
+	size_t		len_dest;
 
 	if (!*needle)
 		return ((char *)haystack);
