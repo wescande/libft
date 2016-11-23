@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/22 12:51:18 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/23 17:50:22 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,14 @@ void			*ft_memjoinf(void *mem1, void *mem2, size_t len1, size_t len2);
 /*
 ** INT :
 */
+long long int	ft_pow(int nb, int power);
 short int		ft_num_len_base(long int num, short int len_base);
 short int		ft_unum_len_base(unsigned long int num, short int len_base);
 long int		ft_abs(long int num);
 int				ft_atoi(const char *nptr);
 char			*ft_itoa(int n);
+char			*ft_ftoa(long double n, short prec);
+char			*ft_ftoa_base(long double n, short prec, short bas, bool is_up);
 char			*ft_litoa(long int n);
 char			*ft_litoa_base(long int n, short int len_base, bool is_maj);
 char			*ft_ulitoa(unsigned long int n);

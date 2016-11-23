@@ -24,11 +24,6 @@ OBJ_DIR = objs/
 
 SRC_BASE = \
 get_next_line.c\
-int/ft_abs.c\
-int/ft_atoi.c\
-int/ft_itoa.c\
-int/ft_litoa.c\
-int/ft_num_len_base.c\
 lst/ft_lstadd.c\
 lst/ft_lstdel.c\
 lst/ft_lstdelone.c\
@@ -42,17 +37,26 @@ mem/ft_memchr.c\
 mem/ft_memcmp.c\
 mem/ft_memcpy.c\
 mem/ft_memdel.c\
+mem/ft_memjoin.c\
+mem/ft_memjoinf.c\
 mem/ft_memmove.c\
 mem/ft_memrealloc.c\
 mem/ft_memset.c\
-put/ft_putchar.c\
-put/ft_putchar_fd.c\
-put/ft_putendl.c\
-put/ft_putendl_fd.c\
-put/ft_putnbr.c\
-put/ft_putnbr_fd.c\
-put/ft_putstr.c\
-put/ft_putstr_fd.c\
+num/ft_abs.c\
+num/ft_atoi.c\
+num/ft_ftoa.c\
+num/ft_itoa.c\
+num/ft_litoa.c\
+num/ft_num_len_base.c\
+num/ft_pow.c\
+output/ft_putchar.c\
+output/ft_putchar_fd.c\
+output/ft_putendl.c\
+output/ft_putendl_fd.c\
+output/ft_putnbr.c\
+output/ft_putnbr_fd.c\
+output/ft_putstr.c\
+output/ft_putstr_fd.c\
 str/ft_isalnum.c\
 str/ft_isalpha.c\
 str/ft_isascii.c\
