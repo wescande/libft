@@ -6,12 +6,11 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 18:18:24 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/22 11:18:36 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/22 11:23:58 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 char	*ft_litoa(long int n)
 {
@@ -104,8 +103,7 @@ char	*ft_ulitoa_base(unsigned long int value, short int len_base, bool is_up)
 		return (NULL);
 	if (len_base == 10 || !value)
 		return (ft_ulitoa(value));
-	len = ft_num_len_base(value, len_base);
-	printf("LEN %d\n", len);
+	len = ft_unum_len_base(value, len_base);
 	if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	str[len] = '\0';
