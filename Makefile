@@ -13,7 +13,7 @@
 NAME = libft.a
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -O3
 
 LEN_NAME = `printf "%s" $(NAME) |wc -c`
 DELTA = $$(echo "$$(tput cols)-24-$(LEN_NAME)"|bc)
