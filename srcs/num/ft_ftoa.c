@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 14:43:26 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/24 15:43:39 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/25 15:03:14 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,20 @@ static char	*ft_litoa_under0(long double value, short int prec,
 	static char	*base_str = "0123456789abcdefghijklmnopqrstuvwxyz";
 	char		*str;
 	short int	i;
+	bool		do_it;
 
 	if (!(str = (char*)malloc(sizeof(char) * (prec + 1))))
 		return (NULL);
 	str[prec] = '\0';
 	i = 0;
+	do_it = prec > 15;
 	while (prec-- != 0)
 	{
+		if (do_it && prec < 15)
+		{
+			value += 0.05 / ft_pow(len_base, prec);
+			do_it = false;
+		}
 		str[i++] = base_str[(int)(value * len_base)];
 		value *= len_base;
 		value = value - (long int)value;
@@ -39,13 +46,13 @@ char		*ft_ftoa(long double n, short prec)
 	char		*str;
 
 	prec = (prec < 0) ? 6 : prec;
-	if (prec <= 18)
-		n += 0.5 / ft_pow(10, prec);
 	str = ft_litoa(n);
 	if (!prec)
 		return (str);
 	str = ft_strjoinf(str, ".", 1);
 	n = (n - (long int)n) * (n < 0 ? -1 : 1);
+	if (prec <= 15)
+		n += 0.5 / ft_pow(10, prec);
 	str = ft_strjoinf(str, ft_litoa_under0(n, prec, 10, false), 3);
 	return (str);
 }
@@ -59,8 +66,8 @@ char		*ft_ftoa_base(long double n, short prec, short base, bool is_up)
 	if (base == 10 || !n)
 		return (ft_ftoa(n, prec));
 	prec = (prec < 0) ? 6 : prec;
-	if (prec <= 18)
-		n += 0.05 / ft_pow(10, prec);
+	if (prec <= 15)
+		n += 0.0005 / ft_pow(base, prec);
 	str = ft_litoa_base(n, base, is_up);
 	if (!prec)
 		return (str);
