@@ -1,4 +1,5 @@
-make -j
-gcc -I includes -L ./ -lftprintf -o output test.c
+make -j -C ~/Documents/libft/
+gcc -I ../includes -L ../ -lft -o ./output test.c
 echo "test : "
 ./output
+rm ./output

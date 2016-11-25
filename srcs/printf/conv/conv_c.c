@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 13:06:09 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/22 16:32:36 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/25 17:51:44 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void			conv_b_c(t_wrk *w, t_conv *tmp)
 
 	wstr = (wchar_t)CASTVA_ARG(w->ap, int);
 	str = ft_charwtonewchar(wstr);
-	if (!tmp->acc)
-		tmp->acc = 1;
+	tmp->acc = -1;
 	if (str[0] == 0)
 		++tmp->len;
 	put_the_s(tmp, str);

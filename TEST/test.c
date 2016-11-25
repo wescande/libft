@@ -6,14 +6,14 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 18:15:50 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/25 15:00:31 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/25 17:51:14 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include <locale.h>
-#include "includes/libft.h"
-#include "includes/ft_printf.h"
+#include "../includes/libft.h"
+#include "../includes/ft_printf.h"
 #include <stdio.h>
 
 int		main(int argc, char **argv)
@@ -25,6 +25,8 @@ int		main(int argc, char **argv)
 	int val2;
 
 	setlocale(LC_CTYPE, "");
+	ft_printf("%+010.1C\n", L'我');
+	printf("%+010.1C\n", L'我');
 //	printf("eE%e -- %E\n", toto, toto);
 //	printf("gG%g -- %G\n", toto, toto);
 //	printf("aA%a -- %A\n", toto, toto);
@@ -43,7 +45,7 @@ int		main(int argc, char **argv)
 	ft_printf("je {blu}bleu%050.3s{red}red{gre}green%5.6d{eoc}no{whi}white%.10f{pur}purple{eoc}", "ewifew", 456, 548.65);
 	printf("je {blu}bleu%050.3s{red}red{gre}green%5.6d{eoc}no{whi}white%.10f{pur}purple{eoc}", "ewifew", 456, 548.65);
 // */	
-
+/*
 ft_printf("{blu} AAAAAAAAAAAAA\n");
 	i1 = ft_printf("%17a\n", 3.54456487458);
 	i2 = printf("%17a\n", 3.54456487458);
@@ -82,8 +84,8 @@ ft_printf("{blu} AAAAAAAAAAAAA\n");
 	i1 = ft_printf("%.45a\n", 3.5445648745);
 	i2 = printf("%.45a\n", 3.5445648745);
 	printf("COMPARE : {%d}{%d}\n", i1, i2);//
-
-
+*/
+/*
 ft_printf("{red} ffffffffffffffff\n");
 	i1 = ft_printf("%17f\n", 3.54456487458);
 	i2 = printf("%17f\n", 3.54456487458);
@@ -124,11 +126,12 @@ ft_printf("{red} ffffffffffffffff\n");
 	printf("COMPARE : {%d}{%d}\n", i1, i2);//
 	i1 = ft_printf("%.17f\n", 87893.54456487458);
 	i2 = printf("%.17f\n", 87893.54456487458);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);// */
+	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
 	i1 = ft_printf("%.18f\n", 87893.54456487458);
 	i2 = printf("%.18f\n", 87893.54456487458);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);// */
-
+	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
+*/
+/*
 ft_printf("{gre} gggggggggggggggg\n");
 	i1 = ft_printf("%17g\n", 3.54456487458);
 	i2 = printf("%17g\n", 3.5445648745);
@@ -167,50 +170,50 @@ ft_printf("{gre} gggggggggggggggg\n");
 	i1 = ft_printf("%.45g\n", 3.5445648745);
 	i2 = printf("%.45g\n", 3.5445648745);
 	printf("COMPARE : {%d}{%d}\n", i1, i2);//
-
-
+*/
+/*
 ft_printf("{pur} eeeeeeeeeeeeeeeee\n");
 	i1 = ft_printf("%17e\n", 3.54456487458);
 	i2 = printf("%17e\n", 3.5445648745);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);// */
+	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
 	i1 = ft_printf("%18e\n", 3.5445648745);
 	i2 = printf("%18e\n", 3.5445648745);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);// */
+	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
 	i1 = ft_printf("%19e\n", 3.5445648745);
 	i2 = printf("%19e\n", 3.5445648745);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);// */
+	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
 	i1 = ft_printf("%3e\n", 3.5445648745);
 	i2 = printf("%3e\n", 3.5445648745);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);// */
+	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
 	i1 = ft_printf("%45e\n", 45683.5445648745);
 	i2 = printf("%45e\n", 45683.5445648745);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);// */
+	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
 	i1 = ft_printf("%45e\n", 8788888893.5445648745);
 	i2 = printf("%45e\n", 8788888893.5445648745);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);// */
+	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
 
 	i1 = ft_printf("%.17e\n", 87893.54456487458);
 	i2 = printf("%.17e\n", 87893.54456487458);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);// */
+	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
 	i1 = ft_printf("%.18e\n", 87893.54456487458);
 	i2 = printf("%.18e\n", 87893.54456487458);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);// */
+	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
 	i1 = ft_printf("FF%.18e\n", 3.5445648745);
 	i2 = printf("FF%.18e\n", 3.5445648745);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);// */
+	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
 	i1 = ft_printf("%.19e\n", 3.5445648745);
 	i2 = printf("%.19e\n", 3.5445648745);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);// */
+	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
 	i1 = ft_printf("%.3e\n", 3.5445648745);
 	i2 = printf("%.3e\n", 3.5445648745);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);// */
+	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
 	i1 = ft_printf(">>>>>>>>>%.45e\n", 45683.5445648745);
 	i2 =    printf(">>>>>>>>>%.45e\n",    45683.5445648745);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);// */
+	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
 	i1 = ft_printf("%.45e\n", 3.5445648745);
 	i2 = printf("%.45e\n",    3.5445648745);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);// */
-
+	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
+*/
 
 
  /*
