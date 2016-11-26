@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 18:10:09 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/24 18:27:53 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/25 20:06:01 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,26 @@ int					ft_asprintf(char **ret, const char *str, ...)
 	len = w->len;
 	ft_memdel((void **)&w);
 	return (len);
+}
+
+int					ft_dprintf(int fd, const char *str, ...)
+{
+	t_wrk		*w;
+	int			ret;
+
+	if (!str)
+		return (0);
+	w = initialize_work(str);
+	va_start(w->ap, str);
+	ft_chraction(w);
+	w->buf = w->ans;
+	ft_colorize(w);
+	va_end(w->ap);
+	write(fd, w->ans, w->len);
+	ret = w->len;
+	ft_strdel(&(w->ans));
+	ft_memdel((void **)&w);
+	return (ret);
 }
 
 int					ft_printf(const char *str, ...)

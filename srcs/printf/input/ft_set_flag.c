@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 15:41:17 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/25 17:34:40 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/25 18:06:17 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ static bool			checkaccuracy(t_wrk *w, t_conv *tmp, char **end)
 		}
 		if (ft_isdigit(**end))
 		{
-//			if (**end == '0' && ((*end)++))
-//				tmp->pad = '0';
 			tmp->acc = ft_atoi(*end);
 			*end += ft_num_len_base(tmp->acc, 10) - 1;
 			return (true);

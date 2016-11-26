@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 19:42:53 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/24 18:24:35 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/25 20:06:31 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,6 @@ typedef struct		s_wrk
 	va_list					ap;
 }					t_wrk;
 
-int					ft_printf(const char *str, ...);
-int					ft_asprintf(char **ret, const char *str, ...);
 void				ft_colorize(t_wrk *w);
 void				ft_resolve_conv(t_wrk *w, t_conv *tmp);
 void				ft_set_flag(t_wrk *w, t_conv *tmp, char **end);

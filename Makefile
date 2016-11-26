@@ -27,9 +27,12 @@ get_next_line.c\
 lst/ft_lstadd.c\
 lst/ft_lstdel.c\
 lst/ft_lstdelone.c\
+lst/ft_lstfree.c\
 lst/ft_lstiter.c\
 lst/ft_lstmap.c\
 lst/ft_lstnew.c\
+lst/ft_lstreverse.c\
+lst/ft_lstsize.c\
 mem/ft_bzero.c\
 mem/ft_memalloc.c\
 mem/ft_memccpy.c\

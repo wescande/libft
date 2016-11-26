@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 18:15:50 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/25 17:51:14 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/26 01:51:04 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@
 
 int		main(int argc, char **argv)
 {
-	void	*ptr;
+/*	void	*ptr;
 	int		i1;
 	int		i2;
 	int val;
 	int val2;
-
+*/
 	setlocale(LC_CTYPE, "");
-	ft_printf("%+010.1C\n", L'我');
-	printf("%+010.1C\n", L'我');
+	unsigned long int test;
+test = (unsigned long int) -56.4;
+	ft_printf("%lx\n", test);
+	printf("%lx\n", test);
 //	printf("eE%e -- %E\n", toto, toto);
 //	printf("gG%g -- %G\n", toto, toto);
 //	printf("aA%a -- %A\n", toto, toto);
