@@ -33,6 +33,8 @@ lst/ft_lstmap.c\
 lst/ft_lstnew.c\
 lst/ft_lstreverse.c\
 lst/ft_lstsize.c\
+lst/ft_lstsort.c\
+lst/ft_lstswap.c\
 mem/ft_bzero.c\
 mem/ft_memalloc.c\
 mem/ft_memccpy.c\
@@ -45,6 +47,7 @@ mem/ft_memjoinf.c\
 mem/ft_memmove.c\
 mem/ft_memrealloc.c\
 mem/ft_memset.c\
+mem/ft_swapptr.c\
 num/ft_abs.c\
 num/ft_atoi.c\
 num/ft_ftoa.c\

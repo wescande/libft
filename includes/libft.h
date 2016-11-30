@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/25 23:31:57 by wescande         ###   ########.fr       */
+/*   Updated: 2016/11/29 21:45:30 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
+
+# ifndef DG
+#  define MSG0			"{blu}%s, {cya}%s, {gre}%4d - {red}"
+#  define MSG1			__FILE__, __func__, __LINE__
+#  define DG(f, ...)	ft_printf(MSG0 f "{eoc}\n", MSG1, ##__VA_ARGS__)
+# endif
 
 typedef struct	s_list
 {
@@ -92,7 +98,6 @@ int				ft_lstsize(t_list *lst);
 t_list			*ft_lstswap(t_list *l_cur);
 void			ft_lstsort(t_list **begin_list, int (*cmp)());
 
-
 /*
 ** WCHAR_T :
 */
@@ -118,6 +123,7 @@ int				ft_memcmp(const void *s1, const void *s2, size_t n);
 void			*ft_memjoin(const void *mem1, const void *mem2,
 							size_t len1, size_t len2);
 void			*ft_memjoinf(void *mem1, void *mem2, size_t len1, size_t len2);
+void			ft_swapptr(void **ptr1, void **ptr2);
 
 /*
 ** INT :
@@ -139,8 +145,8 @@ char			*ft_ulitoa_base(unsigned long int n, short int len_base,
 /*
 ** PRINTF :
 */
-int					ft_printf(const char *str, ...);
-int					ft_asprintf(char **ret, const char *str, ...);
-int					ft_dprintf(int fd, const char *str, ...);
+int				ft_printf(const char *str, ...);
+int				ft_asprintf(char **ret, const char *str, ...);
+int				ft_dprintf(int fd, const char *str, ...);
 
 #endif
