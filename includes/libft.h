@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/29 21:45:30 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/02 17:23:53 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,20 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <fcntl.h>
 
 # ifndef DG
 #  define MSG0			"{blu}%s, {cya}%s, {gre}%4d - {red}"
 #  define MSG1			__FILE__, __func__, __LINE__
 #  define DG(f, ...)	ft_printf(MSG0 f "{eoc}\n", MSG1, ##__VA_ARGS__)
 # endif
+
+typedef struct	s_ld
+{
+	void			*content;
+	struct s_ld		*next;
+	struct s_ld		*prev;
+}				t_ld;
 
 typedef struct	s_list
 {
@@ -49,6 +57,7 @@ int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 int				ft_isascii(int c);
+int				ft_isspa(int c);
 int				ft_isprint(int c);
 int				ft_toupper(int c);
 char			*ft_strtoupper(char *str);
@@ -97,6 +106,13 @@ t_list			*ft_lstreverse(t_list **lst);
 int				ft_lstsize(t_list *lst);
 t_list			*ft_lstswap(t_list *l_cur);
 void			ft_lstsort(t_list **begin_list, int (*cmp)());
+/*
+** LIST D:
+*/
+void			ft_ld_new(t_ld **alst, void *content);
+t_ld			*ft_ld_front(t_ld	*ld);
+void			ft_ld_pushfront(t_ld **alst, void *content);
+size_t			ft_ld_size(t_ld *ld);
 
 /*
 ** WCHAR_T :
@@ -133,6 +149,7 @@ short int		ft_num_len_base(long int num, short int len_base);
 short int		ft_unum_len_base(unsigned long int num, short int len_base);
 long int		ft_abs(long int num);
 int				ft_atoi(const char *nptr);
+long int		ft_atoli_base(const char *nptr, short len);
 char			*ft_itoa(int n);
 char			*ft_ftoa(long double n, short prec);
 char			*ft_ftoa_base(long double n, short prec, short bas, bool is_up);

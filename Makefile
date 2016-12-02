@@ -24,6 +24,10 @@ OBJ_DIR = objs/
 
 SRC_BASE = \
 get_next_line.c\
+ld/ft_ld_front.c\
+ld/ft_ld_new.c\
+ld/ft_ld_pushfront.c\
+ld/ft_ld_size.c\
 lst/ft_lstadd.c\
 lst/ft_lstdel.c\
 lst/ft_lstdelone.c\
@@ -50,6 +54,7 @@ mem/ft_memset.c\
 mem/ft_swapptr.c\
 num/ft_abs.c\
 num/ft_atoi.c\
+num/ft_atoli_base.c\
 num/ft_ftoa.c\
 num/ft_itoa.c\
 num/ft_litoa.c\
@@ -86,6 +91,7 @@ str/ft_isalpha.c\
 str/ft_isascii.c\
 str/ft_isdigit.c\
 str/ft_isprint.c\
+str/ft_isspa.c\
 str/ft_strcat.c\
 str/ft_strchr.c\
 str/ft_strclr.c\

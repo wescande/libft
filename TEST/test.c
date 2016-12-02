@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 18:15:50 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/26 01:51:04 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/01 14:38:18 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@
 
 int		main(int argc, char **argv)
 {
-/*	void	*ptr;
+//	void	*ptr;
 	int		i1;
 	int		i2;
-	int val;
+/*	int val;
 	int val2;
 */
 	setlocale(LC_CTYPE, "");
-	unsigned long int test;
-test = (unsigned long int) -56.4;
-	ft_printf("%lx\n", test);
-	printf("%lx\n", test);
+//	unsigned long int test;
+//test = (unsigned long int) -56.4;
+//	ft_printf("%lx\n", test);
+//	printf("%lx\n", test);
 //	printf("eE%e -- %E\n", toto, toto);
 //	printf("gG%g -- %G\n", toto, toto);
 //	printf("aA%a -- %A\n", toto, toto);
@@ -335,7 +335,7 @@ ft_printf("{pur} eeeeeeeeeeeeeeeee\n");
 	i1 = ft_printf("M{%05.Z}\n", 0);
 	i2 = printf("R{%05.Z}\n", 0);
 	printf("\ni1 : %d\ni2 : %d\n", i1, i2); */
-/*
+
 	i1 = ft_printf("M%S\n", L"米");
 	i2 = printf("R%S\n", L"米");
 	printf("\ni1 : %d\ni2 : %d\n", i1, i2);
