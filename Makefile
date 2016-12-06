@@ -122,6 +122,7 @@ str/ft_strsub.c\
 str/ft_strsubf.c\
 str/ft_strtoupper.c\
 str/ft_strtrim.c\
+str/ft_tabdel.c\
 str/ft_tolower.c\
 str/ft_toupper.c\
 wchar/ft_charwlen.c\
