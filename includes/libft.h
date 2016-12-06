@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/06 20:10:16 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/06 23:19:57 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # ifndef DG
 #  define MSG0			"{blu}%s, {cya}%s, {gre}%4d - {red}"
 #  define MSG1			__FILE__, __func__, __LINE__
-#  define DG(f, ...)	ft_printf(MSG0 f "{eoc}\n", MSG1, ##__VA_ARGS__)
+#  define DG(f, ...)	ft_dprintf(2, MSG0 f "{eoc}\n", MSG1, ##__VA_ARGS__)
 # endif
 
 typedef struct	s_ld
@@ -80,20 +80,24 @@ char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
 char			**ft_strsplit_spa(char const *str);
 void			ft_tabdel(char ***tab);
-void			ft_putchar(char c);
-void			ft_putstr(char const *s);
-void			ft_putendl(char const *s);
-void			ft_putnbr(int n);
-void			ft_putchar_fd(char c, int fd);
-void			ft_putstr_fd(char const *s, int fd);
-void			ft_putendl_fd(char const *s, int fd);
-void			ft_putnbr_fd(int n, int fd);
 
 int				get_next_line(const int fd, char **line);
 
 char			*ft_strjoinf(char *s1, char *s2, int state);
 char			*ft_strsubf(char *s, unsigned int top, size_t l, short int mod);
 void			*ft_memrealloc(void *ptr, size_t old_s, size_t new_s);
+
+/*
+** OUTPUT :
+*/
+int				ft_putchar(char c);
+int				ft_putstr(char const *s);
+void			ft_putendl(char const *s);
+void			ft_putnbr(int n);
+int				ft_putchar_fd(char c, int fd);
+int				ft_putstr_fd(char const *s, int fd);
+void			ft_putendl_fd(char const *s, int fd);
+void			ft_putnbr_fd(int n, int fd);
 
 /*
 ** LIST :

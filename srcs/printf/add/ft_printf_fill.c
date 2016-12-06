@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 21:57:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/24 14:43:53 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/06 22:58:26 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void			fill_c(char **in, t_conv *tmp, short int len)
 		filler = ft_strnewc(len, tmp->pad);
 		if (tmp->left)
 			*in = ft_memjoinf(*in, filler,
-					tmp->len ? tmp->len : ft_strlen(*in), len);
+					tmp->len ? tmp->len : (int)ft_strlen(*in), len);
 		else
 			*in = ft_memjoinf(filler, *in, len,
-					tmp->len ? tmp->len : ft_strlen(*in));
+					tmp->len ? tmp->len : (int)ft_strlen(*in));
 	}
 }
 

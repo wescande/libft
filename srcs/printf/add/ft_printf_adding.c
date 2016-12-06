@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 11:52:25 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/25 14:25:50 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/06 22:58:47 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void			add_s(t_conv *tmp, char *in)
 {
 	int		len;
 
-	len = tmp->len ? tmp->len : ft_strlen(in);
+	len = tmp->len ? tmp->len : (int)ft_strlen(in);
 	if (tmp->acc != -1 && len > tmp->acc)
 	{
 		in = ft_strsubf(in, 0, tmp->acc, 1);

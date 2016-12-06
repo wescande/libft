@@ -6,18 +6,18 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 11:26:24 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/01 15:49:57 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/06 23:51:39 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <fcntl.h>
 
 static int		fill(int fd, t_buf *buf, char **line)
 {
 	void	*v_pos;
 	char	*pos;
 	char	*ans;
+	int		cur_len;
 
 	if (buf->pos >= buf->read_ret)
 	{
@@ -25,15 +25,16 @@ static int		fill(int fd, t_buf *buf, char **line)
 		if ((buf->read_ret = read(fd, buf->txt, BUFF_SIZE)) <= 0)
 			return (buf->read_ret);
 	}
-	buf->txt[buf->read_ret + 1] = '\0';
-	v_pos = ft_strchr(buf->txt + buf->pos, '\n');
+	v_pos = ft_memchr(buf->txt + buf->pos, '\n', buf->read_ret - buf->pos);
 	pos = (v_pos ? (char*)v_pos : buf->txt + buf->read_ret);
-	if (!(ans = ft_strnew(pos - buf->txt - buf->pos)))
+	cur_len = pos - buf->txt - buf->pos;
+	if (!(ans = ft_strnew(cur_len)))
 		return (-1);
-	if (!(ans = ft_memcpy(ans, buf->txt + buf->pos, pos - buf->txt - buf->pos)))
+	if (!(ans = ft_memcpy(ans, buf->txt + buf->pos, cur_len)))
 		return (-1);
-	if (!(*line = ft_strjoinf(*line, ans, 3)))
+	if (!(*line = ft_memjoinf(*line, ans, buf->ret_len, cur_len + 1)))
 		return (-1);
+	buf->ret_len += cur_len;
 	buf->pos = pos - buf->txt + 1;
 	buf->newline = 1;
 	return (v_pos ? 0 : 1);
@@ -80,7 +81,7 @@ static t_list	*init(t_list **buf, int fd)
 	}
 	if (!(my_buf = (t_buf *)malloc(sizeof(t_buf))))
 		return (NULL);
-	ft_bzero(my_buf->txt, BUFF_SIZE + 1);
+	ft_bzero(my_buf->txt, BUFF_SIZE);
 	my_buf->pos = BUFF_SIZE;
 	my_buf->read_ret = 0;
 	link = ft_lstnew(my_buf, sizeof(t_buf));
@@ -104,6 +105,7 @@ int				get_next_line(const int fd, char **line)
 		return (-1);
 	((t_buf *)c_buf->content)->newline = 0;
 	((t_buf *)c_buf->content)->fd = fd;
+	((t_buf *)c_buf->content)->ret_len = 0;
 	val_ret = 1;
 	while (val_ret > 0)
 		val_ret = fill(fd, c_buf->content, line);
@@ -113,5 +115,6 @@ int				get_next_line(const int fd, char **line)
 		return (1);
 	val_ret = ((t_buf *)c_buf->content)->read_ret;
 	ft_lstdelif(&s_buf, fd);
+	sleep(1);
 	return (val_ret);
 }

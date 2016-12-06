@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 20:52:19 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/24 18:21:14 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/06 23:00:06 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,9 @@ static void			initialize_fun(t_wrk *w)
 t_wrk				*initialize_work(const char *str)
 {
 	t_wrk	*new_w;
-	size_t	len;
 
 	if (!(new_w = (t_wrk *)malloc(sizeof(t_wrk))))
 		exit(1);
-	len = ft_strlen(str);
 	new_w->buf = (char *)str;
 	new_w->ans = NULL;
 	new_w->len = 0;
