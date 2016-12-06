@@ -24,6 +24,7 @@ OBJ_DIR = objs/
 
 SRC_BASE = \
 get_next_line.c\
+ld/ft_ld_del.c\
 ld/ft_ld_front.c\
 ld/ft_ld_new.c\
 ld/ft_ld_pushfront.c\
