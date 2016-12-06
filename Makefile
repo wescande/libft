@@ -101,6 +101,7 @@ str/ft_strcpy.c\
 str/ft_strdel.c\
 str/ft_strdup.c\
 str/ft_strequ.c\
+str/ft_strisdigit.c\
 str/ft_striter.c\
 str/ft_striteri.c\
 str/ft_strjoin.c\
