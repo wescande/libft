@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 15:54:53 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/06 16:01:28 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/06 16:26:40 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_ld_del(t_ld **ld, void (*del)())
 	next = (*ld)->next;
 	prev = (*ld)->prev;
 	if ((*ld)->content && del)
-		del((*ld)->content);
+		del(&(*ld)->content);
 	free(*ld);
 	if (next)
 		next->prev = prev;

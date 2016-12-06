@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ld_front.c                                      :+:      :+:    :+:   */
+/*   ft_ld_clear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 18:26:11 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/06 20:07:40 by wescande         ###   ########.fr       */
+/*   Created: 2016/12/06 19:56:49 by wescande          #+#    #+#             */
+/*   Updated: 2016/12/06 20:18:23 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_ld	*ft_ld_front(t_ld	*ld)
+void	ft_ld_clear(t_ld **ld, void (*del)())
 {
-	if (ld)
-		while (ld->prev)
-			ld = ld->prev;
-	return (ld);
+	if (!ld || !*ld)
+		return ;
+	*ld = ft_ld_front(*ld);
+	while (*ld)
+	{
+		ft_ld_del(ld, del);
+	}
 }
