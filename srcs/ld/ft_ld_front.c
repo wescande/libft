@@ -6,13 +6,13 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 18:26:11 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/06 20:07:40 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/07 11:33:24 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_ld	*ft_ld_front(t_ld	*ld)
+t_ld	*ft_ld_front(t_ld *ld)
 {
 	if (ld)
 		while (ld->prev)
