@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/12 14:36:44 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/12 14:44:24 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,11 @@ void			*ft_memrealloc(void *ptr, size_t old_s, size_t new_s);
 /*
 ** OUTPUT :
 */
-int				ft_putchar(char c);
+int				ft_putchar(int c);
 int				ft_putstr(char const *s);
 void			ft_putendl(char const *s);
 void			ft_putnbr(int n);
-int				ft_putchar_fd(char c, int fd);
+int				ft_putchar_fd(int c, int fd);
 int				ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
