@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 11:26:24 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/06 23:51:39 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/09 13:58:52 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static void		ft_lstdelif(t_list **s_buf, int fd)
 	}
 	if (!l_cur)
 		return ;
+	ft_memdel(&l_cur->content);
 	ft_memdel((void **)&l_cur);
 	if (l_prev)
 		l_prev->next = l_next;
@@ -110,11 +111,18 @@ int				get_next_line(const int fd, char **line)
 	while (val_ret > 0)
 		val_ret = fill(fd, c_buf->content, line);
 	if (val_ret == -1)
+	{
+		ft_lstdelif(&s_buf, fd);
 		return (-1);
-	if (((t_buf *)c_buf->content)->newline)
+	}
+	else if (((t_buf *)c_buf->content)->newline)
+	{
+		if (fd == 0)
+			ft_lstdelif(&s_buf, fd);
 		return (1);
+	}
+	ft_strdel(line);
 	val_ret = ((t_buf *)c_buf->content)->read_ret;
 	ft_lstdelif(&s_buf, fd);
-	sleep(1);
 	return (val_ret);
 }
