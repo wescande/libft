@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 14:16:04 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/12 14:35:57 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/13 22:46:06 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_ld_reverse(t_ld **lst)
 
 	l_cur = ft_ld_front(*lst);
 	l_prev = NULL;
-	while(l_cur)
+	while (l_cur)
 	{
 		l_next = l_cur->next;
 		l_cur->next = l_prev;
