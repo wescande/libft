@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 18:15:50 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/13 12:19:58 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/13 17:30:33 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "../includes/libft.h"
 #include "../includes/ft_printf.h"
 #include <stdio.h>
+
 
 int		main(int argc, char **argv)
 {
@@ -25,26 +26,8 @@ int		main(int argc, char **argv)
 	int val2;
 */
 	setlocale(LC_CTYPE, "");
-	i1 = ft_printf("%f\n", 4.9999999);
-	i2 = printf("%f\n", 4.9999999);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);
-	i1 = ft_printf("%f\n", 0.1);
-	i2 = printf("%f\n", 0.1);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);
-	i1 = ft_printf("%f\n", 0.000000001);
-	i2 = printf("%f\n", 0.000000001);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);
-	i1 = ft_printf("%f\n", -5);
-	i2 = printf("%f\n", -5);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);
-	i1 = ft_printf("%.35f\n", 3.751212645648978979456145615615645648978945612312312315676854531230123145);
-	i2 = printf("%.35f\n", 3.751212645648978979456145615615645648978945612312312315676854531230123145);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);
-	i1 = ft_printf("%f\n", 4.948949);
-	i2 = printf("%f\n", 4.948949);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);
-	i1 = ft_printf("%f\n", 0.01);
-	i2 = printf("%f\n", 0.01);
+	i1 = ft_printf("%g\n", 1.0);
+	i2 = printf("%g\n", 1.0);
 	printf("COMPARE : {%d}{%d}\n", i1, i2);
 //	unsigned long int test;
 //test = (unsigned long int) -56.4;

@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:00:35 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/25 14:17:12 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/13 17:37:24 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ static void		set_double(t_conv *tmp)
 			tmp->acc = 0;
 		add_f(tmp);
 		while (tmp->str[tmp->len - 1] == '0')
-		{
-			tmp->str[tmp->len - 1] = '\0';
-			--tmp->len;
-		}
+			tmp->str[--tmp->len] = '\0';
+		if (tmp->str[tmp->len - 1] == '.')
+			tmp->str[--tmp->len] = '\0';
 	}
 	else
 		add_e(tmp);
