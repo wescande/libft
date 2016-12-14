@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 11:26:24 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/13 22:45:45 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/14 15:23:03 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ static int		fill(int fd, t_buf *buf, char **line)
 	{
 		buf->pos = 0;
 		if ((buf->read_ret = read(fd, buf->txt, BUFF_SIZE)) <= 0)
+		{
 			return (buf->read_ret);
+		}
 	}
 	v_pos = ft_memchr(buf->txt + buf->pos, '\n', buf->read_ret - buf->pos);
 	pos = (v_pos ? (char*)v_pos : buf->txt + buf->read_ret);
@@ -115,6 +117,8 @@ int				get_next_line(const int fd, char **line)
 		ft_lstdelif(&s_buf, fd);
 		return (val_ret == -1 ? -1 : 1);
 	}
+	if (((t_buf *)c_buf->content)->newline)
+		return (1);
 	ft_strdel(line);
 	val_ret = ((t_buf *)c_buf->content)->read_ret;
 	ft_lstdelif(&s_buf, fd);
