@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 11:26:24 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/14 15:23:03 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/15 19:52:21 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ static int		fill(int fd, t_buf *buf, char **line)
 	{
 		buf->pos = 0;
 		if ((buf->read_ret = read(fd, buf->txt, BUFF_SIZE)) <= 0)
-		{
 			return (buf->read_ret);
-		}
 	}
 	v_pos = ft_memchr(buf->txt + buf->pos, '\n', buf->read_ret - buf->pos);
 	pos = (v_pos ? (char*)v_pos : buf->txt + buf->read_ret);
@@ -112,15 +110,9 @@ int				get_next_line(const int fd, char **line)
 	val_ret = 1;
 	while (val_ret > 0)
 		val_ret = fill(fd, c_buf->content, line);
-	if (val_ret == -1 || (((t_buf *)c_buf->content)->newline && fd == 0))
-	{
-		ft_lstdelif(&s_buf, fd);
-		return (val_ret == -1 ? -1 : 1);
-	}
-	if (((t_buf *)c_buf->content)->newline)
+	if (val_ret != -1 && ((t_buf *)c_buf->content)->newline)
 		return (1);
 	ft_strdel(line);
-	val_ret = ((t_buf *)c_buf->content)->read_ret;
 	ft_lstdelif(&s_buf, fd);
 	return (val_ret);
 }
