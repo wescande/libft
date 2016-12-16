@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 19:42:53 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/25 20:06:31 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/16 14:46:43 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ typedef struct		s_conv
 	unsigned long long int	num;
 	long double				dbl;
 	int						base;
-	bool					is_neg;
-	bool					sha;
-	bool					spa;
-	bool					left;
-	bool					sign;
-	bool					is_long_long;
-	bool					is_short;
-	bool					is_long;
-	bool					is_char;
+	int						is_neg;
+	int						sha;
+	int						spa;
+	int						left;
+	int						sign;
+	int						is_long_long;
+	int						is_short;
+	int						is_long;
+	int						is_char;
 	short int				width;
 	short int				acc;
 	char					pad;

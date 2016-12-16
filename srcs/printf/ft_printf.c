@@ -6,13 +6,13 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 18:10:09 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/06 22:59:38 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/16 14:52:48 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void			add_buf(t_wrk *w, char **in, int len, bool erase)
+static void			add_buf(t_wrk *w, char **in, int len, int erase)
 {
 	char	*tmp;
 

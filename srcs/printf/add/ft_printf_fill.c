@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 21:57:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/06 22:58:26 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/16 14:52:08 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void			fill_c(char **in, t_conv *tmp, short int len)
 	}
 }
 
-static void		fill_i(char **in, char c, short int len, bool on_left)
+static void		fill_i(char **in, char c, short int len, int on_left)
 {
 	char *filler;
 

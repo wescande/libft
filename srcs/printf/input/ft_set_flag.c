@@ -6,13 +6,13 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 15:41:17 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/25 18:06:17 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/16 14:52:31 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static bool			checkmodify(t_conv *tmp, char **end)
+static int			checkmodify(t_conv *tmp, char **end)
 {
 	if (**end == 'h' && *(1 + *end) == 'h')
 	{
@@ -38,7 +38,7 @@ static bool			checkmodify(t_conv *tmp, char **end)
 	return (false);
 }
 
-static bool			checkaccuracy(t_wrk *w, t_conv *tmp, char **end)
+static int			checkaccuracy(t_wrk *w, t_conv *tmp, char **end)
 {
 	if (**end == '.')
 	{
@@ -63,7 +63,7 @@ static bool			checkaccuracy(t_wrk *w, t_conv *tmp, char **end)
 	return (checkmodify(tmp, end));
 }
 
-static bool			checkflag_and_modify(t_wrk *w, t_conv *tmp, char **end)
+static int			checkflag_and_modify(t_wrk *w, t_conv *tmp, char **end)
 {
 	if (!**end)
 		return (false);

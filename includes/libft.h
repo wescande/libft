@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/14 14:45:24 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/16 14:53:42 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdbool.h>
 # include <fcntl.h>
 
 # ifndef DG
@@ -24,6 +23,12 @@
 #  define MSG1			__FILE__, __func__, __LINE__
 #  define DG(f, ...)	ft_dprintf(2, MSG0 f "{eoc}\n", MSG1, ##__VA_ARGS__)
 # endif
+
+enum			e_bool
+{
+	false,
+	true
+};
 
 typedef struct	s_ld
 {
@@ -162,12 +167,12 @@ int				ft_atoi(const char *nptr);
 long int		ft_atoli_base(const char *nptr, short len);
 char			*ft_itoa(int n);
 char			*ft_ftoa(long double n, short prec);
-char			*ft_ftoa_base(long double n, short prec, short bas, bool is_up);
+char			*ft_ftoa_base(long double n, short prec, short bas, int is_up);
 char			*ft_litoa(long int n);
-char			*ft_litoa_base(long int n, short int len_base, bool is_maj);
+char			*ft_litoa_base(long int n, short int len_base, int is_maj);
 char			*ft_ulitoa(unsigned long int n);
 char			*ft_ulitoa_base(unsigned long int n, short int len_base,
-								bool is_maj);
+								int is_maj);
 
 /*
 ** PRINTF :

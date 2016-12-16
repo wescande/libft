@@ -6,19 +6,19 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 14:43:26 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/13 17:32:11 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/16 14:51:41 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static char	*ft_litoa_under0(long double value, short int prec,
-							short int len_base, bool is_up)
+							short int len_base, int is_up)
 {
 	static char	*base_str = "0123456789abcdefghijklmnopqrstuvwxyz";
 	char		*str;
 	short int	i;
-	bool		do_it;
+	int			do_it;
 
 	if (!(str = (char*)malloc(sizeof(char) * (prec + 1))))
 		return (NULL);
@@ -57,7 +57,7 @@ char		*ft_ftoa(long double n, short prec)
 	return (str);
 }
 
-char		*ft_ftoa_base(long double n, short prec, short base, bool is_up)
+char		*ft_ftoa_base(long double n, short prec, short base, int is_up)
 {
 	char		*str;
 

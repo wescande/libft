@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 18:18:24 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/22 11:23:58 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/16 14:51:21 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*ft_ulitoa(unsigned long int n)
 	return (str);
 }
 
-char	*ft_litoa_base(long int value, short int len_base, bool is_up)
+char	*ft_litoa_base(long int value, short int len_base, int is_up)
 {
 	static char	*base_str = "0123456789abcdefghijklmnopqrstuvwxyz";
 	char		*str;
@@ -92,7 +92,7 @@ char	*ft_litoa_base(long int value, short int len_base, bool is_up)
 	return (str);
 }
 
-char	*ft_ulitoa_base(unsigned long int value, short int len_base, bool is_up)
+char	*ft_ulitoa_base(unsigned long int value, short int len_base, int is_up)
 {
 	static char			*base_str = "0123456789abcdefghijklmnopqrstuvwxyz";
 	char				*str;
