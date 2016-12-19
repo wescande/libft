@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/16 14:53:42 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/16 16:26:33 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,12 @@ void			ft_lstsort(t_list **begin_list, int (*cmp)());
 void			ft_ld_new(t_ld **alst, void *content);
 t_ld			*ft_ld_front(t_ld	*ld);
 void			ft_ld_pushfront(t_ld **alst, void *content);
+void			ft_ld_pushback(t_ld **alst, void *content);
 size_t			ft_ld_size(t_ld *ld);
 void			ft_ld_del(t_ld **ld, void (*del)());
 void			ft_ld_clear(t_ld **ld, void (*del)());
 void			ft_ld_reverse(t_ld **lst);
+t_ld			*ft_ld_back(t_ld *ld);
 
 /*
 ** WCHAR_T :

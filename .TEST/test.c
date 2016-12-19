@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 18:15:50 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/13 17:30:33 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/16 20:48:23 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int		main(int argc, char **argv)
 	int val2;
 */
 	setlocale(LC_CTYPE, "");
-	i1 = ft_printf("%g\n", 1.0);
-	i2 = printf("%g\n", 1.0);
-	printf("COMPARE : {%d}{%d}\n", i1, i2);
+	i1 = ft_printf("%o\n", 2147483647);
+//	i2 = printf("%g\n", 1.0);
+//	printf("COMPARE : {%d}{%d}\n", i1, i2);
 //	unsigned long int test;
 //test = (unsigned long int) -56.4;
 //	ft_printf("%lx\n", test);

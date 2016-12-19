@@ -24,10 +24,12 @@ OBJ_DIR		=	objs/
 
 SRC_BASE	= \
 get_next_line.c\
+ld/ft_ld_back.c\
 ld/ft_ld_clear.c\
 ld/ft_ld_del.c\
 ld/ft_ld_front.c\
 ld/ft_ld_new.c\
+ld/ft_ld_pushback.c\
 ld/ft_ld_pushfront.c\
 ld/ft_ld_reverse.c\
 ld/ft_ld_size.c\
