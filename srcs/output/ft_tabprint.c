@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/21 13:01:36 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/21 13:02:14 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/21 13:59:03 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_tabprint(char **mytab)
 	i = 0;
 	while (mytab[i])
 	{
-		ft_putstr(mytab[i]);
+		ft_putendl(mytab[i]);
 		++i;
 	}
 }
