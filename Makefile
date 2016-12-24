@@ -6,7 +6,7 @@
 #*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/08/29 21:32:58 by wescande          #+#    #+#             *#
-#*   Updated: 2016/09/27 20:14:55 by wescande         ###   ########.fr       *#
+#*   Updated: 2016/12/24 02:14:21 by wescande         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -155,7 +155,6 @@ $(NAME) :		$(OBJ_DIR) $(OBJS)
 $(OBJ_DIR) :
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(dir $(OBJS))
-	@echo "*.o directory created"
 
 $(OBJ_DIR)%.o :	$(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(CC) $(FLAGS) -MMD -c $< -o $@\

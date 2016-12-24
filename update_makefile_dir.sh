@@ -1,6 +1,13 @@
 LIBPATH="/Users/wescande/Documents/libft"
 MYPATH=$(pwd)
 CUR_MAKEFILE=$MYPATH/Makefile
+if [ -e $LIBPATH ]
+then
+	echo "working from 42"
+else
+	LIBPATH="/home/william/Documents/libft"
+	echo "working from house"
+fi
 if [ -e $CUR_MAKEFILE ]
 then
 	echo "regenerate Makefile"
