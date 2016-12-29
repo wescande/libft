@@ -64,6 +64,8 @@ num/ft_atoli_base.c\
 num/ft_ftoa.c\
 num/ft_itoa.c\
 num/ft_litoa.c\
+num/ft_max.c\
+num/ft_min.c\
 num/ft_num_len_base.c\
 num/ft_pow.c\
 output/ft_putchar.c\

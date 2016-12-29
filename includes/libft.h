@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/28 16:55:44 by wescande         ###   ########.fr       */
+/*   Updated: 2016/12/29 04:45:11 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,8 @@ void			ft_swapptr(void **ptr1, void **ptr2);
 ** INT :
 */
 long long int	ft_pow(int nb, int power);
+long			ft_min(long n1, long n2);
+long			ft_max(long n1, long n2);
 short int		ft_num_len_base(long int num, short int len_base);
 short int		ft_unum_len_base(unsigned long int num, short int len_base);
 long int		ft_abs(long int num);
