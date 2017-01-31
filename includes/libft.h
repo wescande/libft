@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/29 04:45:11 by wescande         ###   ########.fr       */
+/*   Updated: 2017/01/05 16:19:35 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ void			ft_ld_clear(t_ld **ld, void (*del)());
 void			ft_ld_reverse(t_ld **lst);
 t_ld			*ft_ld_back(t_ld *ld);
 t_ld			*ft_ld_swap(t_ld *l_cur);
+char			**ft_ld_to_tab(t_ld *ld);
 
 /*
 ** WCHAR_T :

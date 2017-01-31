@@ -16,7 +16,7 @@ CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror -O3
 
 LEN_NAME	=	`printf "%s" $(NAME) |wc -c`
-DELTA		=	$$(echo "$$(tput cols)-24-$(LEN_NAME)"|bc)
+DELTA		=	$$(echo "$$(tput cols)-37-$(LEN_NAME)"|bc)
 
 SRC_DIR		=	srcs/
 INC_DIR		=	includes/
@@ -148,6 +148,11 @@ wchar/ft_strwtostr.c
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
 
+SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
+OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
+NB			=	$(words $(SRC_BASE))
+INDEX		=	0
+
 all :
 	@$(MAKE) -j $(NAME)
 
@@ -161,9 +166,14 @@ $(OBJ_DIR) :
 	@mkdir -p $(dir $(OBJS))
 
 $(OBJ_DIR)%.o :	$(SRC_DIR)%.c | $(OBJ_DIR)
+	@$(eval DONE=$(shell echo $$(($(INDEX)*20/$(NB)))))
+	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
+	@$(eval COLOR=$(shell echo $$(($(PERCENT)%35+196))))
+	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB)))))
+	@printf "\r\033[38;5;11m⌛ MAKE %s : %2d%% \033[48;5;%dm%*s\033[0m%*s\033[48;5;255m \033[0m \033[38;5;11m %*s\033[0m\033[K" $(NAME) $(PERCENT) $(COLOR) $(DONE) "" $(TO_DO) "" $(DELTA) "$@"
 	@$(CC) $(FLAGS) -MMD -c $< -o $@\
 		-I $(INC_DIR)
-	@printf "\r\033[38;5;11m⌛ MAKE %s     plz wait :  %*s\033[0m\033[K" $(NAME) $(DELTA) "$@"
+	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 
 clean :
 	@rm -rf $(OBJ_DIR)

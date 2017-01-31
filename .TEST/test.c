@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 18:15:50 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/16 20:48:23 by wescande         ###   ########.fr       */
+/*   Updated: 2017/01/27 21:47:14 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ int		main(int argc, char **argv)
 /*	int val;
 	int val2;
 */
+
 	setlocale(LC_CTYPE, "");
-	i1 = ft_printf("%o\n", 2147483647);
+unsigned char c = 1<<7;
+	ft_printf("% 08b\n", c);
+	ft_printf("% 08b\n", 1<<7);
+//	i1 = ft_printf("%o\n", 2147483647);
 //	i2 = printf("%g\n", 1.0);
 //	printf("COMPARE : {%d}{%d}\n", i1, i2);
 //	unsigned long int test;
@@ -130,13 +134,13 @@ ft_printf("{red} ffffffffffffffff\n");
 	i1 = ft_printf("%.45f\n", 3.5445648745);
 	i2 = printf("%.45f\n", 3.5445648745);
 	printf("COMPARE : {%d}{%d}\n", i1, i2);//
-	i1 = ft_printf("%.17f\n", 87893.54456487458);
-	i2 = printf("%.17f\n", 87893.54456487458);
+	i1 = ft_printf(">>>%.50f\n", 87893.54);
+	i2 = printf(">>>%.50f\n", 87893.54);
 	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
 	i1 = ft_printf("%.18f\n", 87893.54456487458);
 	i2 = printf("%.18f\n", 87893.54456487458);
 	printf("COMPARE : {%d}{%d}\n", i1, i2);// 
-*/
+// */
 /*
 ft_printf("{gre} gggggggggggggggg\n");
 	i1 = ft_printf("%17g\n", 3.54456487458);

@@ -20,17 +20,25 @@ then
 	mv $CUR_MAKEFILE ~/Documents/.OLDMakefile
 	mv NEWMAKEFILE $CUR_MAKEFILE
 	echo "Makefile done (copy still alive in ~/Documents/.OLDMakefile)"
-	if [ $MYPATH != $LIBPATH ]
+	if [ $# -eq 1 ]
 	then
-		echo "Refreshing from $LIBPATH"
-		rm -rf $MYPATH/libft
-		cp -r $LIBPATH $MYPATH/
-		rm -rf $MYPATH/libft/.TEST
-		rm -rf $MYPATH/libft/.git
-		rm -rf $MYPATH/libft/update_makefile_dir.sh
-		echo "Refresh done"
-	else
-		echo "Libft dir detected. No refresh."
+		if [ $1 = "-l" ]
+		then
+			if [ $MYPATH != $LIBPATH ]
+			then
+				echo "Refreshing from $LIBPATH"
+				rm -rf $MYPATH/libft
+				cp -r $LIBPATH $MYPATH/
+				rm -rf $MYPATH/libft/.TEST
+				rm -rf $MYPATH/libft/.git
+				rm -rf $MYPATH/libft/update_makefile_dir.sh
+				echo "Refresh done"
+			else
+				echo "Libft dir detected. No refresh."
+			fi
+		else
+			echo "Wrong arg, if you want to refresh libft use \"-l\"."
+		fi
 	fi
 else
 	echo "Makefile not found."
