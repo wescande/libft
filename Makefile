@@ -15,8 +15,7 @@ NAME		=	libft.a
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror -O3
 
-LEN_NAME	=	`printf "%s" $(NAME) |wc -c`
-DELTA		=	$$(echo "$$(tput cols)-37-$(LEN_NAME)"|bc)
+DELTA		=	$$(echo "$$(tput cols)-47"|bc)
 
 SRC_DIR		=	srcs/
 INC_DIR		=	includes/
@@ -34,6 +33,7 @@ ld/ft_ld_pushfront.c\
 ld/ft_ld_reverse.c\
 ld/ft_ld_size.c\
 ld/ft_ld_swap.c\
+ld/ft_ld_to_tab.c\
 lst/ft_lstadd.c\
 lst/ft_lstdel.c\
 lst/ft_lstdelone.c\
@@ -147,9 +147,6 @@ wchar/ft_strwtostr.c
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
-
-SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
-OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
 NB			=	$(words $(SRC_BASE))
 INDEX		=	0
 
@@ -157,9 +154,8 @@ all :
 	@$(MAKE) -j $(NAME)
 
 $(NAME) :		$(OBJ_DIR) $(OBJS)
-	@ar rc $(NAME) $(OBJS)
-	@ranlib $(NAME)
-	@echo "\r\033[48;5;15;38;5;25m✅ MAKE $(NAME)\033[0m\033[K"
+	@ar rcs $(NAME) $(OBJS)
+	@printf "\r\033[48;5;15;38;5;25m✅ MAKE $(NAME)\033[0m\033[K\n"
 
 $(OBJ_DIR) :
 	@mkdir -p $(OBJ_DIR)
@@ -170,18 +166,18 @@ $(OBJ_DIR)%.o :	$(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
 	@$(eval COLOR=$(shell echo $$(($(PERCENT)%35+196))))
 	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB)))))
-	@printf "\r\033[38;5;11m⌛ MAKE %s : %2d%% \033[48;5;%dm%*s\033[0m%*s\033[48;5;255m \033[0m \033[38;5;11m %*s\033[0m\033[K" $(NAME) $(PERCENT) $(COLOR) $(DONE) "" $(TO_DO) "" $(DELTA) "$@"
+	@printf "\r\033[38;5;11m⌛ MAKE %10.10s : %2d%% \033[48;5;%dm%*s\033[0m%*s\033[48;5;255m \033[0m \033[38;5;11m %*s\033[0m\033[K" $(NAME) $(PERCENT) $(COLOR) $(DONE) "" $(TO_DO) "" $(DELTA) "$@"
 	@$(CC) $(FLAGS) -MMD -c $< -o $@\
 		-I $(INC_DIR)
 	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 
 clean :
 	@rm -rf $(OBJ_DIR)
-	@echo "\r\033[38;5;202m✖ clean $(NAME).\033[0m\033[K"
+	@printf "\r\033[38;5;202m✖ clean $(NAME).\033[0m\033[K\n"
 
 fclean :		clean
 	@rm -rf $(NAME)
-	@echo "\r\033[38;5;196m❌ fclean $(NAME).\033[0m\033[K"
+	@printf "\r\033[38;5;196m❌ fclean $(NAME).\033[0m\033[K\n"
 
 re :			fclean all
 
