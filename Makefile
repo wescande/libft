@@ -15,7 +15,7 @@ NAME		=	libft.a
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror -O3
 
-DELTA		=	$$(echo "$$(tput cols)-47"|bc)
+DELTA		=	$$(echo "$$(tput cols)-43"|bc)
 
 SRC_DIR		=	srcs/
 INC_DIR		=	includes/
@@ -164,20 +164,27 @@ $(OBJ_DIR) :
 $(OBJ_DIR)%.o :	$(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(eval DONE=$(shell echo $$(($(INDEX)*20/$(NB)))))
 	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
-	@$(eval COLOR=$(shell echo $$(($(PERCENT)%35+196))))
-	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB)))))
-	@printf "\r\033[38;5;11m⌛ MAKE %10.10s : %2d%% \033[48;5;%dm%*s\033[0m%*s\033[48;5;255m \033[0m \033[38;5;11m %*s\033[0m\033[K" $(NAME) $(PERCENT) $(COLOR) $(DONE) "" $(TO_DO) "" $(DELTA) "$@"
+	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB) - 1))))
+	@$(eval COLOR=$(shell ~/.get_color_progress_bar.sh $(shell echo $$(($(PERCENT)/8)))))
+	@$(eval DEST=$(shell echo "$@" | sed 's/^.*\///'))
+	@printf "\r\033[38;5;%dm⌛ [%10.10s]: %2d%% `printf '█%.0s' {0..$(DONE)}`\033[48;5;0m%*s\033[38;5;82m▏\033[0m \033[38;5;%dm %*.*s\033[0m\033[K" $(COLOR) $(NAME) $(PERCENT) $(TO_DO) "" $(COLOR) $(DELTA) $(DELTA) "$(DEST)"
 	@$(CC) $(FLAGS) -MMD -c $< -o $@\
 		-I $(INC_DIR)
 	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 
 clean :
-	@rm -rf $(OBJ_DIR)
-	@printf "\r\033[38;5;202m✖ clean $(NAME).\033[0m\033[K\n"
+	@if [ -e $(OBJ_DIR) ]; \
+	then \
+		rm -rf $(OBJ_DIR); \
+		printf "\r\033[38;5;202m✖ clean $(NAME).\033[0m\033[K\n"; \
+	fi;
 
 fclean :		clean
-	@rm -rf $(NAME)
-	@printf "\r\033[38;5;196m❌ fclean $(NAME).\033[0m\033[K\n"
+	@if [ -e $(NAME) ]; \
+	then \
+		rm -rf $(NAME); \
+		printf "\r\033[38;5;196m❌ fclean $(NAME).\033[0m\033[K\n"; \
+	fi;
 
 re :			fclean all
 
