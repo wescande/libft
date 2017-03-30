@@ -15,7 +15,8 @@ NAME		=	libft.a
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror -O3
 
-DELTA		=	$$(echo "$$(tput cols)-43"|bc)
+LEN_NAME	=	`printf "%s" $(NAME) |wc -c`
+DELTA		=	$$(echo "$$(tput cols)-33-$(LEN_NAME)"|bc)
 
 SRC_DIR		=	srcs/
 INC_DIR		=	includes/
@@ -167,7 +168,7 @@ $(OBJ_DIR)%.o :	$(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB) - 1))))
 	@$(eval COLOR=$(shell ~/.get_color_progress_bar.sh $(shell echo $$(($(PERCENT)/8)))))
 	@$(eval DEST=$(shell echo "$@" | sed 's/^.*\///'))
-	@printf "\r\033[38;5;%dm⌛ [%10.10s]: %2d%% `printf '█%.0s' {0..$(DONE)}`\033[48;5;0m%*s\033[38;5;82m▏\033[0m \033[38;5;%dm %*.*s\033[0m\033[K" $(COLOR) $(NAME) $(PERCENT) $(TO_DO) "" $(COLOR) $(DELTA) $(DELTA) "$(DEST)"
+	@printf "\r\033[38;5;%dm⌛ [%s]: %2d%% `printf '█%.0s' {0..$(DONE)}`\033[48;5;0m%*s\033[38;5;82m▏\033[0m \033[38;5;%dm %*.*s\033[0m\033[K" $(COLOR) $(NAME) $(PERCENT) $(TO_DO) "" $(COLOR) $(DELTA) $(DELTA) "$(DEST)"
 	@$(CC) $(FLAGS) -MMD -c $< -o $@\
 		-I $(INC_DIR)
 	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
