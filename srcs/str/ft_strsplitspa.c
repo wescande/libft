@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 14:30:08 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/06 14:33:10 by wescande         ###   ########.fr       */
+/*   Updated: 2017/03/19 20:02:16 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int		ft_nbstr_c(char const *str)
 	return (len);
 }
 
-char			**ft_strsplit_spa(char const *str)
+char			**ft_strsplitspa(char const *str)
 {
 	char	**s1;
 	int		i;

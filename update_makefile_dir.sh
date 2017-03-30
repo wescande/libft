@@ -32,6 +32,7 @@ then
 				rm -rf $MYPATH/libft/.TEST
 				rm -rf $MYPATH/libft/.git
 				rm -rf $MYPATH/libft/update_makefile_dir.sh
+				rm -rf $MYPATH/libft/scriptheader.sh
 				echo "Refresh done"
 			else
 				echo "Libft dir detected. No refresh."
