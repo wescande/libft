@@ -16,7 +16,7 @@ CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror -O3
 
 LEN_NAME	=	`printf "%s" $(NAME) |wc -c`
-DELTA		=	$$(echo "$$(tput cols)-33-$(LEN_NAME)"|bc)
+DELTA		=	$$(echo "$$(tput cols)-31-$(LEN_NAME)"|bc)
 
 SRC_DIR		=	srcs/
 INC_DIR		=	includes/
