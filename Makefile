@@ -156,7 +156,7 @@ all :
 
 $(NAME) :		$(OBJ_DIR) $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
-	@printf "\r\033[48;5;0;38;5;117m✓ MAKE $(NAME)\033[0m\033[K\n"
+	@printf "\r\033[38;5;117m✓ MAKE $(NAME)\033[0m\033[K\n"
 
 $(OBJ_DIR) :
 	@mkdir -p $(OBJ_DIR)
@@ -166,9 +166,8 @@ $(OBJ_DIR)%.o :	$(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(eval DONE=$(shell echo $$(($(INDEX)*20/$(NB)))))
 	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
 	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB) - 1))))
-	@$(eval COLOR=$(shell ~/.get_color_progress_bar.sh $(shell echo $$(($(PERCENT)/8)))))
-	@$(eval DEST=$(shell echo "$@" | sed 's/^.*\///'))
-	@printf "\r\033[38;5;%dm⌛ [%s]: %2d%% `printf '█%.0s' {0..$(DONE)}`%*s❙%*.*s\033[0m\033[K" $(COLOR) $(NAME) $(PERCENT) $(TO_DO) "" $(DELTA) $(DELTA) "$(DEST)"
+	@$(eval COLOR=$(shell list=(160 196 202 208 215 221 226 227 190 154 118 82 46); index=$$(($(PERCENT) * $${#list[@]} / 100)); echo "$${list[$$index]}"))
+	@printf "\r\033[38;5;%dm⌛ [%s]: %2d%% `printf '█%.0s' {0..$(DONE)}`%*s❙%*.*s\033[0m\033[K" $(COLOR) $(NAME) $(PERCENT) $(TO_DO) "" $(DELTA) $(DELTA) "$(shell echo "$@" | sed 's/^.*\///')"
 	@$(CC) $(FLAGS) -MMD -c $< -o $@\
 		-I $(INC_DIR)
 	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
