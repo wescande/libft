@@ -151,6 +151,8 @@ OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
 NB			=	$(words $(SRC_BASE))
 INDEX		=	0
 
+SHELL := /bin/bash
+
 all :
 	@$(MAKE) -j $(NAME)
 
