@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/28 21:49:29 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/28 21:50:59 by wescande         ###   ########.fr       */
+/*   Updated: 2017/03/19 20:11:37 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 long	ft_min(long n1, long n2)
 {
 	if (n1 < n2)
-		return(n1);
+		return (n1);
 	return (n2);
 }
