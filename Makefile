@@ -122,6 +122,7 @@ str/ft_strjoin.c\
 str/ft_strjoinf.c\
 str/ft_strlcat.c\
 str/ft_strlen.c\
+str/ft_strlenchr.c\
 str/ft_strmap.c\
 str/ft_strmapi.c\
 str/ft_strncat.c\
@@ -143,6 +144,7 @@ str/ft_tabdel.c\
 str/ft_tablen.c\
 str/ft_tolower.c\
 str/ft_toupper.c\
+sys/ft_getenv.c\
 wchar/ft_charwlen.c\
 wchar/ft_charwtochar.c\
 wchar/ft_charwtonewchar.c\

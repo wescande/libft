@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/04/08 00:19:45 by wescande         ###   ########.fr       */
+/*   Updated: 2017/04/08 00:40:43 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ enum	e_errors
 int				error_set(int n, ...);
 
 size_t			ft_strlen(const char *s);
+size_t			ft_strlenchr(const char *s, char c);
 char			*ft_strdup(const char *s);
 char			*ft_strcpy(char *dest, const char *src);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
@@ -241,5 +242,10 @@ int				ft_asprintf(char **ret, const char *str, ...);
 int				ft_dprintf(int fd, const char *str, ...);
 int				ft_vdprintf(int fd, const char *str, va_list ap);
 int				ft_vasprintf(char **ret, const char *str, va_list ap);
+
+/*
+** SYS :
+*/
+char	*ft_getenv(char **env, const char *key);
 
 #endif
