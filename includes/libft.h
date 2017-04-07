@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/04/08 00:40:43 by wescande         ###   ########.fr       */
+/*   Updated: 2017/04/08 01:13:07 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+
+# define STDIN			STDIN_FILENO
+# define STDOUT			STDOUT_FILENO
+# define STDERR			STDERR_FILENO
+
+# define PIPE_READ		0
+# define PIPE_WRITE		1
 
 # ifndef DG
 #  define MSG0			"{blu}%s, {cya}%s, {gre}%4d - {red}"
