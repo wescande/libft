@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:00:35 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/13 17:37:24 by wescande         ###   ########.fr       */
+/*   Updated: 2017/04/08 00:16:01 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ static void		set_double(t_conv *tmp)
 		add_e(tmp);
 }
 
-void			conv_b_g(t_wrk *w, t_conv *tmp)
+void			conv_b_g(t_wrk *w, t_conv *tmp, va_list ap)
 {
+	(void)w;
 	tmp->spec = 'F';
 	if (!tmp->acc)
 		tmp->acc = 1;
@@ -47,19 +48,20 @@ void			conv_b_g(t_wrk *w, t_conv *tmp)
 		tmp->acc = 6;
 	--tmp->acc;
 	if (tmp->is_long)
-		tmp->dbl = CASTVA_ARG(w->ap, long double);
+		tmp->dbl = CASTVA_ARG(ap, long double);
 	else
-		tmp->dbl = CASTVA_ARG(w->ap, double);
+		tmp->dbl = CASTVA_ARG(ap, double);
 	if (tmp->dbl < 0)
 	{
 		tmp->dbl = -1 * tmp->dbl;
-		tmp->is_neg = true;
+		tmp->is_neg = 1;
 	}
 	set_double(tmp);
 }
 
-void			conv_g(t_wrk *w, t_conv *tmp)
+void			conv_g(t_wrk *w, t_conv *tmp, va_list ap)
 {
+	(void)w;
 	tmp->spec = 'f';
 	if (!tmp->acc)
 		tmp->acc = 1;
@@ -67,13 +69,13 @@ void			conv_g(t_wrk *w, t_conv *tmp)
 		tmp->acc = 6;
 	--tmp->acc;
 	if (tmp->is_long)
-		tmp->dbl = CASTVA_ARG(w->ap, long double);
+		tmp->dbl = CASTVA_ARG(ap, long double);
 	else
-		tmp->dbl = CASTVA_ARG(w->ap, double);
+		tmp->dbl = CASTVA_ARG(ap, double);
 	if (tmp->dbl < 0)
 	{
 		tmp->dbl = -1 * tmp->dbl;
-		tmp->is_neg = true;
+		tmp->is_neg = 1;
 	}
 	set_double(tmp);
 }

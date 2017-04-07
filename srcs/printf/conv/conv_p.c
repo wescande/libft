@@ -6,17 +6,18 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 17:54:37 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/22 12:53:11 by wescande         ###   ########.fr       */
+/*   Updated: 2017/04/08 00:12:36 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	conv_p(t_wrk *w, t_conv *tmp)
+void	conv_p(t_wrk *w, t_conv *tmp, va_list ap)
 {
 	void	*ptr;
 
-	ptr = CASTVA_ARG(w->ap, void *);
+	(void)w;
+	ptr = CASTVA_ARG(ap, void *);
 	if (!ptr && !tmp->acc)
 	{
 		--(tmp->acc);
@@ -27,7 +28,7 @@ void	conv_p(t_wrk *w, t_conv *tmp)
 	{
 		tmp->base = 16;
 		tmp->spec = 'x';
-		tmp->sha = true;
+		tmp->sha = 1;
 		tmp->num = (unsigned long int)ptr;
 		add_i(tmp);
 	}

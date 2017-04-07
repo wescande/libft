@@ -6,120 +6,120 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 15:41:17 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/16 14:52:31 by wescande         ###   ########.fr       */
+/*   Updated: 2017/04/08 00:15:06 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static int			checkmodify(t_conv *tmp, char **end)
 {
 	if (**end == 'h' && *(1 + *end) == 'h')
 	{
 		++(*end);
-		return ((tmp->is_char = true));
+		return ((tmp->is_char = 1));
 	}
 	if (**end == 'h')
-		return ((tmp->is_short = true));
+		return ((tmp->is_short = 1));
 	if (**end == 'l' && *(1 + *end) == 'l')
 	{
 		++(*end);
-		return ((tmp->is_long_long = true));
+		return ((tmp->is_long_long = 1));
 	}
 	if (**end == 'l')
-		return ((tmp->is_long = true));
+		return ((tmp->is_long = 1));
 	if (**end == 'j' || **end == 'z')
 	{
-		tmp->is_long_long = false;
-		return ((tmp->is_long = true));
+		tmp->is_long_long = 0;
+		return ((tmp->is_long = 1));
 	}
 	if (**end == 'L')
-		return ((tmp->is_long_long = true));
-	return (false);
+		return ((tmp->is_long_long = 1));
+	return (0);
 }
 
-static int			checkaccuracy(t_wrk *w, t_conv *tmp, char **end)
+static int			checkaccuracy(t_conv *tmp, char **end, va_list ap)
 {
 	if (**end == '.')
 	{
 		++(*end);
 		if (**end == '*')
 		{
-			tmp->acc = CASTVA_ARG(w->ap, int);
+			tmp->acc = CASTVA_ARG(ap, int);
 			if (tmp->acc < -1)
 				tmp->acc = -1;
-			return (true);
+			return (1);
 		}
 		if (ft_isdigit(**end))
 		{
 			tmp->acc = ft_atoi(*end);
 			*end += ft_num_len_base(tmp->acc, 10) - 1;
-			return (true);
+			return (1);
 		}
 		--(*end);
 		tmp->acc = 0;
-		return (true);
+		return (1);
 	}
 	return (checkmodify(tmp, end));
 }
 
-static int			checkflag_and_modify(t_wrk *w, t_conv *tmp, char **end)
+static int			checkflag_and_modify(t_conv *tmp, char **end, va_list ap)
 {
 	if (!**end)
-		return (false);
+		return (0);
 	if (**end == '-')
 	{
 		tmp->pad = ' ';
-		return ((tmp->left = true));
+		return ((tmp->left = 1));
 	}
 	if (**end == '+')
-		return ((tmp->sign = true));
+		return ((tmp->sign = 1));
 	if (**end == ' ')
-		return ((tmp->spa = true));
+		return ((tmp->spa = 1));
 	if (**end == '#')
-		return ((tmp->sha = true));
+		return ((tmp->sha = 1));
 	if (**end == '*')
-		return ((tmp->width = CASTVA_ARG(w->ap, int)) ? true : true);
+		return ((tmp->width = CASTVA_ARG(ap, int)) ? 1 : 1);
 	if (**end == '0')
-		return (!tmp->left ? tmp->pad = '0' : true);
+		return (!tmp->left ? tmp->pad = '0' : 1);
 	if (ft_isdigit(**end))
 	{
 		tmp->width = ft_atoi(*end);
 		*end += ft_num_len_base(tmp->width, 10) - 1;
-		return (true);
+		return (1);
 	}
-	return (checkaccuracy(w, tmp, end));
+	return (checkaccuracy(tmp, end, ap));
 }
 
 static void			ini_conv(t_conv *c)
 {
 	c->index_conv = -1;
-	c->is_neg = false;
+	c->is_neg = 0;
 	c->num = 0;
 	c->dbl = 0;
 	c->len = 0;
 	c->base = 10;
-	c->sha = false;
-	c->spa = false;
-	c->left = false;
-	c->sign = false;
-	c->is_long_long = false;
-	c->is_long = false;
-	c->is_short = false;
-	c->is_char = false;
+	c->sha = 0;
+	c->spa = 0;
+	c->left = 0;
+	c->sign = 0;
+	c->is_long_long = 0;
+	c->is_long = 0;
+	c->is_short = 0;
+	c->is_char = 0;
 	c->width = 0;
 	c->acc = -1;
 	c->pad = ' ';
 	c->spec = '\0';
 }
 
-void				ft_set_flag(t_wrk *w, t_conv *tmp, char **end)
+void				ft_set_flag(t_conv *tmp, char **end, va_list ap)
 {
 	static char	*flag = "sSpdDioOuUxXcCbBeEfFgGaAn";
 	short int	i;
 
 	ini_conv(tmp);
-	while (checkflag_and_modify(w, tmp, end))
+	while (checkflag_and_modify(tmp, end, ap))
 		++(*end);
 	i = 0;
 	while (flag[i] && flag[i] != **end)
@@ -131,7 +131,7 @@ void				ft_set_flag(t_wrk *w, t_conv *tmp, char **end)
 		++(*end);
 	if (tmp->width < 0)
 	{
-		tmp->left = true;
+		tmp->left = 1;
 		tmp->width = -1 * tmp->width;
 	}
 }

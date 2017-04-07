@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 20:52:19 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/06 23:00:06 by wescande         ###   ########.fr       */
+/*   Updated: 2017/04/07 23:31:30 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,12 @@ static void			initialize_fun(t_wrk *w)
 	w->fun[n_fun] = &conv_unknow;
 }
 
-t_wrk				*initialize_work(const char *str)
+void				initialize_work(const char *str, t_wrk *w)
 {
-	t_wrk	*new_w;
-
-	if (!(new_w = (t_wrk *)malloc(sizeof(t_wrk))))
-		exit(1);
-	new_w->buf = (char *)str;
-	new_w->ans = NULL;
-	new_w->len = 0;
-	new_w->curlen = 0;
-	initialize_fun(new_w);
-	initialize_fun_bonus(new_w);
-	return (new_w);
+	w->buf = (char *)str;
+	w->ans = NULL;
+	w->len = 0;
+	w->curlen = 0;
+	initialize_fun(w);
+	initialize_fun_bonus(w);
 }

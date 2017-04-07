@@ -23,6 +23,9 @@ INC_DIR		=	includes/
 OBJ_DIR		=	objs/
 
 SRC_BASE	= \
+cliopts_get.c\
+cliopts_getmap.c\
+error.c\
 get_next_line.c\
 ld/ft_ld_back.c\
 ld/ft_ld_clear.c\
@@ -97,6 +100,7 @@ printf/ft_colorize.c\
 printf/ft_printf.c\
 printf/input/ft_init.c\
 printf/input/ft_set_flag.c\
+printf/printf_core.c\
 str/ft_isalnum.c\
 str/ft_isalpha.c\
 str/ft_isascii.c\

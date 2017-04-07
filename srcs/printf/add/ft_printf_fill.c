@@ -6,11 +6,11 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 21:57:12 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/16 14:52:08 by wescande         ###   ########.fr       */
+/*   Updated: 2017/04/08 00:11:47 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 void			fill_c(char **in, t_conv *tmp, short int len)
 {
@@ -52,20 +52,20 @@ static void		manage_based(t_conv *tmp, short int len)
 		--tmp->width;
 	}
 	if (tmp->acc != -1)
-		fill_i(&(tmp->str), '0', tmp->acc, false);
+		fill_i(&(tmp->str), '0', tmp->acc, 0);
 	if (tmp->pad == '0')
-		fill_i(&(tmp->str), '0', tmp->width, false);
+		fill_i(&(tmp->str), '0', tmp->width, 0);
 	if (tmp->sha)
 	{
 		if (tmp->base == 16)
 		{
-			fill_i(&(tmp->str), tmp->spec, 1, false);
-			fill_i(&(tmp->str), '0', 1, false);
+			fill_i(&(tmp->str), tmp->spec, 1, 0);
+			fill_i(&(tmp->str), '0', 1, 0);
 		}
 		else if (tmp->base == 8 && (tmp->num || !tmp->acc))
-			fill_i(&(tmp->str), '0', 1, false);
+			fill_i(&(tmp->str), '0', 1, 0);
 	}
-	fill_i(&(tmp->str), '-', tmp->is_neg, false);
+	fill_i(&(tmp->str), '-', tmp->is_neg, 0);
 	if (tmp->pad == ' ')
 		fill_i(&(tmp->str), ' ', tmp->width, tmp->left);
 }
@@ -76,13 +76,13 @@ static void		manage_decimal(t_conv *tmp)
 			|| tmp->sign || tmp->spa);
 	fill_i(&(tmp->str), '0', tmp->acc, tmp->spec == 'f' || tmp->spec == 'F');
 	if (tmp->pad == '0')
-		fill_i(&(tmp->str), '0', tmp->width, false);
+		fill_i(&(tmp->str), '0', tmp->width, 0);
 	if (tmp->is_neg)
-		fill_i(&(tmp->str), '-', 1, false);
+		fill_i(&(tmp->str), '-', 1, 0);
 	else if (tmp->sign)
-		fill_i(&(tmp->str), '+', 1, false);
+		fill_i(&(tmp->str), '+', 1, 0);
 	else if (tmp->spa)
-		fill_i(&(tmp->str), ' ', 1, false);
+		fill_i(&(tmp->str), ' ', 1, 0);
 	if (tmp->pad == ' ')
 		fill_i(&(tmp->str), ' ', tmp->width, tmp->left);
 }

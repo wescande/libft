@@ -6,13 +6,14 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/03/19 20:02:29 by wescande         ###   ########.fr       */
+/*   Updated: 2017/04/08 00:19:45 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include "ft_printf.h"
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -43,6 +44,55 @@ typedef struct	s_list
 	size_t			content_size;
 	struct s_list	*next;
 }				t_list;
+
+/*
+** CLIOPTS
+*/
+
+typedef struct	s_cliopts
+{
+	char		c;
+	char		*str;
+	long int	flag_on;
+	long int	flag_off;
+	int			(*get)();
+	int			arg_required:1;
+}				t_cliopts;
+
+typedef struct	s_data_template
+{
+	long int	flag;
+	char		**av_data;
+}				t_data_template;
+
+int				cliopts_get(char **av, t_cliopts opt_map[], void *data);
+t_cliopts		*cliopts_getmap_long(t_cliopts opt_map[], char *arg);
+t_cliopts		*cliopts_getmap_short(t_cliopts opt_map[], char arg);
+
+/*
+** ERROR
+*/
+
+# define ERRMSG_MAX_SIZE	150
+# define ERR_PROTO(u, m)	"{red}%s: %s{eoc}\n", u, m
+# define ERR_MSG(u, m)		ft_dprintf(2, ERR_PROTO(u, m))
+# define ERR_SET(n, ...)	error_set(n, ##__VA_ARGS__)
+
+enum	e_errors
+{
+	E_NOERR,
+	E_CO_INV,
+	E_CO_INVL,
+	E_CO_MULT,
+	E_CO_MISS,
+	E_CO_MISSL,
+	E_SYS_NOFILE,
+	E_SYS_ISDIR,
+	E_SYS_NOPERM,
+	E_MAX,
+};
+
+int				error_set(int n, ...);
 
 size_t			ft_strlen(const char *s);
 char			*ft_strdup(const char *s);
@@ -189,5 +239,7 @@ char			*ft_ulitoa_base(unsigned long int n, short int len_base,
 int				ft_printf(const char *str, ...);
 int				ft_asprintf(char **ret, const char *str, ...);
 int				ft_dprintf(int fd, const char *str, ...);
+int				ft_vdprintf(int fd, const char *str, va_list ap);
+int				ft_vasprintf(char **ret, const char *str, va_list ap);
 
 #endif

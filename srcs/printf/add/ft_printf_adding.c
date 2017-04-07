@@ -6,11 +6,11 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 11:52:25 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/06 22:58:47 by wescande         ###   ########.fr       */
+/*   Updated: 2017/04/08 00:15:23 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static char		*create_suffixe(short int pow, char cmp)
 {

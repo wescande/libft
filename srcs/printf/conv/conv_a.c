@@ -6,11 +6,11 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:01:13 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/25 14:08:42 by wescande         ###   ########.fr       */
+/*   Updated: 2017/04/08 00:10:44 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static void	add_a(t_conv *tmp)
 {
@@ -38,32 +38,34 @@ static void	add_a(t_conv *tmp)
 	tmp->len = ft_strlen(tmp->str);
 }
 
-static void	set_double(t_wrk *w, t_conv *tmp)
+static void	set_double(t_conv *tmp, va_list ap)
 {
 	tmp->base = 16;
 	tmp->sha = true;
 	if (tmp->acc == -1)
 		tmp->acc = 13;
 	if (tmp->is_long)
-		tmp->dbl = CASTVA_ARG(w->ap, long double);
+		tmp->dbl = CASTVA_ARG(ap, long double);
 	else
-		tmp->dbl = CASTVA_ARG(w->ap, double);
+		tmp->dbl = CASTVA_ARG(ap, double);
 	if (tmp->dbl < 0)
 	{
 		tmp->dbl = -1 * tmp->dbl;
-		tmp->is_neg = true;
+		tmp->is_neg = 1;
 	}
 	add_a(tmp);
 }
 
-void		conv_b_a(t_wrk *w, t_conv *tmp)
+void		conv_b_a(t_wrk *w, t_conv *tmp, va_list ap)
 {
+	(void)w;
 	tmp->spec = 'X';
-	set_double(w, tmp);
+	set_double(tmp, ap);
 }
 
-void		conv_a(t_wrk *w, t_conv *tmp)
+void		conv_a(t_wrk *w, t_conv *tmp, va_list ap)
 {
+	(void)w;
 	tmp->spec = 'x';
-	set_double(w, tmp);
+	set_double(tmp, ap);
 }
