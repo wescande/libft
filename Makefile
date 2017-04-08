@@ -162,7 +162,7 @@ SHELL := /bin/bash
 all :
 	@$(MAKE) -j $(NAME)
 
-$(NAME) :		$(OBJ_DIR) $(OBJS)
+$(NAME) :		$(OBJ_DIR) $(OBJS) Makefile
 	@ar rcs $(NAME) $(OBJS)
 	@printf "\r\033[38;5;117m✓ MAKE $(NAME)\033[0m\033[K\n"
 
@@ -170,7 +170,7 @@ $(OBJ_DIR) :
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(dir $(OBJS))
 
-$(OBJ_DIR)%.o :	$(SRC_DIR)%.c | $(OBJ_DIR)
+$(OBJ_DIR)%.o :	$(SRC_DIR)%.c Makefile | $(OBJ_DIR)
 	@$(eval DONE=$(shell echo $$(($(INDEX)*20/$(NB)))))
 	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
 	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB) - 1))))
