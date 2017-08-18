@@ -1,5 +1,5 @@
 make -j -C ~/Documents/libft/
-gcc -I ../includes -L ../ -lft -o ./output test.c
+gcc test.c -I ../includes -L ../ -lft -o ./output 
 echo "test : "
 ./output
 rm ./output

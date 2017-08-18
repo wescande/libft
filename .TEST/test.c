@@ -19,17 +19,18 @@
 
 int		main(int argc, char **argv)
 {
+	ft_printf(">%c<", 0);
 //	void	*ptr;
-	int		i1;
-	int		i2;
+	/* int		i1; */
+	/* int		i2; */
 /*	int val;
 	int val2;
 */
 
-	setlocale(LC_CTYPE, "");
-unsigned char c = 1<<7;
-	ft_printf("% 08b\n", c);
-	ft_printf("% 08b\n", 1<<7);
+	/* setlocale(LC_CTYPE, ""); */
+/* unsigned char c = 1<<7; */
+	/* ft_printf("% 08b\n", c); */
+	/* ft_printf("% 08b\n", 1<<7); */
 //	i1 = ft_printf("%o\n", 2147483647);
 //	i2 = printf("%g\n", 1.0);
 //	printf("COMPARE : {%d}{%d}\n", i1, i2);

@@ -35,7 +35,7 @@ int					ft_vdprintf(int fd, const char *str, va_list ap)
 
 	ret = NULL;
 	if ((len = ft_vasprintf(&ret, str, ap)) != -1)
-		ft_putstr_fd(ret, fd);
+		len = write(fd, ret, len);
 	ft_strdel(&ret);
 	return (len);
 }
