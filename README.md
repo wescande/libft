@@ -1,3 +1,5 @@
-# Personal library
+# libft from @42 school of code
 
-Recode of some function from the standard lib C. (we are not allowed to use the lib C function in our school's project)
+With big contribution of jhalford in aim to make the greatest libft
+
+

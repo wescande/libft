@@ -12,7 +12,7 @@
 
 NAME		=	libft.a
 
-CC			=	gcc
+CC			?=	gcc
 FLAGS		=	-Wall -Wextra -Werror -O3
 
 LEN_NAME	=	`printf "%s" $(NAME) |wc -c`
@@ -199,3 +199,7 @@ re :			fclean all
 .PHONY :		fclean clean re
 
 -include $(OBJS:.o=.d)
+
+unit_test:
+	make -C .unit_test re
+	./.unit_test/unit_test

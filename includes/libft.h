@@ -52,6 +52,12 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+typedef struct s_itof
+{
+	unsigned int	id;
+	int				(*f)();
+}				t_itof;
+
 /*
 ** CLIOPTS
 */
