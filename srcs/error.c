@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/07 22:58:17 by wescande          #+#    #+#             */
-/*   Updated: 2017/04/08 00:04:43 by wescande         ###   ########.fr       */
+/*   Updated: 2017/08/28 01:04:40 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ char	g_error_msglist[E_MAX][ERRMSG_MAX_SIZE] =
 	"%s: no such file or directory",
 	"%s: Is a directory",
 	"%s: Permission denied",
+	"option '%c': not a valid argument",
+	"option '%s': not a valid argument",
 };
 
 int		g_errnum = 0;

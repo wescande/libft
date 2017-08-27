@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/04/08 21:05:39 by wescande         ###   ########.fr       */
+/*   Updated: 2017/08/28 01:03:44 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,26 @@
 # define PIPE_WRITE		1
 
 # ifndef DG
-#  define MSG0			"{BLU}%s, {CYA}%s, {GRE}%4d - {eoc}{red}"
-#  define MSG1			__FILE__, __func__, __LINE__
-#  define DG(f, ...)	ft_dprintf(2, MSG0 f "{eoc}\n", MSG1, ##__VA_ARGS__)
+#  define DGMSG0		"{blu}%s, {cya}%s, {gre}%4d - {red}"
+#  define DGMSG1		__FILE__, __func__, __LINE__
+#  define DG(f, ...)	ft_dprintf(2, DGMSG0 f "{eoc}\n", DGMSG1, ##__VA_ARGS__)
 # endif
 
+# ifndef INTREV32
+#  define MV1_4(x)	((x >> 24) & (0xff << 0))
+#  define MV2_3(x)	((x >> 8) & (0xff << 8))
+#  define MV3_2(x)	((x << 8) & (0xff << 16))
+#  define MV4_1(x)	((x << 24) & (0xff << 24))
+#  define INTREV32(x)	MV1_4(x) | MV2_3(x) | MV3_2(x) | MV4_1(x)
+# endif
+
+# define IS_SET(x, y)		(((x) & (y)) == (y))
+# define IS_ONESET(x, y)	((x) & (y))
+# define IS_UNSET(x, y)		(((x) & (y)) != (y))
+# define IS_ONEUNSET(x, y)	(!((x) & (y)))
+# define SET(x, y)			((x) |= (y))
+# define UNSET(x, y)		((x) &= ~(y))
+# define SWITCH(x, y)		(IS_SET((x), (y)) ? UNSET((x), (y)) : SET((x), (y)))
 enum			e_bool
 {
 	false,
@@ -64,12 +79,12 @@ typedef struct s_itof
 
 typedef struct	s_cliopts
 {
-	char		c;
-	char		*str;
-	long int	flag_on;
-	long int	flag_off;
-	int			(*get)();
-	int			arg_required:1;
+	char			c;
+	char			*str;
+	long int		flag_on;
+	long int		flag_off;
+	int				(*get)();
+	unsigned int	arg_required;
 }				t_cliopts;
 
 typedef struct	s_data_template
@@ -102,6 +117,8 @@ enum	e_errors
 	E_SYS_NOFILE,
 	E_SYS_ISDIR,
 	E_SYS_NOPERM,
+	E_CO_ARG_INV,
+	E_CO_ARG_INVL,
 	E_MAX,
 };
 
@@ -126,6 +143,7 @@ int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_strisdigit(const char *str);
+int				ft_strisnumeral(const char *str);
 int				ft_isalnum(int c);
 int				ft_isascii(int c);
 int				ft_isspa(int c);
