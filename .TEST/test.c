@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 18:15:50 by wescande          #+#    #+#             */
-/*   Updated: 2017/01/27 21:47:14 by wescande         ###   ########.fr       */
+/*   Updated: 2017/08/30 00:35:08 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int		main(int argc, char **argv)
 {
-	ft_printf(">%c<", 0);
+	ft_printf(">%c<{red}toto{eoc}", 0);
 //	void	*ptr;
 	/* int		i1; */
 	/* int		i2; */

@@ -86,6 +86,7 @@ str/ft_tablen.c\
 str/ft_strnequ.c\
 str/ft_isalnum.c\
 str/ft_strstr.c\
+str/ft_strnchr.c\
 str/ft_tolower.c\
 str/ft_strnstr.c\
 str/ft_strncpy.c\
