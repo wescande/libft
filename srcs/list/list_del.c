@@ -6,19 +6,20 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/30 13:41:05 by wescande          #+#    #+#             */
-/*   Updated: 2017/08/30 13:43:38 by wescande         ###   ########.fr       */
+/*   Updated: 2017/08/31 01:21:41 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <list.h>
 
-void list_del(t_lx *elem)
+/*
+** list_del - deletes entry from list.
+** @elem: the element to delete from the list.
+** Note: list_empty on entry does not return true after this, the entry is in an undefined state.
+*/
+extern inline void		list_del(t_lx *elem)
 {
-	elem->next->prev = elem->prev;
-	elem->prev->next = elem->next;
-	new_item->next = head->next;
-	new_item->prev = head;
-	head->next->prev = new_item;
-	atomic_write_barrier();
-	head->next = new_item;
+	list_del_only(elem->prev, elem->next);
+	elem->next = (void *)0;
+	elem->prev = (void *)0;
 }

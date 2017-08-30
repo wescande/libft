@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_merge.c                                       :+:      :+:    :+:   */
+/*   list_del_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/30 13:45:04 by wescande          #+#    #+#             */
-/*   Updated: 2017/08/31 00:37:39 by wescande         ###   ########.fr       */
+/*   Created: 2017/08/31 00:17:20 by wescande          #+#    #+#             */
+/*   Updated: 2017/08/31 01:21:54 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <list.h>
 
 /*
-** list_merge - join two lists
-** @add: the new list to add.
-** @head: the place to add it in the first list.
+** list_del_init - deletes entry from list and reinitialize it.
+** @elem: the element to delete from the list.
 */
-inline void		list_merge(t_lx *add, t_lx *head)
+inline void		list_del_init(t_lx *elem)
 {
-	if (!list_empty(add))
-		list_merge_only(add, head);
+	list_del_only(elem->prev, elem->next);
+	INIT_LIST_HEAD(elem); 
 }

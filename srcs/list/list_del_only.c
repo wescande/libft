@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_merge.c                                       :+:      :+:    :+:   */
+/*   list_del_only.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/30 13:45:04 by wescande          #+#    #+#             */
-/*   Updated: 2017/08/31 00:37:39 by wescande         ###   ########.fr       */
+/*   Created: 2017/08/31 00:16:20 by wescande          #+#    #+#             */
+/*   Updated: 2017/08/31 01:18:30 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <list.h>
 
 /*
-** list_merge - join two lists
-** @add: the new list to add.
-** @head: the place to add it in the first list.
+** Delete a list entry by making the prev/next entries
+** point to each other.
+**
+** This is only for internal list manipulation where we know
+** the prev/next entries already!
 */
-inline void		list_merge(t_lx *add, t_lx *head)
+inline void list_del_only(t_lx *prev, t_lx *next)
 {
-	if (!list_empty(add))
-		list_merge_only(add, head);
+	next->prev = prev;
+	prev->next = next;
 }
