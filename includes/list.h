@@ -6,14 +6,15 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/30 09:58:05 by wescande          #+#    #+#             */
-/*   Updated: 2017/08/31 01:22:40 by wescande         ###   ########.fr       */
+/*   Updated: 2017/09/01 15:21:53 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIST_H
 # define LIST_H
 
-#define ATOMIC_WRITE_BARRIER() __asm("" ::: "memory")
+# include <atomic.h>
+# include <stdlib.h>
 
 typedef struct		s_lx
 {
@@ -21,8 +22,9 @@ typedef struct		s_lx
 	struct s_lx		*prev;
 }					t_lx;
 
-#define LIST_HEAD(name)			t_lx name = { &(name), &(name) }
-#define INIT_LIST_HEAD(ptr)		(ptr)->next = (ptr)->prev = (ptr)
+# define LIST_HEAD_INIT(name)		{&(name), &(name)}
+# define LIST_HEAD(name)			t_lx name = LIST_HEAD_INIT(name)
+# define INIT_LIST_HEAD(ptr)		({(ptr)->prev = (ptr); WRITE_ONCE(ptr->next, ptr);})
 
 /*
 ** list_entry - get the struct for this entry
@@ -31,13 +33,18 @@ typedef struct		s_lx
 ** @m:	the name of the list_struct within the struct.
 */
 # define LIST_ENTRY_U(p,t,m)	((t *)((char *)(p) - offsetof(t, m)))
+
 # define CHECK_0(p,t,m)			const typeof(((t *)0)->m) *__mptr = (p)
 # define LIST_ENTRY(p,t,m)		CHECK_0(p,t,m);LIST_ENTRY_U(__mptr,t,m)
-# define CONTAINER_OF(p,t,m)		LIST_ENTRY(p,t,m)
+# define CONTAINER_OF(p,t,m)	LIST_ENTRY(p,t,m)
 
+# define LIST_FIRST_ENTRY(p,t,m)	LIST_ENTRY((p)->next, t, m)
 
-#define LIST_FOR_EACH(p, h)		p = (h); while ((p = p->next) != (h))
-#define LIST_FOR_EACH_REV(p, h)	p = (h); while ((p = p->prev) != (h))
+# define LIST_NEXT_ENTRY(p,m)	LIST_ENTRY_U((p)->m.next, typeof(*(p)), m)
+# define LIST_PREV_ENTRY(p,m)	LIST_ENTRY_U((p)->m.prev, typeof(*(p)), m)
+
+# define LIST_FOR_EACH(p, h)		p = (h); while ((p = p->next) != (h))
+# define LIST_FOR_EACH_REV(p, h)	p = (h); while ((p = p->prev) != (h))
 
 # define LFES0(p,t,h)						p = (h); t = p->next
 # define LFES1(p,t,h)						({p = t; t = p->next; p;}) != (h)
@@ -53,9 +60,13 @@ typedef struct		s_lx
 ** @h:	the head for your list.
 ** @m:	the name of the list_struct within the struct.
 */
-# define LFEE0(p,h,m)						p = LIST_ENTRY(h, typeof(*p), m)
-# define LFEE1(p,m)				(p = LIST_ENTRY_U(p->m.next, typeof(*p), m))
-# define LIST_FOR_EACH_ENTRY(p,h,m)		LFEE0(p,h,m);while(LFEE1(p,m) != (h))
+# define LFEE0(p,h,m)					p = LIST_ENTRY(h, typeof(*p), m)
+# define LFEE1(p,m)						(p = LIST_NEXT_ENTRY(p,m))
+# define LFEE2(p,m)						(p = LIST_PREV_ENTRY(p, m))
+# define LIST_FOR_EACH_ENTRY(p,h,m)		LFEE0(p,h,m); while(LFEE1(p,m) != (h))
+# define LIST_FOR_EACH_ENTRY_REV(p,h,m)	LFEE0(p,h,m); while(LFEE2(p,m) != (h))
+# define LIST_FOR_EACH_ENTRY_FROM(p,h,m)	while(LFEE1(p,m) != (h))
+# define LIST_FOR_EACH_ENTRY_FROM_REV(p,h,m)	while(LFEE2(p,m) != (h))
 
 /*
 ** list_for_each_entry_safe - iterate over list of given type safe against removal of list entry
@@ -64,23 +75,41 @@ typedef struct		s_lx
 ** @h:	the head for your list.
 ** @m:	the name of the list_struct within the struct.
 */
-# define LFS0(p,t,h,m)	LFEE0(p,h,m); t = LIST_ENTRY(p->m.next, typeof(*p), m)
+# define LFS0(p,t,h,m)					LFEE0(p,h,m); t = LIST_NEXT_ENTRY(p, m)
 # define LFS1(p,t,h,m)						({p = t; LFEE1(t,m);p->m;}) != (h)
-# define LIST_FOR_EACH_ENTRY_SAFE(p,t,h,m)	LFS0(p,t,h,m);while(LFS1(p,t,h,m));
+# define LIST_FOR_EACH_ENTRY_SAFE(p,t,h,m)	LFS0(p,t,h,m); while(LFS1(p,t,h,m))
 
-
-inline int		list_empty(t_lx *head);
-
+inline void		list_insert(t_lx *new, t_lx *prev, t_lx *next);
 inline void		list_add(t_lx *elem, t_lx *head);
-inline void 	list_del_only(t_lx *prev, t_lx *next);
+inline void		list_add_tail(t_lx *new, t_lx *head);
+
+inline void		list_cut_position(t_lx *list, t_lx *head, t_lx *entry);
+
+inline void		list_del_only(t_lx *prev, t_lx *next);
 inline void		list_del(t_lx *elem);
 inline void		list_del_init(t_lx *elem);
 
-inline void		list_merge_only(t_lx *add, t_lx *head);
+inline int		list_empty(const t_lx *head);
+inline int		list_empty_careful(const t_lx *head);
+
+inline int		list_is_last(const t_lx *list, t_lx *head);
+
+inline int		list_is_singular(const t_lx *head);
+
 inline void		list_merge(t_lx *add, t_lx *head);
+inline void		list_merge_init(t_lx *add, t_lx *head);
 
-inline void		list_insert(t_lx *new, t_lx *prev, t_lx *next);
-inline void		list_add_tail(t_lx *new, t_lx *head);
+inline void		list_move(t_lx *elem, t_lx *head);
+inline void		list_move_tail(t_lx *elem, t_lx *head);
 
+inline void		list_replace(t_lx *old, t_lx *new);
+inline void		list_replace_init(t_lx *old, t_lx *new);
+
+inline void		list_rotate_left(t_lx *head);
+
+inline void		list_splice(const t_lx *list, t_lx *head);
+inline void		list_splice_tail(t_lx *list, t_lx *head);
+inline void		list_splice_init(t_lx *list, t_lx *head);
+inline void		list_splice_tail_init(t_lx *list, t_lx *head);
 
 #endif

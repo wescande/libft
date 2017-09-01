@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_move_tail.c                                   :+:      :+:    :+:   */
+/*   list_replace.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/31 00:24:10 by wescande          #+#    #+#             */
-/*   Updated: 2017/08/31 00:25:16 by wescande         ###   ########.fr       */
+/*   Created: 2017/09/01 14:10:27 by wescande          #+#    #+#             */
+/*   Updated: 2017/09/01 15:10:59 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <list.h>
 
 /*
-** list_move_tail - delete from one list and add as another's tail
-** @elem: the entry to move
-** @head: the head that will follow our entry
+** list_replace - replace old entry by new one
+** @old : the element to be replaced
+** @new : the new element to insert
+**
+** If @old was empty, it will be overwritten.
 */
-inline void list_move_tail(t_lx *elem, t_lx *head)
+inline void		list_replace(t_lx *old, t_lx *new)
 {
-	list_del_only(elem->prev, elem->next);
-	list_add_tail(elem, head);
+	new->next = old->next;
+	new->next->prev = new;
+	new->prev = old->prev;
+	new->prev->next = new;
+}
+
+inline void		list_replace_init(t_lx *old, t_lx *new)
+{
+	list_replace(old, new);
+	INIT_LIST_HEAD(old);
 }

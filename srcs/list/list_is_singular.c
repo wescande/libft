@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_del_init.c                                    :+:      :+:    :+:   */
+/*   list_is_singular.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/31 00:17:20 by wescande          #+#    #+#             */
-/*   Updated: 2017/08/31 01:21:54 by wescande         ###   ########.fr       */
+/*   Created: 2017/09/01 14:22:57 by wescande          #+#    #+#             */
+/*   Updated: 2017/09/01 14:24:16 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <list.h>
 
 /*
-** list_del_init - deletes entry from list and reinitialize it.
-** @elem: the element to delete from the list.
+** list_is_singular - tests whether a list has just one entry.
+** @head: the list to test.
 */
-inline void		list_del_init(t_lx *elem)
+inline int		list_is_singular(const t_lx *head)
 {
-	list_del_only(elem->prev, elem->next);
-	INIT_LIST_HEAD(elem); 
+	return (!list_empty(head) && (head->next == head->prev));
 }

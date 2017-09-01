@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_insert.c                                      :+:      :+:    :+:   */
+/*   list_is_last.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/31 00:08:36 by wescande          #+#    #+#             */
-/*   Updated: 2017/08/31 00:23:51 by wescande         ###   ########.fr       */
+/*   Created: 2017/09/01 14:16:57 by wescande          #+#    #+#             */
+/*   Updated: 2017/09/01 15:18:34 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <list.h>
 
 /*
-** Insert a new entry between two known consecutive entries. 
-**
-** This is only for internal list manipulation where we know
-** the prev/next entries already!
+** list_is_last - tests whether @list is the last entry in list @head
+** @list: the entry to test
+** @head: the head of the list
 */
-inline void list_insert(t_lx *new, t_lx *prev, t_lx *next)
+inline int		list_is_last(const t_lx *list, t_lx *head)
 {
-	new->next = next;
-	new->prev = prev;
-	next->prev = new;
-	prev->next = new;
+	return (list->next == head);
 }

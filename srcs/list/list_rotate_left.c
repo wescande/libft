@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_merge_init.c                                  :+:      :+:    :+:   */
+/*   list_rotate_left.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/31 00:35:48 by wescande          #+#    #+#             */
-/*   Updated: 2017/08/31 00:36:54 by wescande         ###   ########.fr       */
+/*   Created: 2017/09/01 14:21:34 by wescande          #+#    #+#             */
+/*   Updated: 2017/09/01 14:22:28 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <list.h>
 
 /*
-** list_mergee_init - join two lists and reinitialise the emptied list.
-** @add: the new list to add.
-** @head: the place to add it in the first list.
-**
-** The list at @add is reinitialised
- */
- static inline void list_merge_init(t_lx *add, t_lx *head)
+** list_rotate_left - rotate the list to the left
+** @head: the head of the list
+*/
+inline void		list_rotate_left(t_lx *head)
 {
-	if (!list_empty(add))
+	t_lx *first;
+
+	if (!list_empty(head))
 	{
-		list_merge_only(add, head);
-		INIT_LIST_HEAD(add);
+		first = head->next;
+		list_move_tail(first, head);
 	}
 }
