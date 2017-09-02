@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/02 16:07:42 by wescande         ###   ########.fr       */
+/*   Updated: 2017/09/02 19:31:34 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 
 # define IS_SET(x, y)		(((x) & (y)) == (y))
 # define IS_ONESET(x, y)	((x) & (y))
+# define IS_SETREMOVE(x, y)	({int __tmp=((x) & (y)) == (y); UNSET(x,y);__tmp;})
 # define IS_UNSET(x, y)		(((x) & (y)) != (y))
 # define IS_ONEUNSET(x, y)	(!((x) & (y)))
 # define SET(x, y)			((x) |= (y))
@@ -261,6 +262,7 @@ long int		ft_abs(long int num);
 int				ft_atoi(const char *nptr);
 long int		ft_atoli_base(const char *nptr, short len);
 char			*ft_itoa(int n);
+char			*ft_itoa_nomalloc(int n, char *str);
 char			*ft_ftoa(long double n, short prec);
 char			*ft_ftoa_base(long double n, short prec, short bas, int is_up);
 char			*ft_litoa(long int n);
