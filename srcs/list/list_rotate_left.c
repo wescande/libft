@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/01 14:21:34 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/01 14:22:28 by wescande         ###   ########.fr       */
+/*   Updated: 2017/09/02 16:05:01 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 ** list_rotate_left - rotate the list to the left
 ** @head: the head of the list
 */
+
 inline void		list_rotate_left(t_lx *head)
 {
-	t_lx *first;
+	t_lx	*first;
 
 	if (!list_empty(head))
 	{

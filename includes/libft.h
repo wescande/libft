@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/08/30 00:30:30 by wescande         ###   ########.fr       */
+/*   Updated: 2017/09/02 16:07:42 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define SET(x, y)			((x) |= (y))
 # define UNSET(x, y)		((x) &= ~(y))
 # define SWITCH(x, y)		(IS_SET((x), (y)) ? UNSET((x), (y)) : SET((x), (y)))
+
 enum			e_bool
 {
 	false,
@@ -67,7 +68,7 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-typedef struct s_itof
+typedef struct	s_itof
 {
 	unsigned int	id;
 	int				(*f)();
@@ -205,6 +206,7 @@ t_list			*ft_lstreverse(t_list **lst);
 int				ft_lstsize(t_list *lst);
 t_list			*ft_lstswap(t_list *l_cur);
 void			ft_lstsort(t_list **begin_list, int (*cmp)());
+
 /*
 ** LIST D:
 */
@@ -279,6 +281,6 @@ int				ft_vasprintf(char **ret, const char *str, va_list ap);
 /*
 ** SYS :
 */
-char	*ft_getenv(char **env, const char *key);
+char			*ft_getenv(char **env, const char *key);
 
 #endif

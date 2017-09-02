@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/01 14:10:27 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/01 15:10:59 by wescande         ###   ########.fr       */
+/*   Updated: 2017/09/02 16:03:53 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 **
 ** If @old was empty, it will be overwritten.
 */
+
 inline void		list_replace(t_lx *old, t_lx *new)
 {
 	new->next = old->next;

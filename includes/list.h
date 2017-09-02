@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/30 09:58:05 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/01 15:36:00 by wescande         ###   ########.fr       */
+/*   Updated: 2017/09/02 16:06:42 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 # include <atomic.h>
 # include <stdlib.h>
 
-typedef struct		s_lx
+typedef struct	s_lx
 {
 	struct s_lx		*next;
 	struct s_lx		*prev;
-}					t_lx;
+}				t_lx;
 
-# define LIST_HEAD_INIT(name)		{&(name), &(name)}
-# define LIST_HEAD(name)			t_lx name = LIST_HEAD_INIT(name)
-# define INIT_LIST_HEAD(ptr)		({(ptr)->prev = (ptr); WRITE_ONCE(ptr->next, ptr);})
+# define LIST_HEAD_INIT(name)	{&(name), &(name)}
+# define LIST_HEAD(name)		t_lx name = LIST_HEAD_INIT(name)
+# define INIT_LIST_HEAD(ptr)	({(ptr)->prev=(ptr);WRITE_ONCE(ptr->next,ptr);})
 
 /*
 ** list_entry - get the struct for this entry
@@ -69,7 +69,8 @@ typedef struct		s_lx
 # define LIST_FOR_EACH_ENTRY_FROM_REV(p,h,m)	while(LFEE2(p,m) != (h))
 
 /*
-** list_for_each_entry_safe - iterate over list of given type safe against removal of list entry
+** list_for_each_entry_safe -
+** iterate over list of given type safe against removal of list entry
 ** @p:	the type * to use as a loop counter.
 ** @t:	another type * to use as temporary storage
 ** @h:	the head for your list.

@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/01 14:24:08 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/01 15:17:45 by wescande         ###   ########.fr       */
+/*   Updated: 2017/09/02 16:04:51 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static inline void	list_cut_position_only(t_lx *list, t_lx *head, t_lx *entry)
 ** @list: a new list to add all removed entries
 ** @head: a list with entries
 ** @entry: an entry within head, could be the head itself
-**	and if so we won't cut the list
+** and if so we won't cut the list
 **
 ** This helper moves the initial part of @head, up to and
 ** including @entry, from @head to @list. You should
@@ -38,13 +38,14 @@ static inline void	list_cut_position_only(t_lx *list, t_lx *head, t_lx *entry)
 ** should be an empty list or a list you do not care about
 ** losing its data.
 */
+
 inline void			list_cut_position(t_lx *list, t_lx *head, t_lx *entry)
 {
 	if (list_empty(head))
-		return;
+		return ;
 	if (list_is_singular(head) &&
 		(head->next != entry && head != entry))
-		return;
+		return ;
 	if (entry == head)
 		INIT_LIST_HEAD(list);
 	else

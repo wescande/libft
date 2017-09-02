@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/30 13:45:04 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/01 15:16:29 by wescande         ###   ########.fr       */
+/*   Updated: 2017/09/02 16:05:23 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ inline void		list_merge_only(t_lx *add, t_lx *head)
 ** @add: the new list to add.
 ** @head: the place to add it in the first list.
 */
+
 inline void		list_merge(t_lx *add, t_lx *head)
 {
 	if (!list_empty(add))
@@ -44,7 +45,8 @@ inline void		list_merge(t_lx *add, t_lx *head)
 ** @head: the place to add it in the first list.
 **
 ** The list at @add is reinitialised
- */
+*/
+
 inline void		list_merge_init(t_lx *add, t_lx *head)
 {
 	if (!list_empty(add))

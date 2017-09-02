@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/31 00:18:53 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/01 15:10:43 by wescande         ###   ########.fr       */
+/*   Updated: 2017/09/02 16:03:27 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 ** @elem: the entry to move
 ** @head: the head that will precede our entry
 */
+
 inline void		list_move(t_lx *elem, t_lx *head)
 {
 	list_del_only(elem->prev, elem->next);
@@ -28,6 +29,7 @@ inline void		list_move(t_lx *elem, t_lx *head)
 ** @elem: the entry to move
 ** @head: the head that will follow our entry
 */
+
 inline void		list_move_tail(t_lx *elem, t_lx *head)
 {
 	list_del_only(elem->prev, elem->next);
