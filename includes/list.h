@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/30 09:58:05 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/02 16:06:42 by wescande         ###   ########.fr       */
+/*   Updated: 2017/09/03 13:55:01 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct	s_lx
 
 # define LIST_HEAD_INIT(name)	{&(name), &(name)}
 # define LIST_HEAD(name)		t_lx name = LIST_HEAD_INIT(name)
-# define INIT_LIST_HEAD(ptr)	({(ptr)->prev=(ptr);WRITE_ONCE(ptr->next,ptr);})
+# define INIT_LIST_HEAD(p)		({(p)->prev = (p); WRITE_ONCE((p)->next, p);})
 
 /*
 ** list_entry - get the struct for this entry
@@ -61,13 +61,18 @@ typedef struct	s_lx
 ** @m:	the name of the list_struct within the struct.
 */
 # define LFEE0(p,h,m)					p = LIST_ENTRY(h, typeof(*p), m)
-# define LFEE1(p,m)						(p = LIST_NEXT_ENTRY(p,m))
-# define LFEE2(p,m)						(p = LIST_PREV_ENTRY(p, m))
+# define LFEE1(p,m)						&(p = LIST_NEXT_ENTRY(p,m))->m
+# define LFEE2(p,m)						&(p = LIST_PREV_ENTRY(p, m))->m
 # define LIST_FOR_EACH_ENTRY(p,h,m)		LFEE0(p,h,m); while(LFEE1(p,m) != (h))
 # define LIST_FOR_EACH_ENTRY_REV(p,h,m)	LFEE0(p,h,m); while(LFEE2(p,m) != (h))
 # define LIST_FOR_EACH_ENTRY_FROM(p,h,m)		while(LFEE1(p,m) != (h))
 # define LIST_FOR_EACH_ENTRY_FROM_REV(p,h,m)	while(LFEE2(p,m) != (h))
 
+#define list_for_each_entry(pos, head, member)				\
+	for (pos = list_first_entry(head, typeof(*pos), member);	\
+	     &pos->member != (head);					\
+	     pos = list_next_entry(pos, member))
+		 
 /*
 ** list_for_each_entry_safe -
 ** iterate over list of given type safe against removal of list entry
@@ -76,41 +81,41 @@ typedef struct	s_lx
 ** @h:	the head for your list.
 ** @m:	the name of the list_struct within the struct.
 */
-# define LFS0(p,t,h,m)					LFEE0(p,h,m); t = LIST_NEXT_ENTRY(p, m)
-# define LFS1(p,t,h,m)						({p = t; LFEE1(t,m);p->m;}) != (h)
+# define LFS0(p,t,h,m)						LFEE0(p,h,m);t=LIST_NEXT_ENTRY(p,m)
+# define LFS1(p,t,h,m)						({p = t; LFEE1(t,m);&p->m;}) != (h)
 # define LIST_FOR_EACH_ENTRY_SAFE(p,t,h,m)	LFS0(p,t,h,m); while(LFS1(p,t,h,m))
 
-inline void		list_insert(t_lx *new, t_lx *prev, t_lx *next);
-inline void		list_add(t_lx *elem, t_lx *head);
-inline void		list_add_tail(t_lx *new, t_lx *head);
+extern void		list_insert(t_lx *new, t_lx *prev, t_lx *next);
+extern void		list_add(t_lx *elem, t_lx *head);
+extern void		list_add_tail(t_lx *new, t_lx *head);
 
-inline void		list_cut_position(t_lx *list, t_lx *head, t_lx *entry);
+extern void		list_cut_position(t_lx *list, t_lx *head, t_lx *entry);
 
-inline void		list_del_only(t_lx *prev, t_lx *next);
-inline void		list_del(t_lx *elem);
-inline void		list_del_init(t_lx *elem);
+extern void		list_del_only(t_lx *prev, t_lx *next);
+extern void		list_del(t_lx *elem);
+extern void		list_del_init(t_lx *elem);
 
-inline int		list_empty(const t_lx *head);
-inline int		list_empty_careful(const t_lx *head);
+extern int		list_empty(const t_lx *head);
+extern int		list_empty_careful(const t_lx *head);
 
-inline int		list_is_last(const t_lx *list, t_lx *head);
+extern int		list_is_last(const t_lx *list, t_lx *head);
 
-inline int		list_is_singular(const t_lx *head);
+extern int		list_is_singular(const t_lx *head);
 
-inline void		list_merge(t_lx *add, t_lx *head);
-inline void		list_merge_init(t_lx *add, t_lx *head);
+extern void		list_merge(t_lx *add, t_lx *head);
+extern void		list_merge_init(t_lx *add, t_lx *head);
 
-inline void		list_move(t_lx *elem, t_lx *head);
-inline void		list_move_tail(t_lx *elem, t_lx *head);
+extern void		list_move(t_lx *elem, t_lx *head);
+extern void		list_move_tail(t_lx *elem, t_lx *head);
 
-inline void		list_replace(t_lx *old, t_lx *new);
-inline void		list_replace_init(t_lx *old, t_lx *new);
+extern void		list_replace(t_lx *old, t_lx *new);
+extern void		list_replace_init(t_lx *old, t_lx *new);
 
-inline void		list_rotate_left(t_lx *head);
+extern void		list_rotate_left(t_lx *head);
 
-inline void		list_splice(const t_lx *list, t_lx *head);
-inline void		list_splice_tail(t_lx *list, t_lx *head);
-inline void		list_splice_init(t_lx *list, t_lx *head);
-inline void		list_splice_tail_init(t_lx *list, t_lx *head);
+extern void		list_splice(const t_lx *list, t_lx *head);
+extern void		list_splice_tail(t_lx *list, t_lx *head);
+extern void		list_splice_init(t_lx *list, t_lx *head);
+extern void		list_splice_tail_init(t_lx *list, t_lx *head);
 
 #endif
