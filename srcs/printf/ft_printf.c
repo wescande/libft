@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 18:10:09 by wescande          #+#    #+#             */
-/*   Updated: 2017/04/08 00:24:36 by wescande         ###   ########.fr       */
+/*   Updated: 2017/09/05 18:35:52 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int					ft_vasprintf(char **ret, const char *str, va_list ap)
 	initialize_work(str, &w);
 	printf_core(&w, ap);
 	w.buf = w.ans;
+	len = w.len;
 	ft_colorize(&w);
 	*ret = w.ans;
-	len = w.len;
 	return (len);
 }
 

@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/03 13:15:42 by wescande         ###   ########.fr       */
+/*   Updated: 2017/09/05 18:09:42 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 #  define MV1_4(x)	((x >> 24) & (0xff << 0))
 #  define MV2_3(x)	((x >> 8) & (0xff << 8))
 #  define MV3_2(x)	((x << 8) & (0xff << 16))
-#  define MV4_1(x)	((x << 24) & (0xff << 24))
-#  define INTREV32(x)	MV1_4(x) | MV2_3(x) | MV3_2(x) | MV4_1(x)
+#  define MV4_1(x)	((x << 24) & ((unsigned int)0xff << 24))
+#  define INTREV32(x)	(unsigned int)(MV1_4(x) | MV2_3(x) | MV3_2(x) | MV4_1(x))
 # endif
 
 # define IS_SET(x, y)		(((x) & (y)) == (y))
