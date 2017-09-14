@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/05 18:09:42 by wescande         ###   ########.fr       */
+/*   Updated: 2017/09/14 19:36:02 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,8 +261,10 @@ short int		ft_num_len_base(long int num, short int len_base);
 short int		ft_unum_len_base(unsigned long int num, short int len_base);
 long int		ft_abs(long int num);
 int				ft_atoi(const char *nptr);
+unsigned int	ft_atoui(const char *nptr);
 long int		ft_atoli_base(const char *nptr, short len);
 char			*ft_itoa(int n);
+char			*ft_uitoa_nomalloc(unsigned int n, char *str);
 char			*ft_itoa_nomalloc(int n, char *str);
 char			*ft_ftoa(long double n, short prec);
 char			*ft_ftoa_base(long double n, short prec, short bas, int is_up);
