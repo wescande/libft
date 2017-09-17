@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/14 19:36:02 by wescande         ###   ########.fr       */
+/*   Updated: 2017/09/17 23:01:58 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct	s_cliopts
 	int				(*get)();
 	unsigned int	arg_required;
 }				t_cliopts;
+
 
 typedef struct	s_data_template
 {
@@ -266,6 +267,7 @@ long int		ft_atoli_base(const char *nptr, short len);
 char			*ft_itoa(int n);
 char			*ft_uitoa_nomalloc(unsigned int n, char *str);
 char			*ft_itoa_nomalloc(int n, char *str);
+char			*ft_litoa_nomalloc(long int n, char *str);
 char			*ft_ftoa(long double n, short prec);
 char			*ft_ftoa_base(long double n, short prec, short bas, int is_up);
 char			*ft_litoa(long int n);
