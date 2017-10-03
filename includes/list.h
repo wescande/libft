@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/30 09:58:05 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/03 21:52:18 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/03 21:53:18 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,6 @@ typedef struct	s_lx
 # define LIST_FOR_EACH_ENTRY_FROM(p,h,m)		while(LFEE1(p,m) != (h))
 # define LIST_FOR_EACH_ENTRY_FROM_REV(p,h,m)	while(LFEE2(p,m) != (h))
 
-#define list_for_each_entry(pos, head, member)				\
-	for (pos = list_first_entry(head, typeof(*pos), member);	\
-	     &pos->member != (head);					\
-	     pos = list_next_entry(pos, member))
-		 
 /*
 ** list_for_each_entry_safe -
 ** iterate over list of given type safe against removal of list entry
@@ -89,8 +84,9 @@ typedef struct	s_lx
 ** @m:	the name of the list_struct within the struct.
 */
 # define LFS0(p,t,h,m)						LFEE0(p,h,m);t=LIST_NEXT_ENTRY(p,m)
-# define LFS1(p,t,h,m)						({p = t; LFEE1(t,m);&p->m;}) != (h)
-# define LIST_FOR_EACH_ENTRY_SAFE(p,t,h,m)	LFS0(p,t,h,m); while(LFS1(p,t,h,m))
+# define LFS1(p,m)							(p = LIST_NEXT_ENTRY(p,m))
+# define LFS2(p,t,h,m)						({p = t;LFS1(t,m);&(p->m);}) != (h)
+# define LIST_FOR_EACH_ENTRY_SAFE(p,t,h,m)	LFS0(p,t,h,m); while(LFS2(p,t,h,m))
 
 extern void		list_insert(t_lx *new, t_lx *prev, t_lx *next);
 extern void		list_add(t_lx *elem, t_lx *head);

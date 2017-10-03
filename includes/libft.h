@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/03 13:15:42 by wescande         ###   ########.fr       */
+/*   Updated: 2017/09/17 23:01:58 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 #  define MV1_4(x)	((x >> 24) & (0xff << 0))
 #  define MV2_3(x)	((x >> 8) & (0xff << 8))
 #  define MV3_2(x)	((x << 8) & (0xff << 16))
-#  define MV4_1(x)	((x << 24) & (0xff << 24))
-#  define INTREV32(x)	MV1_4(x) | MV2_3(x) | MV3_2(x) | MV4_1(x)
+#  define MV4_1(x)	((x << 24) & ((unsigned int)0xff << 24))
+#  define INTREV32(x)	(unsigned int)(MV1_4(x) | MV2_3(x) | MV3_2(x) | MV4_1(x))
 # endif
 
 # define IS_SET(x, y)		(((x) & (y)) == (y))
@@ -89,6 +89,7 @@ typedef struct	s_cliopts
 	int				(*get)();
 	unsigned int	arg_required;
 }				t_cliopts;
+
 
 typedef struct	s_data_template
 {
@@ -261,9 +262,12 @@ short int		ft_num_len_base(long int num, short int len_base);
 short int		ft_unum_len_base(unsigned long int num, short int len_base);
 long int		ft_abs(long int num);
 int				ft_atoi(const char *nptr);
+unsigned int	ft_atoui(const char *nptr);
 long int		ft_atoli_base(const char *nptr, short len);
 char			*ft_itoa(int n);
+char			*ft_uitoa_nomalloc(unsigned int n, char *str);
 char			*ft_itoa_nomalloc(int n, char *str);
+char			*ft_litoa_nomalloc(long int n, char *str);
 char			*ft_ftoa(long double n, short prec);
 char			*ft_ftoa_base(long double n, short prec, short bas, int is_up);
 char			*ft_litoa(long int n);
