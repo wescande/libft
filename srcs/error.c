@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/07 22:58:17 by wescande          #+#    #+#             */
-/*   Updated: 2017/08/28 01:04:40 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/04 17:12:10 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,20 @@
 
 char	g_error_msglist[E_MAX][ERRMSG_MAX_SIZE] =
 {
-	"unknown error 0",
-	"invalid option -%c",
-	"invalid option --%s",
-	"option '%c' awaits argument(s): please don't combine",
-	"option '%c': missing argument",
-	"option '%s': missing argument",
+	"Uunknown error 0",
+	"Invalid option -%c",
+	"Invalid option --%s",
+	"Option '%c' awaits argument(s): please don't combine",
+	"Option '%c': missing argument",
+	"Option '%s': missing argument",
 	"%s: no such file or directory",
 	"%s: Is a directory",
 	"%s: Permission denied",
-	"option '%c': not a valid argument",
-	"option '%s': not a valid argument",
+	"Option '%c': not a valid argument",
+	"Option '%s': not a valid argument",
+	"Error: Memory allocation error",
+	"%s: Failed to open file: %s",
+	"%s: %s",
 };
 
 int		g_errnum = 0;
@@ -48,4 +51,13 @@ int		ft_perror(char *utility)
 	utility = utility ? utility : g_argv[0];
 	ERR_MSG(utility, g_errmsg);
 	return (g_errnum);
+}
+
+char	*ft_strerror(unsigned int errnum)
+{
+	if (errnum > E_MAX)
+		return (g_error_msglist[0]);
+	if (errnum == g_errnum)
+		return (g_errmsg);
+	return (g_error_msglist[errnum]);
 }

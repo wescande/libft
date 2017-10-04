@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/17 23:01:58 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/04 17:12:10 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,10 @@ t_cliopts		*cliopts_getmap_short(t_cliopts opt_map[], char arg);
 ** ERROR
 */
 
-# define ERRMSG_MAX_SIZE	150
-# define ERR_PROTO(u, m)	"{red}%s: %s{eoc}\n", u, m
-# define ERR_MSG(u, m)		ft_dprintf(2, ERR_PROTO(u, m))
-# define ERR_SET(n, ...)	error_set(n, ##__VA_ARGS__)
+# define ERRMSG_MAX_SIZE		150
+# define ERR_PROTO(u, m)		"{red}%s: %s{eoc}\n", u, m
+# define ERR_MSG(u, m)			ft_dprintf(2, ERR_PROTO(u, m))
+# define ERR_SET(ret,n, ...)	({error_set(n, ##__VA_ARGS__);ret})
 
 enum	e_errors
 {
@@ -123,6 +123,9 @@ enum	e_errors
 	E_SYS_NOPERM,
 	E_CO_ARG_INV,
 	E_CO_ARG_INVL,
+	E_MALLOC,
+	E_OPEN,
+	E_CUSTOM_ERR,
 	E_MAX,
 };
 
