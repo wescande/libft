@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/30 09:58:05 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/03 21:53:18 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/05 16:02:35 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,11 @@ typedef struct	s_lx
 # define LFEE2(p,m)						&((p = LIST_PREV_ENTRY(p, m))->m)
 # define LIST_FOR_EACH_ENTRY_0(p,h,m)	(LFEE0(p,h,m))
 # define LIST_FOR_EACH_ENTRY_1(p,h,m)	(LFEE1(p,m) != (h))
+
 /*
 ** for norme friendly :
 ** LIST_FOR_EACH_ENTRY_0(p,h,m);
-** while(LIST_FOR_EACH_ENTRY_1(p,m) != (h))
+** while(LIST_FOR_EACH_ENTRY_1(p,h,m))
 ** define LIST_FOR_EACH_ENTRY(p,h,m)	LFEE0(p,h,m); while(LFEE1(p,m) != (h))
 */
 # define LIST_FOR_EACH_ENTRY_REV(p,h,m)	LFEE0(p,h,m); while(LFEE2(p,m) != (h))
@@ -86,11 +87,17 @@ typedef struct	s_lx
 # define LFS0(p,t,h,m)						LFEE0(p,h,m);t=LIST_NEXT_ENTRY(p,m)
 # define LFS1(p,m)							(p = LIST_NEXT_ENTRY(p,m))
 # define LFS2(p,t,h,m)						({p = t;LFS1(t,m);&(p->m);}) != (h)
-# define LIST_FOR_EACH_ENTRY_SAFE(p,t,h,m)	LFS0(p,t,h,m); while(LFS2(p,t,h,m))
+# define LIST_FOR_EACH_ENTRY_SAFE_0(p,t,h,m)	LFS0(p,t,h,m)
+# define LIST_FOR_EACH_ENTRY_SAFE_1(p,t,h,m)	LFS2(p,t,h,m)
 
-extern void		list_insert(t_lx *new, t_lx *prev, t_lx *next);
+/*
+** Norme friendly hack
+**# define LIST_FOR_EACH_ENTRY_SAFE(p,t,h,m) LFS0(p,t,h,m); while(LFS2(p,t,h,m))
+*/
+
+extern void		list_insert(t_lx *new_lx, t_lx *prev, t_lx *next);
 extern void		list_add(t_lx *elem, t_lx *head);
-extern void		list_add_tail(t_lx *new, t_lx *head);
+extern void		list_add_tail(t_lx *new_lx, t_lx *head);
 
 extern void		list_cut_position(t_lx *list, t_lx *head, t_lx *entry);
 
@@ -111,8 +118,8 @@ extern void		list_merge_init(t_lx *add, t_lx *head);
 extern void		list_move(t_lx *elem, t_lx *head);
 extern void		list_move_tail(t_lx *elem, t_lx *head);
 
-extern void		list_replace(t_lx *old, t_lx *new);
-extern void		list_replace_init(t_lx *old, t_lx *new);
+extern void		list_replace(t_lx *old, t_lx *new_lx);
+extern void		list_replace_init(t_lx *old, t_lx *new_lx);
 
 extern void		list_rotate_left(t_lx *head);
 

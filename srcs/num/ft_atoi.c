@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/06 00:03:33 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/14 19:36:22 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/05 16:05:29 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ unsigned int		ft_atoui(const char *nptr)
 	return (nb);
 }
 
-int		ft_atoi(const char *nptr)
+int					ft_atoi(const char *nptr)
 {
 	int nb;
 	int nptr_start;

@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/04 17:12:10 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/05 16:03:22 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 #  define MV2_3(x)	((x >> 8) & (0xff << 8))
 #  define MV3_2(x)	((x << 8) & (0xff << 16))
 #  define MV4_1(x)	((x << 24) & ((unsigned int)0xff << 24))
-#  define INTREV32(x)	(unsigned int)(MV1_4(x) | MV2_3(x) | MV3_2(x) | MV4_1(x))
+#  define INTREV32(x)	(unsigned int)(MV1_4(x)|MV2_3(x)|MV3_2(x)|MV4_1(x))
 # endif
 
 # define IS_SET(x, y)		(((x) & (y)) == (y))
@@ -90,7 +90,6 @@ typedef struct	s_cliopts
 	unsigned int	arg_required;
 }				t_cliopts;
 
-
 typedef struct	s_data_template
 {
 	long int	flag;
@@ -104,11 +103,12 @@ t_cliopts		*cliopts_getmap_short(t_cliopts opt_map[], char arg);
 /*
 ** ERROR
 */
+extern int		g_errnum;
 
 # define ERRMSG_MAX_SIZE		150
 # define ERR_PROTO(u, m)		"{red}%s: %s{eoc}\n", u, m
 # define ERR_MSG(u, m)			ft_dprintf(2, ERR_PROTO(u, m))
-# define ERR_SET(ret,n, ...)	({error_set(n, ##__VA_ARGS__);ret})
+# define ERR_SET(ret, n, ...)	({error_set(n, ##__VA_ARGS__);ret;})
 
 enum	e_errors
 {
@@ -131,6 +131,7 @@ enum	e_errors
 
 int				error_set(int n, ...);
 int				ft_perror(char *utility);
+char			*ft_strerror(int errnum);
 
 size_t			ft_strlen(const char *s);
 size_t			ft_strlenchr(const char *s, char c);

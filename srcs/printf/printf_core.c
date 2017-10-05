@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 00:24:16 by wescande          #+#    #+#             */
-/*   Updated: 2017/04/08 00:24:19 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/05 16:04:20 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void			add_buf(t_wrk *w, char **in, int len)
 	ft_memcpy(w->ans + w->len, *in, len);
 }
 
-void			printf_core(t_wrk *w, va_list ap)
+void				printf_core(t_wrk *w, va_list ap)
 {
 	char	*end;
 	t_conv	tmp;

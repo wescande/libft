@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/07 22:14:46 by wescande          #+#    #+#             */
-/*   Updated: 2017/08/28 01:04:26 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/05 16:05:14 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static char			**check_required(char ***av, char *arg, int n_args)
 	return (ret);
 }
 
-static int			cliopts_map(t_cliopts *map, char ***av, char *arg, void *data)
+static int			cliopts_map(t_cliopts *map, char ***av,
+								char *arg, void *data)
 {
 	char		**tab_tmp;
 	char		**av_tmp;
@@ -52,9 +53,9 @@ static int			cliopts_map(t_cliopts *map, char ***av, char *arg, void *data)
 	av_tmp = *av;
 	tmp = **av;
 	if (!(tab_tmp = check_required(av, arg, map->arg_required)))
-		return (ERR_SET(E_CO_MISS, *arg));
+		return (ERR_SET(1, E_CO_MISS, *arg));
 	if ((map->get)(tab_tmp, data, map->arg_required))
-		return (ERR_SET(E_CO_ARG_INV, *arg));
+		return (ERR_SET(1, E_CO_ARG_INV, *arg));
 	*av_tmp = tmp;
 	return (0);
 }
@@ -72,7 +73,7 @@ static int			cliopts_parse_short(
 	while (arg[++i] && !(tmp = NULL))
 	{
 		if (!(map = cliopts_getmap_short(opt_map, arg[i])))
-			return (ERR_SET(E_CO_INV, arg[i]));
+			return (ERR_SET(1, E_CO_INV, arg[i]));
 		((t_data_template*)data)->flag |= map->flag_on;
 		((t_data_template*)data)->flag &= ~map->flag_off;
 		if (map->get)
@@ -91,19 +92,19 @@ static int			cliopts_parse_long(
 {
 	t_cliopts	*map;
 	char		*arg;
-	char 		**tab_tmp;
+	char		**tab_tmp;
 
 	arg = **av + 2;
 	if (!(map = cliopts_getmap_long(opt_map, arg)))
-		return (ERR_SET(E_CO_INVL, arg));
+		return (ERR_SET(1, E_CO_INVL, arg));
 	((t_data_template*)data)->flag |= map->flag_on;
 	((t_data_template*)data)->flag &= ~map->flag_off;
 	if (map->get)
 	{
 		if (!(tab_tmp = check_required(av, NULL, map->arg_required)))
-			return (ERR_SET(E_CO_MISSL, arg));
+			return (ERR_SET(1, E_CO_MISSL, arg));
 		if ((map->get)(tab_tmp, data, map->arg_required))
-			return (ERR_SET(E_CO_ARG_INVL, arg));
+			return (ERR_SET(1, E_CO_ARG_INVL, arg));
 	}
 	++(*av);
 	return (0);

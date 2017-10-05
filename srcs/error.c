@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/07 22:58:17 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/04 17:12:10 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/05 12:01:10 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 char	g_error_msglist[E_MAX][ERRMSG_MAX_SIZE] =
 {
-	"Uunknown error 0",
+	"Unknown error 0",
 	"Invalid option -%c",
 	"Invalid option --%s",
 	"Option '%c' awaits argument(s): please don't combine",
@@ -53,7 +53,7 @@ int		ft_perror(char *utility)
 	return (g_errnum);
 }
 
-char	*ft_strerror(unsigned int errnum)
+char	*ft_strerror(int errnum)
 {
 	if (errnum > E_MAX)
 		return (g_error_msglist[0]);
