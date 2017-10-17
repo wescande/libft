@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/30 09:58:05 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/05 16:02:35 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/17 16:43:24 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <atomic.h>
 # include <stdlib.h>
+# include <stddef.h>
 
 typedef struct	s_lx
 {
@@ -39,6 +40,7 @@ typedef struct	s_lx
 # define LIST_ENTRY(p,t,m)		CONTAINER_OF(p,t,m)
 
 # define LIST_FIRST_ENTRY(p,t,m)	LIST_ENTRY((p)->next, t, m)
+# define LIST_LAST_ENTRY(p,t,m)		LIST_ENTRY((p)->prev, t, m)
 
 # define LIST_NEXT_ENTRY(p,m)	LIST_ENTRY_U((p)->m.next, typeof(*(p)), m)
 # define LIST_PREV_ENTRY(p,m)	LIST_ENTRY_U((p)->m.prev, typeof(*(p)), m)
@@ -127,5 +129,9 @@ extern void		list_splice(const t_lx *list, t_lx *head);
 extern void		list_splice_tail(t_lx *list, t_lx *head);
 extern void		list_splice_init(t_lx *list, t_lx *head);
 extern void		list_splice_tail_init(t_lx *list, t_lx *head);
+
+extern t_lx		*list_findat(t_lx *head, size_t n);
+
+extern size_t	list_len(t_lx *head);
 
 #endif
