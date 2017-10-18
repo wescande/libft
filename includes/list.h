@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/30 09:58:05 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/17 16:43:24 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/18 22:37:10 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,16 @@ typedef struct	s_lx
 # define LFEE2(p,m)						&((p = LIST_PREV_ENTRY(p, m))->m)
 # define LIST_FOR_EACH_ENTRY_0(p,h,m)	(LFEE0(p,h,m))
 # define LIST_FOR_EACH_ENTRY_1(p,h,m)	(LFEE1(p,m) != (h))
+# define LIST_FOR_EACH_ENTRY_REV_1(p,h,m)	(LFEE2(p,m) != (h))
 
 /*
 ** for norme friendly :
 ** LIST_FOR_EACH_ENTRY_0(p,h,m);
 ** while(LIST_FOR_EACH_ENTRY_1(p,h,m))
 ** define LIST_FOR_EACH_ENTRY(p,h,m)	LFEE0(p,h,m); while(LFEE1(p,m) != (h))
+** while(LIST_FOR_EACH_ENTRY_REV_1(p,h,m))
+** define LIST_FOR_EACH_ENTRY_REV(p,h,m) LFEE0(p,h,m); while(LFEE2(p,m) != (h))
 */
-# define LIST_FOR_EACH_ENTRY_REV(p,h,m)	LFEE0(p,h,m); while(LFEE2(p,m) != (h))
 # define LIST_FOR_EACH_ENTRY_FROM(p,h,m)		while(LFEE1(p,m) != (h))
 # define LIST_FOR_EACH_ENTRY_FROM_REV(p,h,m)	while(LFEE2(p,m) != (h))
 
