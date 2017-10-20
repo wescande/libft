@@ -45,6 +45,7 @@ SRC_BASE	= \
 42_retro/lst/ft_lstsize.c\
 42_retro/lst/ft_lstsort.c\
 42_retro/lst/ft_lstswap.c\
+byteswap.c\
 cliopts_get.c\
 cliopts_getmap.c\
 error.c\

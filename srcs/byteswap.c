@@ -6,11 +6,12 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/20 11:46:32 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/20 11:53:41 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/20 12:33:57 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdint.h>
+#include <libft.h>
 
 inline uint8_t		bswap_8(uint8_t x)
 {
@@ -27,8 +28,8 @@ inline uint16_t		bswap_16(uint16_t x)
 inline uint32_t		bswap_32(uint32_t x)
 {
 	return (((x & 0xff000000u) >> 24)
-			| ((x & 0x00ff0000u) >>  8)
-			| ((x & 0x0000ff00u) <<  8)
+			| ((x & 0x00ff0000u) >> 8)
+			| ((x & 0x0000ff00u) << 8)
 			| ((x & 0x000000ffu) << 24));
 }
 
