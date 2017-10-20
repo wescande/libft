@@ -6,11 +6,11 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 13:06:09 by wescande          #+#    #+#             */
-/*   Updated: 2017/04/08 00:11:04 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/20 12:07:45 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static void		put_the_s(t_conv *tmp, char *str)
 {

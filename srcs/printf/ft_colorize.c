@@ -6,11 +6,11 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 19:43:14 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/05 16:04:15 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/20 12:09:25 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static void		ft_strinsert_replace(t_wrk *w, char *in, int pos, int width)
 {

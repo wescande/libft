@@ -6,11 +6,11 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 00:24:16 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/05 16:04:20 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/20 12:09:37 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static void			add_buf(t_wrk *w, char **in, int len)
 {

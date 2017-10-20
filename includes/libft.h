@@ -6,14 +6,14 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/19 11:36:10 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/20 12:05:53 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include "ft_printf.h"
+# include <stdarg.h>
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -284,6 +284,10 @@ char			*ft_litoa_base(long int n, short int len_base, int is_maj);
 char			*ft_ulitoa(unsigned long int n);
 char			*ft_ulitoa_base(unsigned long int n, short int len_base,
 								int is_maj);
+extern uint8_t	bswap_8(uint8_t x);
+extern uint16_t	bswap_16(uint16_t x);
+extern uint32_t	bswap_32(uint32_t x);
+extern uint64_t	bswap_64(uint64_t x);
 
 /*
 ** PRINTF :

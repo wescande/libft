@@ -6,11 +6,11 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 18:10:09 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/05 14:22:59 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/20 12:10:00 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 int					ft_vasprintf(char **ret, const char *str, va_list ap)
 {

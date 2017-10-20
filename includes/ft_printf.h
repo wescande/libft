@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 19:42:53 by wescande          #+#    #+#             */
-/*   Updated: 2017/04/08 00:24:00 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/20 12:07:26 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdlib.h>
+# include <libft.h>
 
 # define ABS(x) ((x < 0) ? (-x) : x)
 # define CASTVA_ARG(valist, cast) ((cast)va_arg(valist, cast))

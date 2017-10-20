@@ -6,11 +6,11 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 15:41:17 by wescande          #+#    #+#             */
-/*   Updated: 2017/04/08 00:15:06 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/20 12:09:02 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static int			checkmodify(t_conv *tmp, char **end)
 {
