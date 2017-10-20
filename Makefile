@@ -6,7 +6,7 @@
 #    By: wescande <wescande@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/08/29 21:32:58 by wescande          #+#    #+#              #
-#    Updated: 2017/10/17 16:37:16 by wescande         ###   ########.fr        #
+#    Updated: 2017/10/20 14:22:56 by wescande         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -218,5 +218,5 @@ re :			fclean all
 -include $(OBJS:.o=.d)
 
 unit_test:
-	make -C .unit_test re
-	./.unit_test/unit_test
+	@make -C .unit_test re
+	@./.unit_test/unit_test

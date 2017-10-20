@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/20 12:05:53 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/20 14:22:20 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <list.h>
+# include <stdint.h>
 
 # define STDIN			STDIN_FILENO
 # define STDOUT			STDOUT_FILENO
