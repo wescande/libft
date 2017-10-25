@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/20 14:22:20 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/25 17:10:13 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ typedef struct	s_cliopts
 
 typedef struct	s_data_template
 {
-	long int	flag;
+	uint64_t	flag;
 	char		**av_data;
 }				t_data_template;
 
