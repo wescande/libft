@@ -96,6 +96,7 @@ output/ft_putstr.c\
 output/ft_putstr_fd.c\
 output/ft_tabprint.c\
 output/ft_tabprint_fd.c\
+output/verbose.c\
 printf/add/ft_printf_adding.c\
 printf/add/ft_printf_fill.c\
 printf/conv/conv_a.c\

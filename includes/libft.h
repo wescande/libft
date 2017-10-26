@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/25 17:10:13 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/26 18:58:25 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,25 @@
 # define UNSET(x, y)		((x) &= ~(y))
 # define SWITCH(x, y)		(IS_SET((x), (y)) ? UNSET((x), (y)) : SET((x), (y)))
 
+/*
+** VERBOSE MODULE
+*/
+# define VERBOSE                ((uint64_t)1 << 61)
+# define QUIET                  ((uint64_t)1 << 62)
+# define DEBUG                  ((uint64_t)1 << 63)
+
+extern char		**g_argv;
+
+enum			e_msg_level
+{
+	MSG_STD = 0,
+	MSG_INFO,
+	MSG_WARNING,
+	MSG_DEBUG,
+	MSG_ERROR,
+	MSG_SUCCESS
+};
+
 enum			e_bool
 {
 	false,
@@ -102,9 +121,9 @@ typedef struct	s_data_template
 	char		**av_data;
 }				t_data_template;
 
-int				cliopts_get(char **av, t_cliopts opt_map[], void *data);
-t_cliopts		*cliopts_getmap_long(t_cliopts opt_map[], char *arg);
-t_cliopts		*cliopts_getmap_short(t_cliopts opt_map[], char arg);
+int				cliopts_get(char **av, const t_cliopts opt_map[], void *data);
+t_cliopts		*cliopts_getmap_long(const t_cliopts opt_map[], char *arg);
+t_cliopts		*cliopts_getmap_short(const t_cliopts opt_map[], char arg);
 
 /*
 ** ERROR
@@ -204,6 +223,7 @@ void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 void			ft_tabprint(char **mytab);
 void			ft_tabprint_fd(char **mytab, int fd);
+int				verbose(uint64_t flag, const int level, const char *msg, ...);
 
 /*
 ** LIST :

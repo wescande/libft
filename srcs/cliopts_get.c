@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/07 22:14:46 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/05 16:05:14 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/26 18:58:01 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char			**check_required(char ***av, char *arg, int n_args)
 	return (ret);
 }
 
-static int			cliopts_map(t_cliopts *map, char ***av,
+static int			cliopts_map(const t_cliopts *map, char ***av,
 								char *arg, void *data)
 {
 	char		**tab_tmp;
@@ -61,7 +61,7 @@ static int			cliopts_map(t_cliopts *map, char ***av,
 }
 
 static int			cliopts_parse_short(
-		char ***av, t_cliopts opt_map[], void *data)
+		char ***av, const t_cliopts opt_map[], void *data)
 {
 	t_cliopts	*map;
 	char		*arg;
@@ -88,7 +88,7 @@ static int			cliopts_parse_short(
 }
 
 static int			cliopts_parse_long(
-		char ***av, t_cliopts opt_map[], void *data)
+		char ***av, const t_cliopts opt_map[], void *data)
 {
 	t_cliopts	*map;
 	char		*arg;
@@ -110,8 +110,9 @@ static int			cliopts_parse_long(
 	return (0);
 }
 
-int					cliopts_get(char **av, t_cliopts opt_map[], void *data)
+int					cliopts_get(char **av, const t_cliopts opt_map[], void *data)
 {
+	g_argv = av;
 	if (!av)
 		return (1);
 	av++;
