@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/26 18:58:25 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/27 17:22:51 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,15 @@ typedef struct	s_list
 
 typedef struct	s_itof
 {
-	unsigned int	id;
+	uint32_t		id;
 	int				(*f)();
 }				t_itof;
+
+typedef struct	s_stof
+{
+	char			*str;
+	int				(*f)();
+}				t_stof;
 
 /*
 ** CLIOPTS
@@ -205,6 +211,8 @@ void			ft_tabdel(char ***mytab);
 int				ft_tablen(char **mytab);
 
 int				get_next_line(const int fd, char **line);
+char			*ft_strsepjoin(char **tab, char sep);
+char			*ft_strsepjoin_crlf(char **tab, char sep);
 
 char			*ft_strjoinf(char *s1, char *s2, int state);
 char			*ft_strsubf(char *s, unsigned int top, size_t l, short int mod);
