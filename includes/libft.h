@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/26 18:58:25 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/30 20:50:30 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@ typedef struct	s_cliopts
 {
 	char			c;
 	char			*str;
-	long int		flag_on;
-	long int		flag_off;
+	uint64_t		flag_on;
+	uint64_t		flag_off;
 	int				(*get)();
 	unsigned int	arg_required;
 }				t_cliopts;
@@ -276,6 +276,7 @@ void			*ft_memcpy(void *dest, const void *src, size_t n);
 void			*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void			*ft_memmove(void *dest, const void *src, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
+void			*ft_memstr(const void *mem, const char *str, size_t n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
 void			*ft_memjoin(const void *mem1, const void *mem2,
 							size_t len1, size_t len2);
