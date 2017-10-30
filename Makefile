@@ -151,6 +151,7 @@ str/ft_strnew.c\
 str/ft_strnewc.c\
 str/ft_strnstr.c\
 str/ft_strrchr.c\
+str/ft_strsepjoin.c\
 str/ft_strsplit.c\
 str/ft_strsplitspa.c\
 str/ft_strstr.c\

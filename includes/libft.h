@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/30 20:50:30 by wescande         ###   ########.fr       */
+/*   Updated: 2017/10/30 20:51:31 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,6 @@
 #  define DGMSG0		"{blu}%s, {cya}%s, {gre}%4d - {red}"
 #  define DGMSG1		__FILE__, __func__, __LINE__
 #  define DG(f, ...)	ft_dprintf(2, DGMSG0 f "{eoc}\n", DGMSG1, ##__VA_ARGS__)
-# endif
-
-# ifndef INTREV32
-#  define MV1_4(x)	((x >> 24) & (0xff << 0))
-#  define MV2_3(x)	((x >> 8) & (0xff << 8))
-#  define MV3_2(x)	((x << 8) & (0xff << 16))
-#  define MV4_1(x)	((x << 24) & ((unsigned int)0xff << 24))
-#  define INTREV32(x)	(unsigned int)(MV1_4(x)|MV2_3(x)|MV3_2(x)|MV4_1(x))
-# endif
-# ifndef INTREV16
-#  define MV1_2(x)	((x >> 8) & (0xff << 0))
-#  define MV2_1(x)	((x << 8) & (0xff << 8))
-#  define INTREV16(x)	(unsigned short)(MV1_2(x)|MV2_1(x))
 # endif
 
 # define IS_SET(x, y)		(((x) & (y)) == (y))
@@ -97,9 +84,15 @@ typedef struct	s_list
 
 typedef struct	s_itof
 {
-	unsigned int	id;
+	uint32_t		id;
 	int				(*f)();
 }				t_itof;
+
+typedef struct	s_stof
+{
+	char			*str;
+	int				(*f)();
+}				t_stof;
 
 /*
 ** CLIOPTS
@@ -129,6 +122,7 @@ t_cliopts		*cliopts_getmap_short(const t_cliopts opt_map[], char arg);
 ** ERROR
 */
 extern int		g_errnum;
+extern char		*g_errmsg;
 
 # define ERRMSG_MAX_SIZE		150
 # define ERR_PROTO(u, m)		"{red}%s: %s{eoc}\n", u, m
@@ -205,6 +199,8 @@ void			ft_tabdel(char ***mytab);
 int				ft_tablen(char **mytab);
 
 int				get_next_line(const int fd, char **line);
+char			*ft_strsepjoin(char **tab, char sep);
+char			*ft_strsepjoin_crlf(char **tab, char sep);
 
 char			*ft_strjoinf(char *s1, char *s2, int state);
 char			*ft_strsubf(char *s, unsigned int top, size_t l, short int mod);

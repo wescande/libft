@@ -43,5 +43,5 @@ int			verbose(uint64_t flag, const int level, const char *message, ...)
 	ft_vasprintf(&str, message, va);
 	verbose_only(level, str);
 	free(str);
-	return (level == MSG_ERROR);
+	return ((level == MSG_ERROR) * -1);
 }
