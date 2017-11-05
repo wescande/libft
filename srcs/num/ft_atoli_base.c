@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 16:53:18 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/16 14:50:47 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/05 14:45:43 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ long int		ft_atoli_base(const char *nptr, short len)
 	char		*pos;
 
 	nb = 0;
-	is_neg = false;
+	is_neg = 0;
 	if (!nptr || len > 26 || len < 2)
 		return (0);
 	while (ft_isspa(*nptr))

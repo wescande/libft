@@ -6,14 +6,14 @@
 #    By: wescande <wescande@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/08/29 21:32:58 by wescande          #+#    #+#              #
-#    Updated: 2017/10/30 20:50:51 by wescande         ###   ########.fr        #
+#    Updated: 2017/11/05 15:20:41 by wescande         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	libft.a
 
 CC			?=	gcc
-FLAGS		=	-Wall -Wextra -Werror -O3
+FLAGS		=	-Wall -Wextra -Werror -O3 -D FULL_LIBFT
 
 LEN_NAME	=	`printf "%s" $(NAME) |wc -c`
 DELTA		=	$$(echo "$$(tput cols)-31-$(LEN_NAME)"|bc)
@@ -179,8 +179,7 @@ INDEX		=	0
 
 SHELL := /bin/bash
 
-all :
-	@$(MAKE) -j $(NAME)
+all : $(NAME)
 
 $(NAME) :		$(OBJ_DIR) $(OBJS) Makefile
 	@ar rcs $(NAME) $(OBJS)

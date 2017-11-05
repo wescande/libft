@@ -6,11 +6,13 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/31 00:18:53 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/02 16:03:27 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/05 15:02:07 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <list.h>
+
+#ifdef FULL_LIBFT
 
 /*
 ** list_move - delete from one list and add as another's head
@@ -35,3 +37,5 @@ inline void		list_move_tail(t_lx *elem, t_lx *head)
 	list_del_only(elem->prev, elem->next);
 	list_add_tail(elem, head);
 }
+
+#endif

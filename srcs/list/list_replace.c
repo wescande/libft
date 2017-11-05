@@ -6,11 +6,13 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/01 14:10:27 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/02 16:03:53 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/05 15:02:02 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <list.h>
+
+#ifdef FULL_LIBFT
 
 /*
 ** list_replace - replace old entry by new one
@@ -33,3 +35,5 @@ inline void		list_replace_init(t_lx *old, t_lx *new)
 	list_replace(old, new);
 	INIT_LIST_HEAD(old);
 }
+
+#endif

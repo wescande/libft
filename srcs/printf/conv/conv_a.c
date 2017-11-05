@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 16:01:13 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/20 12:07:31 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/05 14:46:19 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	add_a(t_conv *tmp)
 static void	set_double(t_conv *tmp, va_list ap)
 {
 	tmp->base = 16;
-	tmp->sha = true;
+	tmp->sha = 1;
 	if (tmp->acc == -1)
 		tmp->acc = 13;
 	if (tmp->is_long)

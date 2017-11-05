@@ -6,11 +6,13 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/01 14:31:49 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/02 16:05:11 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/05 15:01:50 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <list.h>
+
+#ifdef FULL_LIBFT
 
 static inline void	list_splice_only(const t_lx *list, t_lx *prev, t_lx *next)
 {
@@ -83,3 +85,5 @@ inline void			list_splice_tail_init(t_lx *list, t_lx *head)
 		INIT_LIST_HEAD(list);
 	}
 }
+
+#endif

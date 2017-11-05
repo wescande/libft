@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/23 14:43:26 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/16 14:51:41 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/05 14:46:04 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	*ft_litoa_under0(long double value, short int prec,
 		if (do_it && prec < 15)
 		{
 			value += 0.05 / ft_pow(len_base, prec);
-			do_it = false;
+			do_it = 0;
 		}
 		str[i++] = base_str[(int)(value * len_base)];
 		value *= len_base;
@@ -53,7 +53,7 @@ char		*ft_ftoa(long double n, short prec)
 		return (str);
 	str = ft_strjoinf(str, ".", 1);
 	n = (n - (long int)n) * (n < 0 ? -1 : 1);
-	str = ft_strjoinf(str, ft_litoa_under0(n, prec, 10, false), 3);
+	str = ft_strjoinf(str, ft_litoa_under0(n, prec, 10, 0), 3);
 	return (str);
 }
 

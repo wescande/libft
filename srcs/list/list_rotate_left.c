@@ -6,11 +6,13 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/01 14:21:34 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/02 16:05:01 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/05 15:01:56 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <list.h>
+
+#ifdef FULL_LIBFT
 
 /*
 ** list_rotate_left - rotate the list to the left
@@ -27,3 +29,5 @@ inline void		list_rotate_left(t_lx *head)
 		list_move_tail(first, head);
 	}
 }
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/30 09:58:05 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/18 22:37:10 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/05 14:57:56 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct	s_lx
 **# define LIST_FOR_EACH_ENTRY_SAFE(p,t,h,m) LFS0(p,t,h,m); while(LFS2(p,t,h,m))
 */
 
+# ifdef FULL_LIBFT
 extern void		list_insert(t_lx *new_lx, t_lx *prev, t_lx *next);
 extern void		list_add(t_lx *elem, t_lx *head);
 extern void		list_add_tail(t_lx *new_lx, t_lx *head);
@@ -135,5 +136,5 @@ extern void		list_splice_tail_init(t_lx *list, t_lx *head);
 extern t_lx		*list_findat(t_lx *head, size_t n);
 
 extern size_t	list_len(t_lx *head);
-
+# endif
 #endif

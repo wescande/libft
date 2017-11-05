@@ -6,11 +6,13 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/30 13:45:04 by wescande          #+#    #+#             */
-/*   Updated: 2017/09/02 16:05:23 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/05 15:01:09 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <list.h>
+
+# ifdef FULL_LIBFT
 
 inline void		list_merge_only(t_lx *add, t_lx *head)
 {
@@ -55,3 +57,5 @@ inline void		list_merge_init(t_lx *add, t_lx *head)
 		INIT_LIST_HEAD(add);
 	}
 }
+
+#endif

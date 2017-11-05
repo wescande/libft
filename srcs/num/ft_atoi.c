@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/06 00:03:33 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/05 16:05:29 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/05 18:27:19 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,42 @@ int					ft_atoi(const char *nptr)
 	if (nptr[nptr_start] == '-')
 		nb *= -1;
 	return (nb);
+}
+
+int		atoi(char *string)
+{
+	register int result = 0;
+	register unsigned int digit;
+	int sign;
+
+	while (isspace(*string))
+	{
+		string += 1;
+	}
+	if (*string == '-')i
+	{
+		sign = 1;
+		string += 1;
+	}
+	else
+	{
+		sign = 0;
+		if (*string == '+')
+		{
+			string += 1;
+		}
+	}
+	for ( ; ; string += 1)
+	{
+		digit = *string - '0';
+		if (digit > 9) {
+			break;
+		}
+		result = (10*result) + digit;
+	}
+	if (sign)
+	{
+		return -result;
+	}
+	return result;
 }

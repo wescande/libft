@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 23:24:17 by wescande          #+#    #+#             */
-/*   Updated: 2016/12/16 14:51:01 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/05 14:45:20 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_lstsort(t_list **begin_list, int (*cmp)())
 	t_list	*li_curr;
 	int		is_sorting;
 
-	is_sorting = true;
+	is_sorting = 1;
 	while (is_sorting--)
 	{
 		li_prev = NULL;
@@ -29,7 +29,7 @@ void	ft_lstsort(t_list **begin_list, int (*cmp)())
 				(li_prev) ? li_prev->next = li_curr->next : 0;
 				(!li_prev) ? *begin_list = li_curr->next : 0;
 				li_prev = ft_lstswap(li_curr);
-				is_sorting = true;
+				is_sorting = 1;
 			}
 			else
 			{
