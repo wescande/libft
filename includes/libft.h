@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/11/05 14:44:37 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/06 15:24:01 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,7 +280,7 @@ void			*ft_memjoinf(void *mem1, void *mem2, size_t len1, size_t len2);
 void			ft_swapptr(void **ptr1, void **ptr2);
 
 /*
-** INT :
+** NUM :
 */
 long long int	ft_pow(int nb, int power);
 long			ft_min(long n1, long n2);
@@ -290,7 +290,11 @@ short int		ft_unum_len_base(unsigned long int num, short int len_base);
 long int		ft_abs(long int num);
 int				ft_atoi(const char *nptr);
 unsigned int	ft_atoui(const char *nptr);
-long int		ft_atoli_base(const char *nptr, short len);
+int64_t			ft_atolli_base(const char *nptr, uint8_t base);
+uint64_t		base_convert(const uint8_t base, const char *p,
+									uint8_t *overflow, uint8_t *anydigits);
+uint64_t		ft_strtoull(const char *string, char **endptr, uint8_t base);
+int64_t			ft_strtoll(const char *string, char **endptr, uint8_t base);
 char			*ft_itoa(int n);
 char			*ft_uitoa_nomalloc(unsigned int n, char *str);
 char			*ft_itoa_nomalloc(int n, char *str);

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoui.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/06 00:03:33 by wescande          #+#    #+#             */
-/*   Updated: 2017/11/06 15:33:32 by wescande         ###   ########.fr       */
+/*   Created: 2017/11/06 15:06:09 by wescande          #+#    #+#             */
+/*   Updated: 2017/11/06 15:33:42 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int					ft_atoi(const char *str)
+unsigned int	ft_atoui(const char *str)
 {
-	return((int)ft_strtoll(str, (char **)NULL, 10));
+	return((unsigned int)ft_strtoull(str, (char **)NULL, 10));
 }
