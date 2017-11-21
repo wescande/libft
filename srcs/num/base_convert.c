@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   base_convert.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tempow_wil <wescande@student.42.fr>        +#+  +:+       +#+        */
+/*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 13:23:22 by tempow_wi         #+#    #+#             */
-/*   Updated: 2017/11/06 13:57:47 by tempow_wi        ###   ########.fr       */
+/*   Created: 2017/11/21 12:27:30 by wescande          #+#    #+#             */
+/*   Updated: 2017/11/21 12:27:32 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** (100 for non-digit characters => error).
 */
 
-static const uint8_t	 g_cvtin[] =
+static const uint8_t	g_cvtin[] =
 {
 	0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
 	100, 100, 100, 100, 100, 100, 100,
@@ -35,7 +35,7 @@ static uint64_t			convert_random(const char *p, uint8_t *overflow,
 		uint8_t *anydigits, uint8_t base)
 {
 	register uint64_t		result;
-	const uint64_t			maxres = UINT64_MAX  / base;
+	const uint64_t			maxres = UINT64_MAX / base;
 	register uint8_t		digit;
 
 	result = 0;
@@ -43,10 +43,10 @@ static uint64_t			convert_random(const char *p, uint8_t *overflow,
 	{
 		digit = *p - '0';
 		if (digit > ('z' - '0'))
-			break;
+			break ;
 		digit = g_cvtin[digit];
 		if (digit >= base)
-			break;
+			break ;
 		if (result > maxres)
 			*overflow = 1;
 		result *= base;
@@ -71,10 +71,10 @@ static uint64_t			convert_hexadecimal(const char *p,
 	{
 		digit = *p - '0';
 		if (digit > ('z' - '0'))
-			break;
+			break ;
 		digit = g_cvtin[digit];
 		if (digit > 15)
-			break;
+			break ;
 		if (result > maxres)
 			*overflow = 1;
 		result = (result << 4);
@@ -99,7 +99,7 @@ static uint64_t			convert_decimal(const char *p,
 	{
 		digit = *p - '0';
 		if (digit > 9)
-			break;
+			break ;
 		if (result > maxres)
 			*overflow = 1;
 		result *= 10;
@@ -124,7 +124,7 @@ static uint64_t			convert_octal(const char *p,
 	{
 		digit = *p - '0';
 		if (digit > 7)
-			break;
+			break ;
 		if (result > maxres)
 			*overflow = 1;
 		result = (result << 3);
@@ -137,7 +137,7 @@ static uint64_t			convert_octal(const char *p,
 	return (result);
 }
 
-uint64_t			base_convert(const uint8_t base, const char *p,
+uint64_t				base_convert(const uint8_t base, const char *p,
 									uint8_t *overflow, uint8_t *anydigits)
 {
 	if (base == 8)
@@ -148,4 +148,3 @@ uint64_t			base_convert(const uint8_t base, const char *p,
 		return (convert_hexadecimal(p, overflow, anydigits));
 	return (convert_random(p, overflow, anydigits, base));
 }
-

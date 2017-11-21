@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/11/06 15:24:01 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/21 12:23:11 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,6 @@ enum			e_msg_level
 	MSG_ERROR,
 	MSG_SUCCESS
 };
-
-/* enum			e_bool */
-/* { */
-/* 	false, */
-/* 	true */
-/* }; */
 
 typedef struct	s_ld
 {

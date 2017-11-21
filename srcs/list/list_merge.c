@@ -6,13 +6,13 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/30 13:45:04 by wescande          #+#    #+#             */
-/*   Updated: 2017/11/05 15:01:09 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/21 12:24:17 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <list.h>
 
-# ifdef FULL_LIBFT
+#ifdef FULL_LIBFT
 
 inline void		list_merge_only(t_lx *add, t_lx *head)
 {

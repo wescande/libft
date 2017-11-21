@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/30 09:58:05 by wescande          #+#    #+#             */
-/*   Updated: 2017/11/05 14:57:56 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/21 12:22:50 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ typedef struct	s_lx
 */
 
 # ifdef FULL_LIBFT
+
 extern void		list_insert(t_lx *new_lx, t_lx *prev, t_lx *next);
 extern void		list_add(t_lx *elem, t_lx *head);
 extern void		list_add_tail(t_lx *new_lx, t_lx *head);
