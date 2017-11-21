@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 14:40:48 by wescande          #+#    #+#             */
-/*   Updated: 2017/11/06 14:41:29 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/21 12:43:25 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int64_t			ft_strtoll(const char *string, char **endptr, uint8_t base)
 	if (*p == '-')
 	{
 		++p;
-		result = -(strtoul(p, endptr, base));
+		result = -(ft_strtoull(p, endptr, base));
 	}
 	else
 	{
@@ -31,7 +31,7 @@ int64_t			ft_strtoll(const char *string, char **endptr, uint8_t base)
 		{
 			++p;
 		}
-		result = strtoul(p, endptr, base);
+		result = ft_strtoull(p, endptr, base);
 	}
 	if ((result == 0) && (endptr != 0) && (*endptr == p))
 		*endptr = (char *)string;
