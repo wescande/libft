@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/07 22:14:46 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/26 18:58:01 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/21 12:24:46 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,8 @@ static int			cliopts_parse_long(
 	return (0);
 }
 
-int					cliopts_get(char **av, const t_cliopts opt_map[], void *data)
+int					cliopts_get(char **av,
+								const t_cliopts opt_map[], void *data)
 {
 	g_argv = av;
 	if (!av)

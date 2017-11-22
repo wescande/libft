@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/06 00:03:33 by wescande          #+#    #+#             */
-/*   Updated: 2017/11/06 15:33:32 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/21 12:25:01 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int					ft_atoi(const char *str)
 {
-	return((int)ft_strtoll(str, (char **)NULL, 10));
+	return ((int)ft_strtoll(str, (char **)NULL, 10));
 }

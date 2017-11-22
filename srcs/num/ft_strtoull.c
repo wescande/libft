@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtoul.c                                       :+:      :+:    :+:   */
+/*   ft_strtoull.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/05 19:13:52 by wescande          #+#    #+#             */
-/*   Updated: 2017/11/06 14:31:22 by tempow_wi        ###   ########.fr       */
+/*   Created: 2017/11/21 12:27:52 by wescande          #+#    #+#             */
+/*   Updated: 2017/11/21 12:29:47 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@
 ** .
 ** ----------------------------------------------------------------------
 */
-static const char		*base_check(uint8_t *base, uint8_t	*anydigits,
+
+static const char		*base_check(uint8_t *base, uint8_t *anydigits,
 									const char *p)
 {
 	if (*base == 0)
@@ -81,7 +82,7 @@ uint64_t				ft_strtoull(const char *string,
 	if (!anydigits)
 		p = string;
 	if (endptr)
-		*endptr = (char *) p;
+		*endptr = (char *)p;
 	if (overflow)
 		return (UINT64_MAX);
 	if (negative)
