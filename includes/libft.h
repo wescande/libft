@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/11/06 15:24:01 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/22 11:46:56 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,7 @@ char			**ft_strsplit(char const *s, char c);
 char			**ft_strsplitspa(char const *str);
 void			ft_tabdel(char ***mytab);
 int				ft_tablen(char **mytab);
+char			**ft_tabcpy(char **av);
 
 int				get_next_line(const int fd, char **line);
 char			*ft_strsepjoin(char **tab, char sep);
