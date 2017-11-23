@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 14:19:42 by wescande          #+#    #+#             */
-/*   Updated: 2017/11/21 12:29:32 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/23 18:37:36 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ char	*ft_strsepjoin_crlf(char **tab, char sep)
 	while (*p)
 	{
 		ft_strcat(join, *p++);
-		ft_strcat(join, &sep);
+		if (*p)
+			ft_strcat(join, &sep);
 	}
 	ft_strcat(join, "\r\n");
 	return (join);
@@ -54,7 +55,8 @@ char	*ft_strsepjoin(char **tab, char sep)
 	while (*p)
 	{
 		ft_strcat(join, *p++);
-		ft_strcat(join, &sep);
+		if (*p)
+			ft_strcat(join, &sep);
 	}
 	join[len - 1] = 0;
 	return (join);
