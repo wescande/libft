@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 16:15:43 by wescande          #+#    #+#             */
-/*   Updated: 2017/10/26 16:54:24 by wescande         ###   ########.fr       */
+/*   Updated: 2017/11/28 11:10:38 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int			verbose(uint64_t flag, const int level, const char *message, ...)
 	(IS_UNSET(flag, DEBUG) && level == MSG_DEBUG) ||
 	(IS_UNSET(flag, VERBOSE) && (level == MSG_INFO ||
 		level == MSG_WARNING)))
+		return (0);
+	if (!message)
 		return (0);
 	va_start(va, message);
 	ft_vasprintf(&str, message, va);
