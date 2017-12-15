@@ -6,7 +6,7 @@
 #    By: wescande <wescande@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/08/29 21:32:58 by wescande          #+#    #+#              #
-#    Updated: 2017/11/05 15:20:41 by wescande         ###   ########.fr        #
+#    Updated: 2017/12/15 10:48:07 by wescande         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -183,7 +183,8 @@ INDEX		=	0
 
 SHELL := /bin/bash
 
-all : $(NAME)
+all :
+	@make -j $(NAME)
 
 $(NAME) :		$(OBJ_DIR) $(OBJS) Makefile
 	@ar rcs $(NAME) $(OBJS)
@@ -217,7 +218,8 @@ fclean :		clean
 		printf "\r\033[38;5;196m✗ fclean $(NAME).\033[0m\033[K\n"; \
 	fi;
 
-re :			fclean all
+re :			fclean
+	@make -j $(NAME)
 
 .PHONY :		fclean clean re
 
