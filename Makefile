@@ -6,7 +6,7 @@
 #    By: wescande <wescande@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/08/29 21:32:58 by wescande          #+#    #+#              #
-#    Updated: 2017/12/15 10:48:07 by wescande         ###   ########.fr        #
+#    Updated: 2018/01/07 23:37:59 by wescande         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC			?=	gcc
 FLAGS		=	-Wall -Wextra -Werror -O3 -D FULL_LIBFT
 
 LEN_NAME	=	`printf "%s" $(NAME) |wc -c`
-DELTA		=	$$(echo "$$(tput cols)-31-$(LEN_NAME)"|bc)
+DELTA		=	$$(echo "$$(tput cols)-32-$(LEN_NAME)"|bc)
 
 SRC_DIR		=	srcs/
 INC_DIR		=	includes/
