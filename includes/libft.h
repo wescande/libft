@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2017/11/24 13:33:22 by wescande         ###   ########.fr       */
+/*   Updated: 2018/01/17 16:15:14 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,12 @@ typedef struct	s_stof
 	char			*str;
 	int				(*f)();
 }				t_stof;
+
+typedef struct	s_ivec2
+{
+	int			x;
+	int			y;
+}				t_ivec2;
 
 /*
 ** CLIOPTS
