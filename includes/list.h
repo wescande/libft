@@ -6,14 +6,14 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/30 09:58:05 by wescande          #+#    #+#             */
-/*   Updated: 2017/11/21 12:22:50 by wescande         ###   ########.fr       */
+/*   Updated: 2018/07/06 14:07:42 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIST_H
 # define LIST_H
 
-# include <atomic.h>
+# include "atomic.h"
 # include <stdlib.h>
 # include <stddef.h>
 
@@ -94,6 +94,37 @@ typedef struct	s_lx
 # define LIST_FOR_EACH_ENTRY_SAFE_0(p,t,h,m)	LFS0(p,t,h,m)
 # define LIST_FOR_EACH_ENTRY_SAFE_1(p,t,h,m)	LFS2(p,t,h,m)
 
+#define list_for_each_block(pos, head, ...) \
+	for (list_head_t *pos = (head)->next; pos != (head); pos = pos->next) { \
+		__VA_ARGS__ \
+	}
+
+#define list_for_each_safe_block(pos, head, ...) \
+	for (list_head_t *pos = (head)->next, *__safe = pos->next; \
+			pos != (head); \
+			pos = __safe, __safe = __safe->next) { \
+		__VA_ARGS__ \
+	}
+
+
+#define list_for_each_entry_block(entry_name, type, head, member, ...)	\
+{ \
+	type *entry_name; \
+	list_for_each_block(__pos##entry_name, head, { \
+			entry_name = list_entry(__pos##entry_name, type, member); \
+			__VA_ARGS__ \
+			}) \
+}
+
+#define list_for_each_entry_safe_block(pos, type, head, member, ...)	\
+{ \
+	type *pos; \
+	list_for_each_safe_block(__pos, head, { \
+			pos = list_entry(__pos, type, member); \
+			__VA_ARGS__ \
+			}) \
+}
+
 /*
 ** Norme friendly hack
 **# define LIST_FOR_EACH_ENTRY_SAFE(p,t,h,m) LFS0(p,t,h,m); while(LFS2(p,t,h,m))
@@ -139,3 +170,5 @@ extern t_lx		*list_findat(t_lx *head, size_t n);
 extern size_t	list_len(t_lx *head);
 # endif
 #endif
+
+
