@@ -6,7 +6,7 @@
 /*   By: wescande <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 11:26:24 by wescande          #+#    #+#             */
-/*   Updated: 2018/07/06 14:32:36 by wescande         ###   ########.fr       */
+/*   Updated: 2018/07/06 14:57:37 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static t_buf		*get_buffer(t_lx *head, int fd, char **line)
 		return (NULL);
 	if (!(entry = (t_buf *)malloc(sizeof(t_buf))))
 		return (NULL);
-	bzero(entry, sizeof(t_buf));
+	ft_bzero(entry, sizeof(t_buf));
 	entry->fd = fd;
 	list_add(&entry->lx_buffer, head);
 	return (entry);

@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2018/07/06 14:07:58 by wescande         ###   ########.fr       */
+/*   Updated: 2018/07/06 15:03:07 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,29 +94,6 @@ typedef struct	s_ivec2
 	int			y;
 }				t_ivec2;
 
-/*
-** CLIOPTS
-*/
-
-typedef struct	s_cliopts
-{
-	char			c;
-	char			*str;
-	uint64_t		flag_on;
-	uint64_t		flag_off;
-	int				(*get)();
-	unsigned int	arg_required;
-}				t_cliopts;
-
-typedef struct	s_data_template
-{
-	uint64_t	flag;
-	char		**av_data;
-}				t_data_template;
-
-int				cliopts_get(char **av, const t_cliopts opt_map[], void *data);
-t_cliopts		*cliopts_getmap_long(const t_cliopts opt_map[], char *arg);
-t_cliopts		*cliopts_getmap_short(const t_cliopts opt_map[], char arg);
 
 /*
 ** ERROR
@@ -199,13 +176,40 @@ void			ft_tabdel(char ***mytab);
 int				ft_tablen(char **mytab);
 char			**ft_tabcpy(char **av);
 
-int				get_next_line(const int fd, char **line);
 char			*ft_strsepjoin(char **mytab, char *sep);
 char			*ft_strsepjoin_crlf(char **mytab, char *sep);
 
 char			*ft_strjoinf(char *s1, char *s2, int state);
 char			*ft_strsubf(char *s, unsigned int top, size_t l, short int mod);
 void			*ft_memrealloc(void *ptr, size_t old_s, size_t new_s);
+
+/*
+** INPUT:
+*/
+typedef struct	s_cliopts
+{
+	char			c;
+	char			*str;
+	uint64_t		flag_on;
+	uint64_t		flag_off;
+	int				(*get)();
+	unsigned int	arg_required;
+}				t_cliopts;
+
+typedef struct	s_data_template
+{
+	uint64_t	flag;
+	char		**av_data;
+}				t_data_template;
+
+int				cliopts_get(char **av, const t_cliopts opt_map[], void *data);
+t_cliopts		*cliopts_getmap_long(const t_cliopts opt_map[], char *arg);
+t_cliopts		*cliopts_getmap_short(const t_cliopts opt_map[], char arg);
+
+typedef int (*t_parse_callback)(char *line, void *context);
+
+int				get_next_line(const int fd, char **line);
+int				parse_file(char *filename, t_parse_callback f, void *context);
 
 /*
 ** OUTPUT :
