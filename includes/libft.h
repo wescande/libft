@@ -172,9 +172,11 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
 char			**ft_strsplitspa(char const *str);
-void			ft_tabdel(char ***mytab);
-int				ft_tablen(char **mytab);
-char			**ft_tabcpy(char **av);
+void			ft_free(void **as);
+void			ft_tabdel(void ***mytab);
+int				ft_tablen(void **mytab);
+void			**ft_tabcpy(void **dest, void **src);		
+void			**ft_tabdup(void **src);
 
 char			*ft_strsepjoin(char **mytab, char *sep);
 char			*ft_strsepjoin_crlf(char **mytab, char *sep);

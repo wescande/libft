@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		ft_tablen(char **mytab)
+int		ft_tablen(void **mytab)
 {
 	int		i;
 

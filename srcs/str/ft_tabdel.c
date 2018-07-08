@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-void	ft_tabdel(char ***mytab)
+void	ft_tabdel(void ***mytab)
 {
-	char	**erase;
+	void	**erase;
 	int		i;
 
 	if (!mytab || !*mytab)
@@ -23,7 +23,7 @@ void	ft_tabdel(char ***mytab)
 	i = 0;
 	while (erase[i])
 	{
-		ft_strdel(&erase[i]);
+		ft_free(&erase[i]);
 		++i;
 	}
 	free(*mytab);

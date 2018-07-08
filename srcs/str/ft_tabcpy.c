@@ -12,26 +12,17 @@
 
 #include <libft.h>
 
-char	**ft_tabcpy(char **av)
+void	**ft_tabcpy(void** dest, void **src)
 {
-	int		len;
-	char	**tab;
-	int		i;
+	void **anchor;
 
-	len = ft_tablen(av);
-	if (!(tab = (char **)malloc(sizeof(char *) * len + 1)))
-		return (NULL);
-	i = -1;
-	while (++i < len)
+	anchor = dest;
+	while (*src)
 	{
-		if (!(tab[i] = ft_strdup(av[i])))
-		{
-			while (i--)
-				free(tab[i]);
-			free(tab);
-			return (NULL);
-		}
+		*dest = *src;
+		src++;
+		dest++;
 	}
-	tab[i] = NULL;
-	return (tab);
+	*dest = NULL;
+	return (anchor);
 }

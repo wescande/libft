@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_tabdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/17 23:48:54 by wescande          #+#    #+#             */
-/*   Updated: 2016/11/03 17:36:34 by wescande         ###   ########.fr       */
+/*   Created: 2018/07/08 18:06:33 by wescande          #+#    #+#             */
+/*   Updated: 2018/07/08 18:06:34 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
-void	ft_strdel(char **as)
+void	**ft_tabdup(void **av)		
 {
-	if (as)
-	{
-		free(*as);
-		*as = NULL;
-	}
-}
-
-void	ft_free(void **as)
-{
-	if (as)
-	{
-		free(*as);
-		*as = NULL;
-	}
+    int		len;
+    void	**tab;
+    
+    len = ft_tablen(av);
+    if (!(tab = (void **)malloc(sizeof(void *) * len + 1)))
+        return (NULL);
+    return (ft_tabcpy(tab, av));
 }
