@@ -6,7 +6,7 @@
 #    By: wescande <wescande@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/08/29 21:32:58 by wescande          #+#    #+#              #
-#    Updated: 2018/01/07 23:37:59 by wescande         ###   ########.fr        #
+#    Updated: 2018/07/26 21:18:16 by wescande         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -179,6 +179,7 @@ list/list_empty.c
 
 SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
+DIR			=	$(sort $(dir $(OBJS)))
 NB			=	$(words $(SRC_BASE))
 INDEX		=	0
 
@@ -191,11 +192,10 @@ $(NAME) :		$(OBJ_DIR) $(OBJS) Makefile
 	@ar rcs $(NAME) $(OBJS)
 	@printf "\r\033[38;5;117m✓ MAKE $(NAME)\033[0m\033[K\n"
 
-$(OBJ_DIR) :
-	@mkdir -p $(OBJ_DIR)
-	@mkdir -p $(dir $(OBJS))
+$(DIR) :
+	@mkdir -p $@
 
-$(OBJ_DIR)%.o :	$(SRC_DIR)%.c Makefile | $(OBJ_DIR)
+$(OBJ_DIR)%.o :	$(SRC_DIR)%.c Makefile | $(DIR)
 	@$(eval DONE=$(shell echo $$(($(INDEX)*20/$(NB)))))
 	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
 	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB) - 1))))
@@ -206,7 +206,7 @@ $(OBJ_DIR)%.o :	$(SRC_DIR)%.c Makefile | $(OBJ_DIR)
 	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 
 clean :
-	@if [ -e $(OBJ_DIR) ]; \
+	@if [ -d $(OBJ_DIR) ]; \
 	then \
 		rm -rf $(OBJ_DIR); \
 		printf "\r\033[38;5;202m✗ clean $(NAME).\033[0m\033[K\n"; \
