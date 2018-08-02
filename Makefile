@@ -6,7 +6,7 @@
 #    By: wescande <wescande@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/08/29 21:32:58 by wescande          #+#    #+#              #
-#    Updated: 2018/08/02 21:36:02 by wescande         ###   ########.fr        #
+#    Updated: 2018/08/03 00:10:39 by wescande         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -188,7 +188,7 @@ SHELL 		:=	/bin/bash
 all :
 	@$(MAKE) -j $(NAME)
 
-$(NAME) :		$(OBJ_DIR) $(OBJS) Makefile
+$(NAME) :		$(OBJS) Makefile
 	@ar rcs $(NAME) $(OBJS)
 	@printf "\r\033[38;5;117m✓ MAKE $(NAME)\033[0m\033[K\n"
 
