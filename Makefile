@@ -6,7 +6,7 @@
 #    By: wescande <wescande@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/08/29 21:32:58 by wescande          #+#    #+#              #
-#    Updated: 2018/07/26 21:18:16 by wescande         ###   ########.fr        #
+#    Updated: 2018/08/02 14:23:23 by wescande         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -186,7 +186,7 @@ INDEX		=	0
 SHELL := /bin/bash
 
 all :
-	@make -j $(NAME)
+	@$(MAKE) -j $(NAME)
 
 $(NAME) :		$(OBJ_DIR) $(OBJS) Makefile
 	@ar rcs $(NAME) $(OBJS)
@@ -220,12 +220,12 @@ fclean :		clean
 	fi;
 
 re :			fclean
-	@make -j $(NAME)
+	@$(MAKE) -j $(NAME)
 
 .PHONY :		fclean clean re
 
 -include $(OBJS:.o=.d)
 
 unit_test:
-	@make -C .unit_test re
+	@$(MAKE) -C .unit_test re
 	@./.unit_test/unit_test
