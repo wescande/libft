@@ -6,7 +6,7 @@
 #    By: wescande <wescande@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/08/29 21:32:58 by wescande          #+#    #+#              #
-#    Updated: 2018/08/02 14:23:23 by wescande         ###   ########.fr        #
+#    Updated: 2018/08/03 00:10:39 by wescande         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -183,12 +183,12 @@ DIR			=	$(sort $(dir $(OBJS)))
 NB			=	$(words $(SRC_BASE))
 INDEX		=	0
 
-SHELL := /bin/bash
+SHELL 		:=	/bin/bash
 
 all :
 	@$(MAKE) -j $(NAME)
 
-$(NAME) :		$(OBJ_DIR) $(OBJS) Makefile
+$(NAME) :		$(OBJS) Makefile
 	@ar rcs $(NAME) $(OBJS)
 	@printf "\r\033[38;5;117m✓ MAKE $(NAME)\033[0m\033[K\n"
 
