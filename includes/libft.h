@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2018/07/06 15:03:07 by wescande         ###   ########.fr       */
+/*   Updated: 2018/08/07 20:53:35 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,7 @@ char			**ft_strsplitspa(char const *str);
 void			ft_free(void **as);
 void			ft_tabdel(void ***mytab);
 int				ft_tablen(void **mytab);
-void			**ft_tabcpy(void **dest, void **src);		
+void			**ft_tabcpy(void **dest, void **src);
 void			**ft_tabdup(void **src);
 
 char			*ft_strsepjoin(char **mytab, char *sep);
@@ -184,6 +184,11 @@ char			*ft_strsepjoin_crlf(char **mytab, char *sep);
 char			*ft_strjoinf(char *s1, char *s2, int state);
 char			*ft_strsubf(char *s, unsigned int top, size_t l, short int mod);
 void			*ft_memrealloc(void *ptr, size_t old_s, size_t new_s);
+
+char			*ft_strtok(char *str, const char *delim);
+char			*ft_strtok_r(char *str, const char *delim, char **save_ptr);
+size_t			ft_strcspn(char *str, const char *reject);
+size_t			ft_strspn(char *str, const char *accept);
 
 /*
 ** INPUT:
