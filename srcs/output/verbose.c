@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 16:15:43 by wescande          #+#    #+#             */
-/*   Updated: 2017/11/28 11:10:38 by wescande         ###   ########.fr       */
+/*   Updated: 2018/08/11 17:55:10 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,16 @@ int			verbose(uint64_t flag, const int level, const char *message, ...)
 	verbose_only(level, str);
 	free(str);
 	return ((level == MSG_ERROR) * -1);
+}
+
+int			log_e(const char *message, ...)
+{
+	va_list		va;
+	char		*str;
+
+	va_start(va, message);
+	ft_vasprintf(&str, message, va);
+	ft_dprintf(2, "{pur}%s: {red}%s{eoc}\n", g_argv[0], str);
+	free(str);
+	return (-1);
 }

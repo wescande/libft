@@ -6,7 +6,7 @@
 /*   By: wescande <wescande@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:12 by wescande          #+#    #+#             */
-/*   Updated: 2018/08/07 20:53:35 by wescande         ###   ########.fr       */
+/*   Updated: 2018/08/11 17:55:46 by wescande         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,6 +232,7 @@ void			ft_putnbr_fd(int n, int fd);
 void			ft_tabprint(char **mytab);
 void			ft_tabprint_fd(char **mytab, int fd);
 int				verbose(uint64_t flag, const int level, const char *msg, ...);
+int				log_e(const char *message, ...);
 
 /*
 ** LIST :
